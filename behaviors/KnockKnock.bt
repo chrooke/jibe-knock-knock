@@ -1,0 +1,323 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "args": [],
+        "decorators": [
+            21,
+            14
+        ],
+        "children": [
+            23,
+            24
+        ]
+    },
+    "14": {
+        "id": 14,
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "hey_jibo",
+            [
+                "(listener) => {",
+                "\tnotepad.jokes = [",
+                "\t\t\t['canoe','Canoe help me with my homework?'],",
+                "\t\t\t['orange','Orange you going to let me in?'],",
+                "\t\t\t['needle','Needle little money for the movies.']",
+                "\t];  ",
+                "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
+                "",
+                "\t});",
+                "}"
+            ]
+        ]
+    },
+    "16": {
+        "id": 16,
+        "class": "Subtree",
+        "name": "Tell a joke",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            "TellOneJoke.bt",
+            [
+                "() => {",
+                "    console.log('knock-knock: tell-one-joke.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": []
+    },
+    "20": {
+        "id": 20,
+        "class": "Subtree",
+        "name": "Hear a joke",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            "HearAJoke.bt",
+            [
+                "() => {",
+                "    console.log('knock-knock: hear-a-joke.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "skipped": false,
+        "decorators": []
+    },
+    "21": {
+        "id": 21,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "  return true;",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "22": {
+        "id": 22,
+        "class": "TextToSpeech",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            "Now will you please tell me a knock knock joke?",
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "23": {
+        "id": 23,
+        "class": "TimeoutJs",
+        "name": "Wait 5 seconds",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {",
+                "    return 5000;",
+                "}"
+            ]
+        ]
+    },
+    "24": {
+        "id": 24,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            false
+        ],
+        "children": [
+            27,
+            25
+        ]
+    },
+    "25": {
+        "id": 25,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 24,
+        "args": [],
+        "children": [
+            40,
+            31,
+            16,
+            30,
+            22,
+            34,
+            20,
+            35
+        ]
+    },
+    "26": {
+        "id": 26,
+        "class": "Subtree",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 27,
+        "args": [
+            "attitudes/idle.bt",
+            [
+                "() => {",
+                "  console.log('knock-knock: idle.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            29
+        ]
+    },
+    "27": {
+        "id": 27,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 24,
+        "args": [],
+        "children": [
+            26,
+            28
+        ],
+        "skipped": false
+    },
+    "28": {
+        "id": 28,
+        "class": "Subtree",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 27,
+        "args": [
+            "attitudes/center.bt",
+            [
+                "() => {",
+                "    console.log('knock-knock: center.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            32
+        ]
+    },
+    "29": {
+        "id": 29,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmovestop",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "30": {
+        "id": 30,
+        "class": "ExecuteScript",
+        "name": "Start movement again",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestart');",
+                "  console.log('knock-knock: Start moving.');",
+                "}"
+            ]
+        ]
+    },
+    "31": {
+        "id": 31,
+        "class": "Subtree",
+        "name": "Explain ",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            "ExplainJokes.bt",
+            [
+                "() => {",
+                "    console.log('knock-knock: explain.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ]
+    },
+    "32": {
+        "id": 32,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmovestart",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "34": {
+        "id": 34,
+        "class": "ExecuteScript",
+        "name": "Stop movement for subtree",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestop');",
+                "  console.log('knock-knock: Stop moving.');",
+                "}"
+            ]
+        ]
+    },
+    "35": {
+        "id": 35,
+        "class": "ExecuteScript",
+        "name": "Start movement again",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestart');",
+                "  console.log('knock-knock: Start moving.bt');",
+                "}"
+            ]
+        ]
+    },
+    "40": {
+        "id": 40,
+        "class": "ExecuteScript",
+        "name": "Stop movement for subtree",
+        "asset-pack": "core",
+        "parent": 25,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestop');",
+                "    console.log('knock-knock: Stop moving.');",
+                "}"
+            ]
+        ]
+    }
+}

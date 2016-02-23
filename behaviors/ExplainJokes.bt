@@ -1,0 +1,201 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            false
+        ],
+        "children": [
+            3,
+            18
+        ]
+    },
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "Incidental behavior",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            4,
+            6
+        ],
+        "decorators": [
+            64,
+            63
+        ]
+    },
+    "4": {
+        "id": 4,
+        "class": "Subtree",
+        "name": "Lecture",
+        "asset-pack": "core",
+        "parent": 3,
+        "args": [
+            "attitudes/lecture.bt",
+            [
+                "() => {",
+                "    console.log('explain: lecture.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            5
+        ]
+    },
+    "5": {
+        "id": 5,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmove",
+            [
+                "() => {",
+                "  console.log('KKbtdone received');",
+                "}"
+            ]
+        ]
+    },
+    "6": {
+        "id": 6,
+        "class": "Subtree",
+        "name": "Center",
+        "asset-pack": "core",
+        "parent": 3,
+        "args": [
+            "attitudes/center.bt",
+            [
+                "() => {",
+                "    console.log('explain: center.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            29
+        ]
+    },
+    "7": {
+        "id": 7,
+        "class": "TextToSpeech",
+        "name": "Explain knock knocks",
+        "asset-pack": "core",
+        "parent": 18,
+        "args": [
+            "Knock knock jokes are a type of interactive pun.\nIt's a semi-scripted play with a pun at the end.\nThe person telling the joke pretends to be knocking on the door of the listener, so he says, \"Knock knock\".\nThe listener plays along and says, \"Who's there\".\nThe teller then gives a short answer that is the setup to a pun.\nThe listener repeats this phrase, adding the question \"who?\" at the end.\nFinally the teller reveals the pun based on his setup, and everyone laughs and laughs.",
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "18": {
+        "id": 18,
+        "class": "Sequence",
+        "name": "Explain the jokes",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            7,
+            65,
+            62
+        ]
+    },
+    "29": {
+        "id": 29,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmovestart",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "62": {
+        "id": 62,
+        "class": "ExecuteScript",
+        "name": "End tree",
+        "asset-pack": "core",
+        "parent": 18,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestop');",
+                "  emitter.emit('KKtreedone');",
+                "  console.log('explain: Ending tree.');",
+                "}"
+            ]
+        ]
+    },
+    "63": {
+        "id": 63,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKtreedone",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "64": {
+        "id": 64,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "65": {
+        "id": 65,
+        "class": "Subtree",
+        "name": "Prompt for Example",
+        "asset-pack": "core",
+        "parent": 18,
+        "args": [
+            "Utility/PromptForSubtree.bt",
+            [
+                "() => {",
+                "  console.log('explain: PromptForSubtree');",
+                "    return {",
+                "      question: 'Would you like an example?',",
+                "      trigger: 'yes',",
+                "      subtree: 'TellOneJoke.bt'",
+                "    };",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ]
+    }
+}

@@ -1,0 +1,300 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            false
+        ],
+        "children": [
+            20,
+            15
+        ],
+        "decorators": []
+    },
+    "3": {
+        "id": 3,
+        "class": "TextToSpeech",
+        "name": "\"Knock knock\"",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            "Knock knock",
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "4": {
+        "id": 4,
+        "class": "Subtree",
+        "name": "Listen for \"Who's there?\"",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            "Utility/ListenForString.bt",
+            [
+                "() => {",
+                "  console.log('tell-one-joke: listen-for-string.bt');",
+                "  return { expectedResponse: 'whos there'};",
+                "",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ]
+    },
+    "5": {
+        "id": 5,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            [
+                "() => {",
+                "    notepad.jokes = [",
+                "  \t\t\t['canoe','Canoe help me with my homework?'],",
+                "  \t\t\t['orange','Orange you going to let me in?'],",
+                "  \t\t\t['needle','Needle little money for the movies.']",
+                "  \t];    ",
+                "      var joke=Math.round(Math.random()*((notepad.jokes.length)-1));",
+                "//      console.log(notepad.jokes.length);",
+                "      notepad.setup=notepad.jokes[joke][0];",
+                "      notepad.punchline=notepad.jokes[joke][1];",
+                "      return 0;",
+                "}"
+            ]
+        ]
+    },
+    "7": {
+        "id": 7,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            [
+                "(callback) => {",
+                "    callback(notepad.setup);",
+                "}"
+            ],
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "11": {
+        "id": 11,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            [
+                "(callback) => {",
+                "    callback(notepad.punchline);",
+                "}"
+            ],
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "12": {
+        "id": 12,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            "laugh.keys",
+            [
+                "(animation) => {",
+                "}"
+            ]
+        ]
+    },
+    "13": {
+        "id": 13,
+        "class": "Subtree",
+        "name": "Listen for \"<setup> who\"",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            "Utility/ListenForString.bt",
+            [
+                "() => {",
+                "    console.log('tell-one-joke: listen-for-string.bt');",
+                "    return { expectedResponse: notepad.setup+' who'};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ]
+    },
+    "15": {
+        "id": 15,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            5,
+            3,
+            4,
+            7,
+            13,
+            11,
+            12,
+            53
+        ]
+    },
+    "17": {
+        "id": 17,
+        "class": "Subtree",
+        "name": "Attentive",
+        "asset-pack": "core",
+        "parent": 20,
+        "args": [
+            "attitudes/attentive.bt",
+            [
+                "() => {",
+                "    console.log('tell-one-joke: attentive.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            22
+        ]
+    },
+    "20": {
+        "id": 20,
+        "class": "Sequence",
+        "name": "Incidental behavior",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            17,
+            42
+        ],
+        "skipped": false,
+        "decorators": [
+            55,
+            54
+        ]
+    },
+    "22": {
+        "id": 22,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmovestop",
+            [
+                "() => {",
+                "}"
+            ]
+        ],
+        "parent": 0
+    },
+    "42": {
+        "id": 42,
+        "class": "Subtree",
+        "name": "Center",
+        "asset-pack": "core",
+        "parent": 20,
+        "args": [
+            "attitudes/center.bt",
+            [
+                "() => {",
+                "    console.log('tell-one-joke: center.bt');",
+                "    return {};",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ],
+        "decorators": [
+            43
+        ]
+    },
+    "43": {
+        "id": 43,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKmovestart",
+            [
+                "() => {",
+                "}"
+            ]
+        ],
+        "parent": null
+    },
+    "53": {
+        "id": 53,
+        "class": "ExecuteScript",
+        "name": "End tree",
+        "asset-pack": "core",
+        "parent": 15,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKmovestop');",
+                "  emitter.emit('KKtreedone');",
+                "  console.log('tell-one-joke: Ending tree.');",
+                "",
+                "}"
+            ]
+        ]
+    },
+    "54": {
+        "id": 54,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKtreedone",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "55": {
+        "id": 55,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    }
+}

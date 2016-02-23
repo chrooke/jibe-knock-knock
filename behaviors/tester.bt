@@ -1,0 +1,51 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "args": [],
+        "decorators": [],
+        "children": [
+            20,
+            22
+        ]
+    },
+    "20": {
+        "id": 20,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {",
+                "  notepad.delay=5000;",
+                "}"
+            ]
+        ]
+    },
+    "22": {
+        "id": 22,
+        "class": "Subtree",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            "Utility/PromptForSubtree.bt",
+            [
+                "() => {",
+                "  console.log('tester: PromptForSubtree');",
+                "    return {",
+                "      question: 'Say joke to hear a joke',",
+                "      trigger: 'joke',",
+                "      subtree: 'tell-one-joke.bt'",
+                "    };",
+                "}"
+            ],
+            [
+                "(treeResult) => {",
+                "}"
+            ]
+        ]
+    }
+}

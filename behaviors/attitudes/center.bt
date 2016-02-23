@@ -1,0 +1,29 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "args": [],
+        "children": [
+            2
+        ]
+    },
+    "2": {
+        "id": 2,
+        "class": "ExecuteScriptAsync",
+        "name": "Globally Center Robot",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "(succeed, fail) => {",
+                "  let dofs = jibo.animate.dofs;",
+                "  jibo.animate.centerRobot(dofs.ALL, true, () => {",
+                "      jibo.animate.setLEDColor([0, 0, 1]);",
+                "      succeed();    ",
+                "  });",
+                "}"
+            ]
+        ]
+    }
+}

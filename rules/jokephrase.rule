@@ -1,0 +1,2 @@
+TopRule = $the_thing who {phrase=the_thing._message};
+the_thing @= (+$w){_message= _parsed};
