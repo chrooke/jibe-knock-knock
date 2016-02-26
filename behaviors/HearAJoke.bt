@@ -6,8 +6,10 @@
         "args": [],
         "children": [
             57,
-            32
-        ]
+            71,
+            53
+        ],
+        "decorators": []
     },
     "3": {
         "id": 3,
@@ -50,7 +52,7 @@
                 "}"
             ]
         ],
-        "skipped": false,
+        "skipped": true,
         "decorators": []
     },
     "5": {
@@ -62,14 +64,15 @@
         "args": [
             [
                 "(callback) => {",
-                "    callback(notepad.result.NLParse.phrase.concat(' who?'));",
+                "  callback(notepad.result.NLParse.phrase.concat(' who?'));",
                 "}"
             ],
             [
                 "(word) => {",
                 "}"
             ]
-        ]
+        ],
+        "skipped": true
     },
     "6": {
         "id": 6,
@@ -98,7 +101,7 @@
                 "}"
             ]
         ],
-        "skipped": false,
+        "skipped": true,
         "decorators": []
     },
     "7": {
@@ -106,7 +109,7 @@
         "class": "PlayAnimation",
         "name": "Laugh no matter what",
         "asset-pack": "core",
-        "parent": 33,
+        "parent": 64,
         "args": [
             "laugh.keys",
             [
@@ -195,7 +198,7 @@
         "class": "Parallel",
         "name": "",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": 71,
         "args": [
             false
         ],
@@ -213,13 +216,19 @@
         "args": [],
         "children": [
             16,
+            75,
             56,
             3,
             4,
+            60,
             5,
             6,
-            7,
-            53
+            62,
+            63
+        ],
+        "decorators": [
+            77,
+            76
         ]
     },
     "42": {
@@ -263,7 +272,7 @@
         "class": "ExecuteScript",
         "name": "End tree",
         "asset-pack": "core",
-        "parent": 33,
+        "parent": 1,
         "args": [
             [
                 "() => {",
@@ -381,6 +390,224 @@
             [
                 "() => {",
                 "  return !notepad.readyToContinue;",
+                "}"
+            ]
+        ]
+    },
+    "60": {
+        "id": 60,
+        "class": "Mim",
+        "name": "Listen for phrase",
+        "asset-pack": "project",
+        "parent": 33,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForAnything',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`HearAJoke.bt: KnockKnockWaitForAnything: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.phrase=results.asrResults.nlParse.phrase;",
+                "  }",
+                "}"
+            ]
+        ]
+    },
+    "62": {
+        "id": 62,
+        "class": "Mim",
+        "name": "\"<phrase> who?\"",
+        "asset-pack": "project",
+        "parent": 33,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWhosThere',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* \"+notepad.phrase+\" {slotAction='continue'} $*;\",",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true,",
+                "\t\tpromptData: {",
+                "\t\t\tphrase: notepad.phrase",
+                "\t\t}",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`HearAJoke.bt: KnockKnockWhosThere: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.goodJoke=true;",
+                "  }",
+                "  if (results.asrResults.state === 'noMatch') {",
+                "    notepad.goodJoke=false;",
+                "  }",
+                "}"
+            ]
+        ]
+    },
+    "63": {
+        "id": 63,
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 33,
+        "args": [],
+        "children": [
+            64,
+            65
+        ]
+    },
+    "64": {
+        "id": 64,
+        "class": "Sequence",
+        "name": "Good Joke",
+        "asset-pack": "core",
+        "parent": 63,
+        "args": [],
+        "decorators": [
+            66
+        ],
+        "children": [
+            7,
+            70
+        ]
+    },
+    "65": {
+        "id": 65,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 63,
+        "args": [],
+        "children": [
+            67
+        ]
+    },
+    "66": {
+        "id": 66,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "  return notepad.goodJoke;",
+                "}"
+            ]
+        ]
+    },
+    "67": {
+        "id": 67,
+        "class": "TextToSpeech",
+        "name": "\"I don't get it.\"",
+        "asset-pack": "core",
+        "parent": 65,
+        "args": [
+            "I'm sorry, I just don't get it. Perhaps you could tell me another?",
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "70": {
+        "id": 70,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 64,
+        "args": [
+            [
+                "() => {",
+                "  emitter.emit('KKgoodjoke');",
+                "}"
+            ]
+        ]
+    },
+    "71": {
+        "id": 71,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            32
+        ],
+        "decorators": []
+    },
+    "75": {
+        "id": 75,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 33,
+        "args": [
+            [
+                "() => {",
+                "    notepad.readyToContinue = false;",
+                "}"
+            ]
+        ]
+    },
+    "76": {
+        "id": 76,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKgoodjoke",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "77": {
+        "id": 77,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
                 "}"
             ]
         ]

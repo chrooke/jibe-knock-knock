@@ -1,0 +1,51 @@
+{
+  "mim_id": "KnockKnockWhosThere",
+  "skill_id": "knockknock",
+  "mim_type": "question",
+  "rule_name": "KnockKnockWhosThere",
+  "rule_slots": "slotAction",
+  "screen_slots_available": "true",
+  "sample_utterances": "canoe help me with me homework",
+  "timeout": "4",
+  "max_tries": "1",
+  "force_confirmation": "false",
+  "barge_in": "true",
+  "photo_quality_light": "false",
+  "notes": "",
+  "modified": "2/25/2016 7:48:29 PM",
+  "prompts": [
+    {
+      "mim_id": "KnockKnockWhosThere",
+      "prompt_category": "Entry-Core",
+      "prompt_sub_category": "Q",
+      "index": "1",
+      "condition": "",
+      "prompt": "${phrase} who?",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWhosThere_Q_1"
+    },
+    {
+      "mim_id": "KnockKnockWhosThere",
+      "prompt_category": "Errors",
+      "prompt_sub_category": "NI",
+      "index": "1",
+      "condition": "",
+      "prompt": "That's it, now gimme the punch line.",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWhosThere_NI_1"
+    },
+    {
+      "mim_id": "KnockKnockWhosThere",
+      "prompt_category": "Errors",
+      "prompt_sub_category": "NM",
+      "index": "1",
+      "condition": "",
+      "prompt": "",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWhosThere_NM_1"
+    }
+  ]
+}

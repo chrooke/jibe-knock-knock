@@ -1,1 +1,1 @@
-TopRule = $* knock knock $* {slotAction = 'order'};
+TopRule = $* knock knock $* {slotAction = 'continue'};
