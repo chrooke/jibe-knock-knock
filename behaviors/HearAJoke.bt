@@ -5,6 +5,7 @@
         "name": "",
         "args": [],
         "children": [
+            57,
             32
         ]
     },
@@ -132,7 +133,8 @@
                 "(treeResult) => {",
                 "}"
             ]
-        ]
+        ],
+        "skipped": true
     },
     "17": {
         "id": 17,
@@ -211,6 +213,7 @@
         "args": [],
         "children": [
             16,
+            56,
             3,
             4,
             5,
@@ -297,6 +300,87 @@
             [
                 "() => {",
                 "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "56": {
+        "id": 56,
+        "class": "Mim",
+        "name": "Listen for \"Knock \"Knock\"",
+        "asset-pack": "project",
+        "parent": 33,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`HearAJoke.bt: KnockKnockWaitForKnockKnock: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.readyToContinue = true;",
+                "  }",
+                "}"
+            ]
+        ],
+        "decorators": [
+            59
+        ]
+    },
+    "57": {
+        "id": 57,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {  ",
+                "  ",
+                "  notepad.readyToContinue = false;",
+                "    ",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/');",
+                "  }",
+                "}"
+            ]
+        ]
+    },
+    "59": {
+        "id": 59,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "  return !notepad.readyToContinue;",
                 "}"
             ]
         ]

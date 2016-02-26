@@ -11,7 +11,7 @@ let blackboard = {};
 let notepad = {};
 
 function start() {
-    let root = factory.create('../behaviors/KnockKnock', {
+    let root = factory.create('../behaviors/HearAJoke', {
       blackboard: blackboard,
       notepad: notepad
     });
@@ -27,6 +27,7 @@ function start() {
 }
 
 jibo.init().then(() => {
+    console.log('Setup');
     require('./behaviors/debug-behavior');
     require('./behaviors/mim');
     require('./behaviors/mim-gui');

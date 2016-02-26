@@ -233,7 +233,7 @@
                 "  } else {",
                 "    notepad.mimState.lastResultState = notepad.asrResults.state;",
                 "  }",
-                "  ",
+                "",
                 "  switch (notepad.mimState.lastResultState) {",
                 "      case 'match':",
                 "        notepad.mimState.success = true;",
