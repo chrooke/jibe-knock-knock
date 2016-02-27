@@ -1,2 +1,0 @@
-TopRule = $something {phrase=something._message};
-something @= (+$w){_message= _parsed};

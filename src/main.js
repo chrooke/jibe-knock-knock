@@ -11,7 +11,7 @@ let blackboard = {};
 let notepad = {};
 
 function start() {
-    let root = factory.create('../behaviors/HearAJoke', {
+    let root = factory.create('../behaviors/KnockKnock', {
       blackboard: blackboard,
       notepad: notepad
     });

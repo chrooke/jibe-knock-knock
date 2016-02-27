@@ -1,90 +1,38 @@
 {
     "1": {
         "id": 1,
-        "class": "Parallel",
+        "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            false
-        ],
+        "args": [],
         "children": [
-            20,
-            15
+            64,
+            5,
+            56
         ],
         "decorators": []
-    },
-    "3": {
-        "id": 3,
-        "class": "TextToSpeech",
-        "name": "\"Knock knock\"",
-        "asset-pack": "core",
-        "parent": 15,
-        "args": [
-            "Knock knock",
-            [
-                "(word) => {",
-                "}"
-            ]
-        ]
-    },
-    "4": {
-        "id": 4,
-        "class": "Subtree",
-        "name": "Listen for \"Who's there?\"",
-        "asset-pack": "core",
-        "parent": 15,
-        "args": [
-            "Utility/ListenForString.bt",
-            [
-                "() => {",
-                "  console.log('tell-one-joke: listen-for-string.bt');",
-                "  return { expectedResponse: 'whos there'};",
-                "",
-                "}"
-            ],
-            [
-                "(treeResult) => {",
-                "}"
-            ]
-        ]
     },
     "5": {
         "id": 5,
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Pick a joke",
         "asset-pack": "core",
-        "parent": 15,
+        "parent": 1,
         "args": [
             [
                 "() => {",
+                "  if (notepad.jokes == undefined) {",
                 "    notepad.jokes = [",
                 "  \t\t\t['canoe','Canoe help me with my homework?'],",
                 "  \t\t\t['orange','Orange you going to let me in?'],",
                 "  \t\t\t['needle','Needle little money for the movies.']",
-                "  \t];    ",
-                "      var joke=Math.round(Math.random()*((notepad.jokes.length)-1));",
-                "//      console.log(notepad.jokes.length);",
-                "      notepad.setup=notepad.jokes[joke][0];",
-                "      notepad.punchline=notepad.jokes[joke][1];",
-                "      return 0;",
-                "}"
-            ]
-        ]
-    },
-    "7": {
-        "id": 7,
-        "class": "TextToSpeechJs",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 15,
-        "args": [
-            [
-                "(callback) => {",
-                "    callback(notepad.setup);",
-                "}"
-            ],
-            [
-                "(word) => {",
+                "  \t];  ",
+                "  }  ",
+                "  var joke=Math.round(Math.random()*((notepad.jokes.length)-1));",
+                "",
+                "  notepad.setup=notepad.jokes[joke][0];",
+                "  notepad.punchline=notepad.jokes[joke][1];",
+                "",
                 "}"
             ]
         ]
@@ -92,7 +40,7 @@
     "11": {
         "id": 11,
         "class": "TextToSpeechJs",
-        "name": "",
+        "name": "\"punchline\"",
         "asset-pack": "core",
         "parent": 15,
         "args": [
@@ -121,39 +69,16 @@
             ]
         ]
     },
-    "13": {
-        "id": 13,
-        "class": "Subtree",
-        "name": "Listen for \"<setup> who\"",
-        "asset-pack": "core",
-        "parent": 15,
-        "args": [
-            "Utility/ListenForString.bt",
-            [
-                "() => {",
-                "    console.log('tell-one-joke: listen-for-string.bt');",
-                "    return { expectedResponse: notepad.setup+' who'};",
-                "}"
-            ],
-            [
-                "(treeResult) => {",
-                "}"
-            ]
-        ]
-    },
     "15": {
         "id": 15,
         "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": 56,
         "args": [],
         "children": [
-            5,
-            3,
-            4,
-            7,
-            13,
+            57,
+            62,
             11,
             12,
             53
@@ -187,7 +112,7 @@
         "class": "Sequence",
         "name": "Incidental behavior",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": 56,
         "args": [],
         "children": [
             17,
@@ -293,6 +218,192 @@
             [
                 "() => {",
                 "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "56": {
+        "id": 56,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            false
+        ],
+        "children": [
+            20,
+            15
+        ]
+    },
+    "57": {
+        "id": 57,
+        "class": "Mim",
+        "name": "\"knock knock\" \"who's there?\"",
+        "asset-pack": "project",
+        "parent": 15,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForWhosThere',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* whos there {slotAction='continue'} $*;\",",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`TellOneJoke.bt: KnockKnockWaitForWhosThere: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    emitter.emit('KKbreak');",
+                "    console.log('TellOneJoke.bt: KKbreak');",
+                "  }",
+                "}"
+            ]
+        ],
+        "decorators": [
+            58,
+            69
+        ]
+    },
+    "58": {
+        "id": 58,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "  return true;",
+                "}"
+            ]
+        ]
+    },
+    "62": {
+        "id": 62,
+        "class": "Mim",
+        "name": "\"<setup>\" \"<setup> who?\"",
+        "asset-pack": "project",
+        "parent": 15,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockSetupWho',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = \"+notepad.setup+\" who {slotAction='continue'} $*;\",",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true,",
+                "\t\tpromptData: {",
+                "\t\t\tsetup: notepad.setup",
+                "\t\t}",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`TellOneJoke.bt: KnockKnockSetupWho: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    emitter.emit('KKbreak');",
+                "    console.log('TellOneJoke.bt: KKbreak');",
+                "  }",
+                "}"
+            ]
+        ],
+        "decorators": [
+            65,
+            68
+        ]
+    },
+    "64": {
+        "id": 64,
+        "class": "ExecuteScript",
+        "name": "Set up paths",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {    ",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  }",
+                "}"
+            ]
+        ]
+    },
+    "65": {
+        "id": 65,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "68": {
+        "id": 68,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKbreak",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "69": {
+        "id": 69,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKbreak",
+            [
+                "() => {",
                 "}"
             ]
         ]

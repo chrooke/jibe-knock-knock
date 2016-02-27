@@ -1,0 +1,50 @@
+{
+  "mim_id": "KnockKnockWaitForKnockKnock",
+  "skill_id": "knockknock",
+  "mim_type": "question",
+  "rule_name": "",
+  "rule_slots": "slotAction",
+  "screen_slots_available": "true",
+  "sample_utterances": "knock knock",
+  "timeout": "4",
+  "force_confirmation": "false",
+  "barge_in": "true",
+  "photo_quality_light": "false",
+  "notes": "",
+  "modified": "2/25/2016 7:48:29 PM",
+  "prompts": [
+    {
+      "mim_id": "KnockKnockWaitForKnockKnock",
+      "prompt_category": "Entry-Core",
+      "prompt_sub_category": "Q",
+      "index": "1",
+      "condition": "",
+      "prompt": "",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWaitForKnockKnock_Q_1"
+    },
+    {
+      "mim_id": "KnockKnockWaitForKnockKnock",
+      "prompt_category": "Errors",
+      "prompt_sub_category": "NI",
+      "index": "1",
+      "condition": "",
+      "prompt": "To start the joke, please say knock knock.",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWaitForKnockKnock_NI_1"
+    },
+    {
+      "mim_id": "KnockKnockWaitForKnockKnock",
+      "prompt_category": "Errors",
+      "prompt_sub_category": "NM",
+      "index": "1",
+      "condition": "",
+      "prompt": "I didn't understand that. I only know knock knock jokes.",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWaitForKnockKnock_NM_1"
+    }
+  ]
+}

@@ -6,108 +6,14 @@
         "args": [],
         "children": [
             57,
-            71,
-            53
+            71
         ],
-        "decorators": []
-    },
-    "3": {
-        "id": 3,
-        "class": "TextToSpeech",
-        "name": "\"Who's There\"",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            "Who's there?",
-            [
-                "(word) => {",
-                "}"
-            ]
-        ]
-    },
-    "4": {
-        "id": 4,
-        "class": "Listen",
-        "name": "Listen for phrase",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            [
-                "() => {",
-                "    let options = {",
-                "        heyJibo: false,",
-                "        detectEnd: true,",
-                "        incremental: false,",
-                "        authenticateSpeaker: ''",
-                "    }",
-                "    return options;",
-                "}"
-            ],
-            "anything.rule",
-            [
-                "(listener) => {",
-                "    listener.on('cloud', (asrResult, speakerIds) => {",
-                "      notepad.result=asrResult;",
-                "    });",
-                "}"
-            ]
-        ],
-        "skipped": true,
-        "decorators": []
-    },
-    "5": {
-        "id": 5,
-        "class": "TextToSpeechJs",
-        "name": "\"<phrase> who?\"",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            [
-                "(callback) => {",
-                "  callback(notepad.result.NLParse.phrase.concat(' who?'));",
-                "}"
-            ],
-            [
-                "(word) => {",
-                "}"
-            ]
-        ],
-        "skipped": true
-    },
-    "6": {
-        "id": 6,
-        "class": "Listen",
-        "name": "Listen for anything",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            [
-                "() => {",
-                "    let options = {",
-                "        heyJibo: false,",
-                "        detectEnd: true,",
-                "        incremental: false,",
-                "        authenticateSpeaker: ''",
-                "    }",
-                "    return options;",
-                "}"
-            ],
-            "anything.rule",
-            [
-                "(listener) => {",
-                "    listener.on('cloud', (asrResult, speakerIds) => {",
-                "",
-                "    });",
-                "}"
-            ]
-        ],
-        "skipped": true,
         "decorators": []
     },
     "7": {
         "id": 7,
         "class": "PlayAnimation",
-        "name": "Laugh no matter what",
+        "name": "Laugh",
         "asset-pack": "core",
         "parent": 64,
         "args": [
@@ -117,27 +23,6 @@
                 "}"
             ]
         ]
-    },
-    "16": {
-        "id": 16,
-        "class": "Subtree",
-        "name": "Listen for \"Knock Knock\"",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            "Utility/ListenForString.bt",
-            [
-                "() => {",
-                "    console.log('hear-a-joke: listen-for-string.bt');",
-                "    return { expectedResponse: 'knock knock'};",
-                "}"
-            ],
-            [
-                "(treeResult) => {",
-                "}"
-            ]
-        ],
-        "skipped": true
     },
     "17": {
         "id": 17,
@@ -215,14 +100,8 @@
         "parent": 32,
         "args": [],
         "children": [
-            16,
-            75,
             56,
-            3,
-            4,
             60,
-            5,
-            6,
             62,
             63
         ],
@@ -263,22 +142,6 @@
             "KKmovestart",
             [
                 "() => {",
-                "}"
-            ]
-        ]
-    },
-    "53": {
-        "id": 53,
-        "class": "ExecuteScript",
-        "name": "End tree",
-        "asset-pack": "core",
-        "parent": 1,
-        "args": [
-            [
-                "() => {",
-                "  emitter.emit('KKmovestop');",
-                "  emitter.emit('KKtreedone');",
-                "  console.log('hear-a-joke: Ending tree.');",
                 "}"
             ]
         ]
@@ -325,7 +188,8 @@
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
                 "\t\trulesPath: notepad.rulesPath,",
-                "\t\tmimsPath: notepad.mimsPath",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* knock knock {slotAction='continue'} $*;\",",
                 "\t}",
                 "}"
             ],
@@ -344,34 +208,33 @@
                 "  ",
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
-                "    notepad.readyToContinue = true;",
+                "    emitter.emit('KKbreak');",
+                "    console.log('TellOneJoke.bt: KKbreak');",
                 "  }",
                 "}"
             ]
         ],
         "decorators": [
-            59
+            59,
+            78
         ]
     },
     "57": {
         "id": 57,
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Set up paths",
         "asset-pack": "core",
         "parent": 1,
         "args": [
             [
-                "() => {  ",
-                "  ",
-                "  notepad.readyToContinue = false;",
-                "    ",
+                "() => {    ",
                 "  let path = require ('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/');",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
                 "  }",
                 "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/');",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
                 "  }",
                 "}"
             ]
@@ -397,14 +260,14 @@
     "60": {
         "id": 60,
         "class": "Mim",
-        "name": "Listen for phrase",
+        "name": "\"who's there?\" \"<setup>\"",
         "asset-pack": "project",
         "parent": 33,
         "args": [
             [
                 "() =>  {",
                 "\treturn {",
-                "\t\tmimId: 'KnockKnockWaitForAnything',",
+                "\t\tmimId: 'KnockKnockWaitForSetup',",
                 "\t\trulesPath: notepad.rulesPath,",
                 "\t\tmimsPath: notepad.mimsPath",
                 "\t}",
@@ -425,7 +288,7 @@
                 "  ",
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
-                "    notepad.phrase=results.asrResults.nlParse.phrase;",
+                "    notepad.setup=results.asrResults.nlParse.setup;",
                 "  }",
                 "}"
             ]
@@ -434,21 +297,21 @@
     "62": {
         "id": 62,
         "class": "Mim",
-        "name": "\"<phrase> who?\"",
+        "name": "\"<setup> who?\" \"punchline\"",
         "asset-pack": "project",
         "parent": 33,
         "args": [
             [
                 "() =>  {",
                 "\treturn {",
-                "\t\tmimId: 'KnockKnockWhosThere',",
+                "\t\tmimId: 'KnockKnockWaitForPunchline',",
                 "\t\trulesPath: notepad.rulesPath,",
                 "\t\tmimsPath: notepad.mimsPath,",
-                "\t\trule: \"TopRule = $* \"+notepad.phrase+\" {slotAction='continue'} $*;\",",
+                "\t\trule: \"TopRule = $* \"+notepad.setup+\" {slotAction='continue'} $*;\",",
                 "\t\tincremental: false,",
                 "\t\tdetectEnd: true,",
                 "\t\tpromptData: {",
-                "\t\t\tphrase: notepad.phrase",
+                "\t\t\tsetup: notepad.setup",
                 "\t\t}",
                 "\t}",
                 "}"
@@ -545,13 +408,19 @@
     "70": {
         "id": 70,
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Tree done",
         "asset-pack": "core",
         "parent": 64,
         "args": [
             [
                 "() => {",
                 "  emitter.emit('KKgoodjoke');",
+                "  emitter.emit('KKmovestart');",
+                "  emitter.emit('KKtreedone');",
+                "  console.log(\"HearAJoke.bt: KKgoodjoke, KKmovestart, KKtreedone\");",
+                "  console.log('hear-a-joke: Ending tree.');",
+                "",
+                "",
                 "}"
             ]
         ]
@@ -567,20 +436,6 @@
             32
         ],
         "decorators": []
-    },
-    "75": {
-        "id": 75,
-        "class": "ExecuteScript",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 33,
-        "args": [
-            [
-                "() => {",
-                "    notepad.readyToContinue = false;",
-                "}"
-            ]
-        ]
     },
     "76": {
         "id": 76,
@@ -608,6 +463,19 @@
             [
                 "() => {",
                 "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "78": {
+        "id": 78,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKbreak",
+            [
+                "() => {",
                 "}"
             ]
         ]

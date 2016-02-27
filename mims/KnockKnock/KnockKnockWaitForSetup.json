@@ -1,0 +1,39 @@
+{
+  "mim_id": "KnockKnockWaitForSetup",
+  "skill_id": "knockknock",
+  "mim_type": "question",
+  "rule_name": "KnockKnockWaitForSetup",
+  "rule_slots": "phrase",
+  "screen_slots_available": "true",
+  "sample_utterances": "canoe",
+  "timeout": "4",
+  "force_confirmation": "false",
+  "barge_in": "true",
+  "photo_quality_light": "false",
+  "notes": "",
+  "modified": "2/25/2016 7:48:29 PM",
+  "prompts": [
+    {
+      "mim_id": "KnockKnockWaitForSetup",
+      "prompt_category": "Entry-Core",
+      "prompt_sub_category": "Q",
+      "index": "1",
+      "condition": "",
+      "prompt": "Who's there?",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWaitForSetup_Q_1"
+    },
+    {
+      "mim_id": "KnockKnockWaitForSetup",
+      "prompt_category": "Errors",
+      "prompt_sub_category": "NI",
+      "index": "1",
+      "condition": "",
+      "prompt": "It's time for you to set up the joke. Who's there?",
+      "media": "TTS",
+      "extra": "",
+      "prompt_id": "KnockKnockWaitForSetup_NI_1"
+    }
+  ]
+}

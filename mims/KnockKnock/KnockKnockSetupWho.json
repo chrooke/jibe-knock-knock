@@ -1,12 +1,13 @@
 {
-  "mim_id": "KnockKnockWaitForAnything",
+  "mim_id": "KnockKnockSetupWho",
   "skill_id": "knockknock",
   "mim_type": "question",
-  "rule_name": "KnockKnockWaitForAnything",
-  "rule_slots": "phrase",
+  "rule_name": "",
+  "rule_slots": "slotAction",
   "screen_slots_available": "true",
-  "sample_utterances": "banana",
+  "sample_utterances": "canoe who?",
   "timeout": "4",
+  "max_tries": "1",
   "force_confirmation": "false",
   "barge_in": "true",
   "photo_quality_light": "false",
@@ -14,26 +15,26 @@
   "modified": "2/25/2016 7:48:29 PM",
   "prompts": [
     {
-      "mim_id": "KnockKnockWaitForAnything",
+      "mim_id": "KnockKnockSetupWho",
       "prompt_category": "Entry-Core",
       "prompt_sub_category": "Q",
       "index": "1",
       "condition": "",
-      "prompt": "",
+      "prompt": "${setup}",
       "media": "TTS",
       "extra": "",
-      "prompt_id": "KnockKnockWaitForAnything_Q_1"
+      "prompt_id": "KnockKnockSetupWho_Q_1"
     },
     {
-      "mim_id": "KnockKnockWaitForAnything",
+      "mim_id": "KnockKnockSetupWho",
       "prompt_category": "Errors",
       "prompt_sub_category": "NI",
       "index": "1",
       "condition": "",
-      "prompt": "It's time for you to set up the joke.",
+      "prompt": "Psst...your line is ${setup} who?",
       "media": "TTS",
       "extra": "",
-      "prompt_id": "KnockKnockWaitForAnything_NI_1"
+      "prompt_id": "KnockKnockSetupWho_NI_1"
     }
   ]
 }

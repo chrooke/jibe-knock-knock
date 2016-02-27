@@ -4,34 +4,14 @@
         "class": "Sequence",
         "name": "",
         "args": [],
-        "decorators": [
-            21,
-            14
-        ],
+        "decorators": [],
         "children": [
+            41,
+            45,
             23,
-            24
-        ]
-    },
-    "14": {
-        "id": 14,
-        "class": "SucceedOnEmbedded",
-        "name": "",
-        "asset-pack": "core",
-        "args": [
-            "hey_jibo",
-            [
-                "(listener) => {",
-                "\tnotepad.jokes = [",
-                "\t\t\t['canoe','Canoe help me with my homework?'],",
-                "\t\t\t['orange','Orange you going to let me in?'],",
-                "\t\t\t['needle','Needle little money for the movies.']",
-                "\t];  ",
-                "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
-                "",
-                "\t});",
-                "}"
-            ]
+            49,
+            42,
+            48
         ]
     },
     "16": {
@@ -77,24 +57,6 @@
         "skipped": false,
         "decorators": []
     },
-    "21": {
-        "id": 21,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "args": [
-            [
-                "() => {",
-                "  return true;",
-                "}"
-            ],
-            [
-                "() => {",
-                "    return true;",
-                "}"
-            ]
-        ]
-    },
     "22": {
         "id": 22,
         "class": "TextToSpeech",
@@ -128,7 +90,7 @@
         "class": "Parallel",
         "name": "",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": 42,
         "args": [
             false
         ],
@@ -145,8 +107,6 @@
         "parent": 24,
         "args": [],
         "children": [
-            40,
-            31,
             16,
             30,
             22,
@@ -247,7 +207,7 @@
         "class": "Subtree",
         "name": "Explain ",
         "asset-pack": "core",
-        "parent": 25,
+        "parent": 55,
         "args": [
             "ExplainJokes.bt",
             [
@@ -310,12 +270,242 @@
         "class": "ExecuteScript",
         "name": "Stop movement for subtree",
         "asset-pack": "core",
-        "parent": 25,
+        "parent": 55,
         "args": [
             [
                 "() => {",
                 "  emitter.emit('KKmovestop');",
                 "    console.log('knock-knock: Stop moving.');",
+                "}"
+            ]
+        ]
+    },
+    "41": {
+        "id": 41,
+        "class": "ExecuteScript",
+        "name": "Set up paths",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  }",
+                "}"
+            ]
+        ]
+    },
+    "42": {
+        "id": 42,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            24
+        ],
+        "decorators": [
+            43,
+            47
+        ]
+    },
+    "43": {
+        "id": 43,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "45": {
+        "id": 45,
+        "class": "ExecuteScript",
+        "name": "Set up jokes",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            [
+                "() => {",
+                "  notepad.jokes = [",
+                "      ['canoe','Canoe help me with my homework?'],",
+                "      ['orange','Orange you going to let me in?'],",
+                "      ['needle','Needle little money for the movies.']",
+                "  ]; ",
+                "}"
+            ]
+        ]
+    },
+    "47": {
+        "id": 47,
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "hey_jibo",
+            [
+                "(listener) => {",
+                "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
+                "",
+                "\t});",
+                "}"
+            ]
+        ]
+    },
+    "48": {
+        "id": 48,
+        "class": "TextToSpeech",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [
+            "Thanks for playing knock knock jokes with me. It really makes my day!",
+            [
+                "(word) => {",
+                "}"
+            ]
+        ]
+    },
+    "49": {
+        "id": 49,
+        "class": "Sequence",
+        "name": "Prompt for explanation",
+        "asset-pack": "core",
+        "parent": 1,
+        "args": [],
+        "children": [
+            50,
+            51
+        ]
+    },
+    "50": {
+        "id": 50,
+        "class": "Mim",
+        "name": "\"Do you know how knock knock jokes work?\"",
+        "asset-pack": "project",
+        "parent": 49,
+        "args": [
+            [
+                "() =>  {",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockNeedExplanation',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* $factory:yes_no{response=yes_no._nl} $*;\",",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true,",
+                "\t}",
+                "}"
+            ],
+            [
+                "(status) =>  {",
+                "}"
+            ],
+            [
+                "(results) =>  {",
+                "  console.log(`KnockKnock.bt: KnockKnockNeedExplanation: onResults: `);",
+                "  console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.explain=(results.asrResults.nlParse.response==='yes');",
+                "    console.log(\"notepad.explain: \"+notepad.explain);",
+                "    emitter.emit('KKbreak');",
+                "  } ",
+                "  ",
+                "}"
+            ]
+        ],
+        "decorators": [
+            54,
+            53
+        ]
+    },
+    "51": {
+        "id": 51,
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 49,
+        "args": [],
+        "children": [
+            55
+        ],
+        "decorators": []
+    },
+    "53": {
+        "id": 53,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            "KKbreak",
+            [
+                "() => {",
+                "}"
+            ]
+        ]
+    },
+    "54": {
+        "id": 54,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "}"
+            ],
+            [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        ]
+    },
+    "55": {
+        "id": 55,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 51,
+        "args": [],
+        "children": [
+            40,
+            31
+        ],
+        "decorators": [
+            56
+        ]
+    },
+    "56": {
+        "id": 56,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "args": [
+            [
+                "() => {",
+                "  return notepad.explain;",
                 "}"
             ]
         ]
