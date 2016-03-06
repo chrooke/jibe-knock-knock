@@ -3,12 +3,12 @@
         "id": 1,
         "class": "Sequence",
         "name": "",
-        "args": [],
         "decorators": [],
         "children": [
             20,
-            22
-        ]
+            "d248480f-6c6a-4005-a33d-36cc0d3a4873"
+        ],
+        "options": {}
     },
     "20": {
         "id": 20,
@@ -16,36 +16,29 @@
         "name": "",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  notepad.delay=5000;",
                 "}"
             ]
-        ]
+        }
     },
-    "22": {
-        "id": 22,
-        "class": "Subtree",
+    "meta": {
+        "version": 1
+    },
+    "d248480f-6c6a-4005-a33d-36cc0d3a4873": {
+        "id": "d248480f-6c6a-4005-a33d-36cc0d3a4873",
+        "class": "PlayAnimation",
         "name": "",
-        "asset-pack": "core",
-        "parent": 1,
-        "args": [
-            "Utility/PromptForSubtree.bt",
-            [
-                "() => {",
-                "  console.log('tester: PromptForSubtree');",
-                "    return {",
-                "      question: 'Say joke to hear a joke',",
-                "      trigger: 'joke',",
-                "      subtree: 'tell-one-joke.bt'",
-                "    };",
-                "}"
-            ],
-            [
-                "(treeResult) => {",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
                 "}"
             ]
-        ]
+        },
+        "asset-pack": "core",
+        "parent": 1
     }
 }

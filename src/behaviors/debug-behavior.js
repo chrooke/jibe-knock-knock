@@ -2,8 +2,8 @@ import jibo from 'jibo';
 let {Status, createBehavior, factory} = jibo.bt;
 
 module.exports = createBehavior({
-    constructor(text) {
-        this.text = text;
+    constructor(options) {
+        this.text = options.text;
         this.status = Status.INVALID;
     },
     start() {

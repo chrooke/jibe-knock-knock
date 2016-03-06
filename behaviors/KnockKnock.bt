@@ -3,7 +3,6 @@
         "id": 1,
         "class": "Sequence",
         "name": "",
-        "args": [],
         "decorators": [],
         "children": [
             41,
@@ -12,7 +11,8 @@
             49,
             42,
             48
-        ]
+        ],
+        "options": {}
     },
     "16": {
         "id": 16,
@@ -20,20 +20,20 @@
         "name": "Tell a joke",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            "TellOneJoke.bt",
-            [
+        "decorators": [],
+        "options": {
+            "behaviorPath": "TellOneJoke.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('knock-knock: tell-one-joke.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "decorators": []
+        }
     },
     "20": {
         "id": 20,
@@ -41,21 +41,21 @@
         "name": "Hear a joke",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            "HearAJoke.bt",
-            [
+        "skipped": false,
+        "decorators": [],
+        "options": {
+            "behaviorPath": "HearAJoke.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('knock-knock: hear-a-joke.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "skipped": false,
-        "decorators": []
+        }
     },
     "22": {
         "id": 22,
@@ -63,13 +63,13 @@
         "name": "",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            "Now will you please tell me a knock knock joke?",
-            [
+        "options": {
+            "words": "Now will you please tell me a knock knock joke?",
+            "onWord": [
                 "(word) => {",
                 "}"
             ]
-        ]
+        }
     },
     "23": {
         "id": 23,
@@ -77,13 +77,13 @@
         "name": "Wait 5 seconds",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "getTime": [
                 "() => {",
                 "    return 5000;",
                 "}"
             ]
-        ]
+        }
     },
     "24": {
         "id": 24,
@@ -91,13 +91,13 @@
         "name": "",
         "asset-pack": "core",
         "parent": 42,
-        "args": [
-            false
-        ],
         "children": [
             27,
             25
-        ]
+        ],
+        "options": {
+            "succeedOnOne": false
+        }
     },
     "25": {
         "id": 25,
@@ -105,7 +105,6 @@
         "name": "",
         "asset-pack": "core",
         "parent": 24,
-        "args": [],
         "children": [
             16,
             30,
@@ -113,7 +112,8 @@
             34,
             20,
             35
-        ]
+        ],
+        "options": {}
     },
     "26": {
         "id": 26,
@@ -121,22 +121,22 @@
         "name": "",
         "asset-pack": "core",
         "parent": 27,
-        "args": [
-            "attitudes/idle.bt",
-            [
+        "decorators": [
+            29
+        ],
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
                 "() => {",
                 "  console.log('knock-knock: idle.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "decorators": [
-            29
-        ]
+        }
     },
     "27": {
         "id": 27,
@@ -144,12 +144,12 @@
         "name": "",
         "asset-pack": "core",
         "parent": 24,
-        "args": [],
         "children": [
             26,
             28
         ],
-        "skipped": false
+        "skipped": false,
+        "options": {}
     },
     "28": {
         "id": 28,
@@ -157,35 +157,35 @@
         "name": "",
         "asset-pack": "core",
         "parent": 27,
-        "args": [
-            "attitudes/center.bt",
-            [
+        "decorators": [
+            32
+        ],
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('knock-knock: center.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "decorators": [
-            32
-        ]
+        }
     },
     "29": {
         "id": 29,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKmovestop",
-            [
+        "options": {
+            "eventName": "KKmovestop",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
     },
     "30": {
         "id": 30,
@@ -193,14 +193,14 @@
         "name": "Start movement again",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  emitter.emit('KKmovestart');",
                 "  console.log('knock-knock: Start moving.');",
                 "}"
             ]
-        ]
+        }
     },
     "31": {
         "id": 31,
@@ -208,32 +208,32 @@
         "name": "Explain ",
         "asset-pack": "core",
         "parent": 55,
-        "args": [
-            "ExplainJokes.bt",
-            [
+        "options": {
+            "behaviorPath": "ExplainJokes.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('knock-knock: explain.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ]
+        }
     },
     "32": {
         "id": 32,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKmovestart",
-            [
+        "options": {
+            "eventName": "KKmovestart",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
     },
     "34": {
         "id": 34,
@@ -241,14 +241,14 @@
         "name": "Stop movement for subtree",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  emitter.emit('KKmovestop');",
                 "  console.log('knock-knock: Stop moving.');",
                 "}"
             ]
-        ]
+        }
     },
     "35": {
         "id": 35,
@@ -256,14 +256,14 @@
         "name": "Start movement again",
         "asset-pack": "core",
         "parent": 25,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  emitter.emit('KKmovestart');",
                 "  console.log('knock-knock: Start moving.bt');",
                 "}"
             ]
-        ]
+        }
     },
     "40": {
         "id": 40,
@@ -271,14 +271,14 @@
         "name": "Stop movement for subtree",
         "asset-pack": "core",
         "parent": 55,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  emitter.emit('KKmovestop');",
                 "    console.log('knock-knock: Stop moving.');",
                 "}"
             ]
-        ]
+        }
     },
     "41": {
         "id": 41,
@@ -286,8 +286,8 @@
         "name": "Set up paths",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  let path = require ('path');",
                 "",
@@ -297,9 +297,13 @@
                 "  if (!notepad.mimsPath) {",
                 "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
                 "  }",
+                "  ",
+                "  console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
+                "  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
+                "}",
                 "}"
             ]
-        ]
+        }
     },
     "42": {
         "id": 42,
@@ -307,31 +311,31 @@
         "name": "",
         "asset-pack": "core",
         "parent": 1,
-        "args": [],
         "children": [
             24
         ],
         "decorators": [
             43,
             47
-        ]
+        ],
+        "options": {}
     },
     "43": {
         "id": 43,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "    return true;",
                 "}"
             ]
-        ]
+        }
     },
     "45": {
         "id": 45,
@@ -339,8 +343,8 @@
         "name": "Set up jokes",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  notepad.jokes = [",
                 "      ['canoe','Canoe help me with my homework?'],",
@@ -349,23 +353,23 @@
                 "  ]; ",
                 "}"
             ]
-        ]
+        }
     },
     "47": {
         "id": 47,
         "class": "SucceedOnEmbedded",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "hey_jibo",
-            [
+        "options": {
+            "rule": "hey_jibo",
+            "onResult": [
                 "(listener) => {",
                 "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
                 "",
                 "\t});",
                 "}"
             ]
-        ]
+        }
     },
     "48": {
         "id": 48,
@@ -373,13 +377,13 @@
         "name": "",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            "Thanks for playing knock knock jokes with me. It really makes my day!",
-            [
+        "options": {
+            "words": "Thanks for playing knock knock jokes with me. It really makes my day!",
+            "onWord": [
                 "(word) => {",
                 "}"
             ]
-        ]
+        }
     },
     "49": {
         "id": 49,
@@ -387,11 +391,11 @@
         "name": "Prompt for explanation",
         "asset-pack": "core",
         "parent": 1,
-        "args": [],
         "children": [
             50,
             51
-        ]
+        ],
+        "options": {}
     },
     "50": {
         "id": 50,
@@ -399,8 +403,12 @@
         "name": "\"Do you know how knock knock jokes work?\"",
         "asset-pack": "project",
         "parent": 49,
-        "args": [
-            [
+        "decorators": [
+            54,
+            53
+        ],
+        "options": {
+            "getConfig": [
                 "() =>  {",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockNeedExplanation',",
@@ -412,11 +420,11 @@
                 "\t}",
                 "}"
             ],
-            [
+            "onStatus": [
                 "(status) =>  {",
                 "}"
             ],
-            [
+            "onResults": [
                 "(results) =>  {",
                 "  console.log(`KnockKnock.bt: KnockKnockNeedExplanation: onResults: `);",
                 "  console.log(results);",
@@ -434,11 +442,7 @@
                 "  ",
                 "}"
             ]
-        ],
-        "decorators": [
-            54,
-            53
-        ]
+        }
     },
     "51": {
         "id": 51,
@@ -446,41 +450,41 @@
         "name": "",
         "asset-pack": "core",
         "parent": 49,
-        "args": [],
         "children": [
             55
         ],
-        "decorators": []
+        "decorators": [],
+        "options": {}
     },
     "53": {
         "id": 53,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKbreak",
-            [
+        "options": {
+            "eventName": "KKbreak",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
     },
     "54": {
         "id": 54,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "    return true;",
                 "}"
             ]
-        ]
+        }
     },
     "55": {
         "id": 55,
@@ -488,26 +492,29 @@
         "name": "",
         "asset-pack": "core",
         "parent": 51,
-        "args": [],
         "children": [
             40,
             31
         ],
         "decorators": [
             56
-        ]
+        ],
+        "options": {}
     },
     "56": {
         "id": 56,
         "class": "Case",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "conditional": [
                 "() => {",
                 "  return notepad.explain;",
                 "}"
             ]
-        ]
+        }
+    },
+    "meta": {
+        "version": 1
     }
 }
