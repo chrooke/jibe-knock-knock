@@ -105,8 +105,8 @@
             63
         ],
         "decorators": [
-            76,
-            77
+            77,
+            76
         ],
         "options": {}
     },
@@ -269,7 +269,9 @@
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForSetup',",
                 "\t\trulesPath: notepad.rulesPath,",
-                "\t\tmimsPath: notepad.mimsPath",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true",
                 "\t}",
                 "}"
             ],
@@ -419,8 +421,6 @@
                 "  emitter.emit('KKtreedone');",
                 "  console.log(\"HearAJoke.bt: KKgoodjoke, KKmovestart, KKtreedone\");",
                 "  console.log('hear-a-joke: Ending tree.');",
-                "",
-                "",
                 "}"
             ]
         }
