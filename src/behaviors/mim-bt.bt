@@ -65,7 +65,7 @@
                 "  ",
                 "  //MIM MANAGER",
                 "  let MimManager = require('../mim/mim-manager');",
-                "//    console.log(`MimBt: MimManager: ${MimManager}`);",
+                "//  console.log(`MimBt: MimManager: ${MimManager}`);",
                 "  if (MimManager) {",
                 "//    console.log(`MimBt: blackboard.MimManager.guiManager: ${MimManager.guiManager}`);",
                 "  }",
@@ -152,7 +152,7 @@
             ],
             "onResult": [
                 "(listener) => {",
-                "\tlistener.on('cloud', function(asrResultsData, speakerIdsData) {",
+                "\tlistener.on('cloud', function(asrResultsData, speakerIdsData){",
                 "\t\tconsole.log(`MimBt: ListenJS Listen: Results:`, asrResultsData, speakerIdsData);",
                 "\t\t",
                 "\t\tnotepad.asrResults = new notepad.AsrResults(asrResultsData);",
