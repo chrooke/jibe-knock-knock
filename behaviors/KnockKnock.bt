@@ -289,7 +289,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  let path = require ('path');",
+                "  let path = require('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
                 "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
@@ -301,7 +301,7 @@
                 "  console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
                 "  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
                 "}",
-                "}"
+                ""
             ]
         }
     },
@@ -400,12 +400,12 @@
     "50": {
         "id": 50,
         "class": "Mim",
-        "name": "\"Do you know how knock knock jokes work?\"",
+        "name": "\"Shall I explain knock knock jokes work?\"",
         "asset-pack": "project",
         "parent": 49,
         "decorators": [
-            54,
-            53
+            53,
+            54
         ],
         "options": {
             "getConfig": [

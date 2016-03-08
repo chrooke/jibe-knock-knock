@@ -4,13 +4,13 @@
         "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "args": [],
         "children": [
             64,
             5,
             56
         ],
-        "decorators": []
+        "decorators": [],
+        "options": {}
     },
     "5": {
         "id": 5,
@@ -18,8 +18,8 @@
         "name": "Pick a joke",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  if (notepad.jokes == undefined) {",
                 "    notepad.jokes = [",
@@ -35,7 +35,7 @@
                 "",
                 "}"
             ]
-        ]
+        }
     },
     "11": {
         "id": 11,
@@ -43,17 +43,17 @@
         "name": "\"punchline\"",
         "asset-pack": "core",
         "parent": 15,
-        "args": [
-            [
+        "options": {
+            "getWords": [
                 "(callback) => {",
                 "    callback(notepad.punchline);",
                 "}"
             ],
-            [
+            "onWord": [
                 "(word) => {",
                 "}"
             ]
-        ]
+        }
     },
     "12": {
         "id": 12,
@@ -61,13 +61,13 @@
         "name": "",
         "asset-pack": "core",
         "parent": 15,
-        "args": [
-            "laugh.keys",
-            [
+        "options": {
+            "animPath": "laugh.keys",
+            "config": [
                 "(animation) => {",
                 "}"
             ]
-        ]
+        }
     },
     "15": {
         "id": 15,
@@ -75,14 +75,14 @@
         "name": "",
         "asset-pack": "core",
         "parent": 56,
-        "args": [],
         "children": [
             57,
             62,
             11,
             12,
             53
-        ]
+        ],
+        "options": {}
     },
     "17": {
         "id": 17,
@@ -90,22 +90,22 @@
         "name": "Attentive",
         "asset-pack": "core",
         "parent": 20,
-        "args": [
-            "attitudes/attentive.bt",
-            [
+        "decorators": [
+            22
+        ],
+        "options": {
+            "behaviorPath": "attitudes/attentive.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('tell-one-joke: attentive.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "decorators": [
-            22
-        ]
+        }
     },
     "20": {
         "id": 20,
@@ -113,30 +113,30 @@
         "name": "Incidental behavior",
         "asset-pack": "core",
         "parent": 56,
-        "args": [],
         "children": [
             17,
             42
         ],
         "skipped": false,
         "decorators": [
-            55,
-            54
-        ]
+            54,
+            55
+        ],
+        "options": {}
     },
     "22": {
         "id": 22,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKmovestop",
-            [
+        "parent": 0,
+        "options": {
+            "eventName": "KKmovestop",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ],
-        "parent": 0
+        }
     },
     "42": {
         "id": 42,
@@ -144,36 +144,36 @@
         "name": "Center",
         "asset-pack": "core",
         "parent": 20,
-        "args": [
-            "attitudes/center.bt",
-            [
+        "decorators": [
+            43
+        ],
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
                 "() => {",
                 "    console.log('tell-one-joke: center.bt');",
                 "    return {};",
                 "}"
             ],
-            [
+            "onResult": [
                 "(treeResult) => {",
                 "}"
             ]
-        ],
-        "decorators": [
-            43
-        ]
+        }
     },
     "43": {
         "id": 43,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKmovestart",
-            [
+        "parent": null,
+        "options": {
+            "eventName": "KKmovestart",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ],
-        "parent": null
+        }
     },
     "53": {
         "id": 53,
@@ -181,8 +181,8 @@
         "name": "End tree",
         "asset-pack": "core",
         "parent": 15,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  emitter.emit('KKmovestop');",
                 "  emitter.emit('KKtreedone');",
@@ -190,37 +190,37 @@
                 "",
                 "}"
             ]
-        ]
+        }
     },
     "54": {
         "id": 54,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKtreedone",
-            [
+        "options": {
+            "eventName": "KKtreedone",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
     },
     "55": {
         "id": 55,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "    return true;",
                 "}"
             ]
-        ]
+        }
     },
     "56": {
         "id": 56,
@@ -228,13 +228,13 @@
         "name": "",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            false
-        ],
         "children": [
             20,
             15
-        ]
+        ],
+        "options": {
+            "succeedOnOne": false
+        }
     },
     "57": {
         "id": 57,
@@ -242,8 +242,12 @@
         "name": "\"knock knock\" \"who's there?\"",
         "asset-pack": "project",
         "parent": 15,
-        "args": [
-            [
+        "decorators": [
+            69,
+            58
+        ],
+        "options": {
+            "getConfig": [
                 "() =>  {",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForWhosThere',",
@@ -253,11 +257,11 @@
                 "\t}",
                 "}"
             ],
-            [
+            "onStatus": [
                 "(status) =>  {",
                 "}"
             ],
-            [
+            "onResults": [
                 "(results) =>  {",
                 "  console.log(`TellOneJoke.bt: KnockKnockWaitForWhosThere: onResults: `);",
                 "  console.log(results);",
@@ -273,28 +277,24 @@
                 "  }",
                 "}"
             ]
-        ],
-        "decorators": [
-            58,
-            69
-        ]
+        }
     },
     "58": {
         "id": 58,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "  return true;",
                 "}"
             ]
-        ]
+        }
     },
     "62": {
         "id": 62,
@@ -302,8 +302,12 @@
         "name": "\"<setup>\" \"<setup> who?\"",
         "asset-pack": "project",
         "parent": 15,
-        "args": [
-            [
+        "decorators": [
+            68,
+            65
+        ],
+        "options": {
+            "getConfig": [
                 "() =>  {",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockSetupWho',",
@@ -318,11 +322,11 @@
                 "\t}",
                 "}"
             ],
-            [
+            "onStatus": [
                 "(status) =>  {",
                 "}"
             ],
-            [
+            "onResults": [
                 "(results) =>  {",
                 "  console.log(`TellOneJoke.bt: KnockKnockSetupWho: onResults: `);",
                 "  console.log(results);",
@@ -338,11 +342,7 @@
                 "  }",
                 "}"
             ]
-        ],
-        "decorators": [
-            65,
-            68
-        ]
+        }
     },
     "64": {
         "id": 64,
@@ -350,8 +350,8 @@
         "name": "Set up paths",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {    ",
                 "  let path = require ('path');",
                 "",
@@ -363,49 +363,52 @@
                 "  }",
                 "}"
             ]
-        ]
+        }
     },
     "65": {
         "id": 65,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "    return true;",
                 "}"
             ]
-        ]
+        }
     },
     "68": {
         "id": 68,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKbreak",
-            [
+        "options": {
+            "eventName": "KKbreak",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
     },
     "69": {
         "id": 69,
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            "KKbreak",
-            [
+        "options": {
+            "eventName": "KKbreak",
+            "onEvent": [
                 "() => {",
                 "}"
             ]
-        ]
+        }
+    },
+    "meta": {
+        "version": 1
     }
 }

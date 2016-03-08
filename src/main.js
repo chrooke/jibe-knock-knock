@@ -1,9 +1,11 @@
-import jibo from 'jibo';
-import path from 'path';
-import GuiManager from './mim/debug-gui-manager';
-import MimManager from './mim/mim-manager';
+"use strict";
 
-let {Status, factory} = jibo.bt;
+let jibo = require('jibo');
+let path = require('path');
+let GuiManager = require('./mim/debug-gui-manager');
+let MimManager = require('./mim/mim-manager');
+
+let Status = jibo.bt.Status;
 
 let root = null;
 
@@ -11,22 +13,22 @@ let blackboard = {};
 let notepad = {};
 
 function start() {
-    let root = factory.create('../behaviors/KnockKnock', {
+    let root = jibo.bt.create('../behaviors/KnockKnock', {
       blackboard: blackboard,
       notepad: notepad
     });
     root.start();
-    let intervalId = setInterval(() => {
+    let intervalId = setInterval(function() {
         if (root.status !== Status.IN_PROGRESS) {
             clearInterval(intervalId);
-        }
-        else {
+            console.log('Behavior tree finished with status ' + root.status);
+        } else {
             root.update();
         }
     }, 33);
 }
 
-jibo.init().then(() => {
+jibo.init(function(){
     console.log('Setup');
     require('./behaviors/debug-behavior');
     require('./behaviors/mim');
@@ -38,6 +40,4 @@ jibo.init().then(() => {
     MimManager.init();
     MimManager.setGuiManager(GuiManager);
     start();
-}).catch(e => {
-    console.error(e);
 });

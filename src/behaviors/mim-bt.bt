@@ -3,14 +3,14 @@
         "id": 1,
         "class": "Sequence",
         "name": "",
-        "args": [],
         "children": [
             64,
             3,
             18,
             61,
             66
-        ]
+        ],
+        "options": {}
     },
     "3": {
         "id": 3,
@@ -18,8 +18,8 @@
         "name": "Config Mim",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  console.log(`\\n\\n**********`);",
                 "  console.log(`MimBt: This is the BT for the MIM behavior: notepad.config:`);",
@@ -65,9 +65,9 @@
                 "  ",
                 "  //MIM MANAGER",
                 "  let MimManager = require('../mim/mim-manager');",
-                "  console.log(`MimBt: MimManager: ${MimManager}`);",
+                "//    console.log(`MimBt: MimManager: ${MimManager}`);",
                 "  if (MimManager) {",
-                "    console.log(`MimBt: blackboard.MimManager.guiManager: ${MimManager.guiManager}`);",
+                "//    console.log(`MimBt: blackboard.MimManager.guiManager: ${MimManager.guiManager}`);",
                 "  }",
                 "",
                 "  notepad.promptData = notepad.config.promptData;",
@@ -79,7 +79,7 @@
                 "  console.log(`MimBt: rulesPath: ${notepad.rulesPath}`);",
                 "}"
             ]
-        ]
+        }
     },
     "18": {
         "id": 18,
@@ -87,8 +87,8 @@
         "name": "Load Rule File",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  if (!notepad.rule) {",
                 "    let fs = require('fs');",
@@ -118,7 +118,7 @@
                 "  }",
                 "}"
             ]
-        ]
+        }
     },
     "60": {
         "id": 60,
@@ -126,8 +126,9 @@
         "name": "Speech I/O",
         "asset-pack": "core",
         "parent": 68,
-        "args": [
-            [
+        "skipped": false,
+        "options": {
+            "getOptions": [
                 "() => {",
                 "\t",
                 "\tnotepad.mimState.incrementTries();",
@@ -144,14 +145,14 @@
                 "\treturn options;",
                 "}"
             ],
-            [
+            "getRule": [
                 "(callback) => {",
                 "\tcallback(notepad.rule);",
                 "}"
             ],
-            [
+            "onResult": [
                 "(listener) => {",
-                "\tlistener.on('cloud', (asrResultsData, speakerIdsData) => {",
+                "\tlistener.on('cloud', function(asrResultsData, speakerIdsData) {",
                 "\t\tconsole.log(`MimBt: ListenJS Listen: Results:`, asrResultsData, speakerIdsData);",
                 "\t\t",
                 "\t\tnotepad.asrResults = new notepad.AsrResults(asrResultsData);",
@@ -179,8 +180,7 @@
                 "\t}",
                 "}"
             ]
-        ],
-        "skipped": false
+        }
     },
     "61": {
         "id": 61,
@@ -188,7 +188,6 @@
         "name": "Try and Try",
         "asset-pack": "core",
         "parent": 1,
-        "args": [],
         "decorators": [
             62
         ],
@@ -198,24 +197,25 @@
             77,
             80,
             87
-        ]
+        ],
+        "options": {}
     },
     "62": {
         "id": 62,
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "init": [
                 "() => {",
                 "}"
             ],
-            [
+            "conditional": [
                 "() => {",
                 "   return !notepad.mimState.done;",
                 "}"
             ]
-        ]
+        }
     },
     "64": {
         "id": 64,
@@ -223,8 +223,8 @@
         "name": "Init",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  let MimState = require('../mim/mim-state');",
                 "  notepad.mimState = new MimState();",
@@ -234,7 +234,7 @@
                 "  notepad.SpeakerIds = require('../mim/speaker-ids');",
                 "}"
             ]
-        ]
+        }
     },
     "65": {
         "id": 65,
@@ -242,8 +242,8 @@
         "name": "Analyze Results",
         "asset-pack": "core",
         "parent": 91,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {  ",
                 "  if (!notepad.asrResults) {",
                 "    console.log('No asr result!');",
@@ -268,7 +268,7 @@
                 "  }",
                 "}"
             ]
-        ]
+        }
     },
     "66": {
         "id": 66,
@@ -276,8 +276,8 @@
         "name": "Report Results",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  console.log(`MimBt: Evaluate Results`);",
                 "  if (notepad.mimState.success) {",
@@ -295,7 +295,7 @@
                 "  }",
                 "}"
             ]
-        ]
+        }
     },
     "68": {
         "id": 68,
@@ -303,16 +303,16 @@
         "name": "Receive Multimodal Input",
         "asset-pack": "core",
         "parent": 91,
-        "args": [
-            true
-        ],
         "children": [
             60,
             69,
             71,
             93
         ],
-        "decorators": []
+        "decorators": [],
+        "options": {
+            "succeedOnOne": true
+        }
     },
     "69": {
         "id": 69,
@@ -320,8 +320,9 @@
         "name": "GUI I/O",
         "asset-pack": "project",
         "parent": 68,
-        "args": [
-            [
+        "skipped": false,
+        "options": {
+            "getConfig": [
                 "() =>  {",
                 "\treturn {",
                 "\t\tmimConfig: notepad.mimConfig,",
@@ -329,19 +330,18 @@
                 "\t}",
                 "}"
             ],
-            [
+            "onStatus": [
                 "(status) =>  {",
                 "}"
             ],
-            [
+            "onResults": [
                 "(results) =>  {",
                 "  console.log(`MimBt: MimGui Results:`, results);",
                 "  notepad.asrResults = results.asrResults;",
                 "  notepad.speakerIds = results.speakerIds;",
                 "}"
             ]
-        ],
-        "skipped": false
+        }
     },
     "71": {
         "id": 71,
@@ -349,7 +349,7 @@
         "name": "Head Touch Input (unimplemented)",
         "asset-pack": "core",
         "parent": 68,
-        "args": []
+        "options": {}
     },
     "75": {
         "id": 75,
@@ -357,8 +357,8 @@
         "name": "Determine Entry Prompt SubCategory",
         "asset-pack": "core",
         "parent": 61,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  ",
                 "  notepad.entryPromptSubCategory = null;",
@@ -382,7 +382,7 @@
                 "  }",
                 "}"
             ]
-        ]
+        }
     },
     "76": {
         "id": 76,
@@ -390,8 +390,8 @@
         "name": "Choose Prompt",
         "asset-pack": "core",
         "parent": 61,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  notepad.currentPrompt = null;",
                 "  ",
@@ -411,7 +411,7 @@
                 "  }  ",
                 "}"
             ]
-        ]
+        }
     },
     "77": {
         "id": 77,
@@ -419,8 +419,8 @@
         "name": "Replace dynamic prompt tokens",
         "asset-pack": "core",
         "parent": 61,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "() => {",
                 "  let vm = require('vm');",
                 "  let util = require('util');",
@@ -436,7 +436,7 @@
                 "  notepad.mimState.promptText = script.runInContext(context);",
                 "}"
             ]
-        ]
+        }
     },
     "80": {
         "id": 80,
@@ -444,18 +444,18 @@
         "name": "Say prompt",
         "asset-pack": "core",
         "parent": 61,
-        "args": [
-            [
+        "skipped": false,
+        "options": {
+            "getWords": [
                 "(callback) => {",
                 "\tcallback(notepad.mimState.promptText);",
                 "}"
             ],
-            [
+            "onWord": [
                 "(word) => {",
                 "}"
             ]
-        ],
-        "skipped": false
+        }
     },
     "87": {
         "id": 87,
@@ -463,11 +463,11 @@
         "name": "",
         "asset-pack": "core",
         "parent": 61,
-        "args": [],
         "children": [
             91,
             89
-        ]
+        ],
+        "options": {}
     },
     "89": {
         "id": 89,
@@ -475,8 +475,11 @@
         "name": "Results for Announce",
         "asset-pack": "core",
         "parent": 87,
-        "args": [
-            [
+        "decorators": [
+            90
+        ],
+        "options": {
+            "exec": [
                 "() => {",
                 "  console.log(`MimBt: Announce: Ignoring results:`);",
                 "  notepad.asrResults = null;",
@@ -484,23 +487,20 @@
                 "  notepad.mimState.success = true;",
                 "}"
             ]
-        ],
-        "decorators": [
-            90
-        ]
+        }
     },
     "90": {
         "id": 90,
         "class": "Case",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "conditional": [
                 "() => {",
                 "  return notepad.mimConfig.mimType === 'announce';",
                 "}"
             ]
-        ]
+        }
     },
     "91": {
         "id": 91,
@@ -508,27 +508,27 @@
         "name": "",
         "asset-pack": "core",
         "parent": 87,
-        "args": [],
         "decorators": [
             92
         ],
         "children": [
             68,
             65
-        ]
+        ],
+        "options": {}
     },
     "92": {
         "id": 92,
         "class": "Case",
         "name": "",
         "asset-pack": "core",
-        "args": [
-            [
+        "options": {
+            "conditional": [
                 "() => {",
                 "  return notepad.mimConfig.mimType != 'announce';",
                 "}"
             ]
-        ]
+        }
     },
     "93": {
         "id": 93,
@@ -536,6 +536,9 @@
         "name": "Timeout (unimplemented)",
         "asset-pack": "core",
         "parent": 68,
-        "args": []
+        "options": {}
+    },
+    "meta": {
+        "version": 1
     }
 }
