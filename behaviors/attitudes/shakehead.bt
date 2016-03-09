@@ -1,0 +1,43 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "f6cb6959-0ae7-4f9d-bf21-2d8e059e2993",
+            "1a092339-ca8e-4266-a963-1305aef4703a"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "1a092339-ca8e-4266-a963-1305aef4703a": {
+        "id": "1a092339-ca8e-4266-a963-1305aef4703a",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  blackboard.animating=false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "f6cb6959-0ae7-4f9d-bf21-2d8e059e2993": {
+        "id": "f6cb6959-0ae7-4f9d-bf21-2d8e059e2993",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  blackboard.animating=true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    }
+}

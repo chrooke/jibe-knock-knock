@@ -1,133 +1,34 @@
 {
     "3": {
         "id": 3,
-        "class": "Parallel",
+        "class": "Sequence",
         "name": "",
+        "options": {},
         "asset-pack": "core",
-        "args": [
-            false
-        ],
         "children": [
-            19,
-            16
+            "79da35db-a457-4e20-a61b-ec93679e406e"
         ],
         "decorators": []
     },
-    "16": {
-        "id": 16,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 3,
-        "args": [],
-        "children": [
-            18,
-            17
-        ],
-        "decorators": [
-            23
-        ]
+    "meta": {
+        "version": 1
     },
-    "17": {
-        "id": 17,
-        "class": "LookAt",
-        "name": "Choose place to look",
-        "asset-pack": "core",
-        "parent": 16,
-        "args": [
-            [
+    "79da35db-a457-4e20-a61b-ec93679e406e": {
+        "id": "79da35db-a457-4e20-a61b-ec93679e406e",
+        "class": "ExecuteScript",
+        "name": "Set posture to lecture",
+        "options": {
+            "exec": [
                 "() => {",
-                "\tlet x = 1;",
-                "\tlet y = 0.1 * (1 - 2 * Math.random());",
-                "\tlet z = 0.7 + 0.25 * (1 - 2 * Math.random());",
-                "//\tconsole.log(x,y,z);",
-                "\treturn {x: x, y: y, z: z};",
+                "  blackboard.LookAtX = function() { return 1; }",
+                "  blackboard.LookAtY = function() { return 0.1 * (1 - 2 * Math.random()); }",
+                "  blackboard.LookAtZ = function() { return 0.7 + 0.25 * (1 - 2 * Math.random()); }",
+                "//  console.log('lecture.bt: '+blackboard.LookAtX+' '+blackboard.LookAtY+' '+blackboard.LookAtZ);",
+                "",
                 "}"
             ]
-        ]
-    },
-    "18": {
-        "id": 18,
-        "class": "TimeoutJs",
+        },
         "asset-pack": "core",
-        "parent": 16,
-        "args": [
-            [
-                "() => {",
-                "   return 1000 + 2000 * Math.random();",
-                "}"
-            ]
-        ],
-        "name": "Pause for a bit"
-    },
-    "19": {
-        "id": 19,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 3,
-        "args": [],
-        "children": [
-            21,
-            20
-        ],
-        "decorators": [
-            22
-        ]
-    },
-    "20": {
-        "id": 20,
-        "class": "Blink",
-        "asset-pack": "core",
-        "parent": 19,
-        "args": []
-    },
-    "21": {
-        "id": 21,
-        "class": "TimeoutJs",
-        "name": "Pause for a bit",
-        "asset-pack": "core",
-        "parent": 19,
-        "args": [
-            [
-                "() => {",
-                "   return 2000 + 2500 * Math.random();",
-                "}"
-            ]
-        ]
-    },
-    "22": {
-        "id": 22,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "args": [
-            [
-                "() => {",
-                "}"
-            ],
-            [
-                "() => {",
-                "  return true;",
-                "}"
-            ]
-        ]
-    },
-    "23": {
-        "id": 23,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "args": [
-            [
-                "() => {",
-                "}"
-            ],
-            [
-                "() => {",
-                "  return true;",
-                "}"
-            ]
-        ]
+        "parent": 3
     }
 }

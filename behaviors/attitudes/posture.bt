@@ -1,0 +1,223 @@
+{
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "children": [
+            "b60ea2ab-8012-450c-8157-0c7168b867ef",
+            "5f52c659-b624-495c-832a-7e38177ed9fd"
+        ],
+        "decorators": []
+    },
+    "16": {
+        "id": 16,
+        "class": "Sequence",
+        "name": "Look Around",
+        "asset-pack": "core",
+        "parent": "5f52c659-b624-495c-832a-7e38177ed9fd",
+        "children": [
+            18,
+            "6b1c84e6-1c02-43d9-b976-0411c10adcd7"
+        ],
+        "decorators": [
+            23
+        ],
+        "options": {},
+        "skipped": false
+    },
+    "18": {
+        "id": 18,
+        "class": "TimeoutJs",
+        "asset-pack": "core",
+        "parent": 16,
+        "name": "Pause for a bit",
+        "options": {
+            "getTime": [
+                "() => {",
+                "   return 1000 + 2000 * Math.random();",
+                "}"
+            ]
+        }
+    },
+    "19": {
+        "id": 19,
+        "class": "Sequence",
+        "name": "Blink",
+        "asset-pack": "core",
+        "parent": "5f52c659-b624-495c-832a-7e38177ed9fd",
+        "children": [
+            21,
+            "9ec2479d-f7ca-431b-b7ec-5b3cebbff51e"
+        ],
+        "decorators": [
+            22
+        ],
+        "options": {}
+    },
+    "20": {
+        "id": 20,
+        "class": "Blink",
+        "asset-pack": "core",
+        "parent": "9ec2479d-f7ca-431b-b7ec-5b3cebbff51e",
+        "options": {},
+        "decorators": [
+            "4869e89a-e47d-40b0-956b-6fd3f9ce9e17"
+        ]
+    },
+    "21": {
+        "id": 21,
+        "class": "TimeoutJs",
+        "name": "Pause for a bit",
+        "asset-pack": "core",
+        "parent": 19,
+        "options": {
+            "getTime": [
+                "() => {",
+                "   return 2000 + 2500 * Math.random();",
+                "}"
+            ]
+        }
+    },
+    "22": {
+        "id": 22,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return true;",
+                "}"
+            ]
+        }
+    },
+    "23": {
+        "id": 23,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return true;",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "5f52c659-b624-495c-832a-7e38177ed9fd": {
+        "id": "5f52c659-b624-495c-832a-7e38177ed9fd",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 3,
+        "children": [
+            19,
+            16
+        ]
+    },
+    "b60ea2ab-8012-450c-8157-0c7168b867ef": {
+        "id": "b60ea2ab-8012-450c-8157-0c7168b867ef",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 3
+    },
+    "afc962fe-3408-4275-a8e5-91f2ef0eeff3": {
+        "id": "afc962fe-3408-4275-a8e5-91f2ef0eeff3",
+        "class": "LookAt",
+        "name": "",
+        "options": {
+            "getTarget": [
+                "() => {",
+                "  let x = blackboard.LookAtX();",
+                "  let y = blackboard.LookAtY();",
+                "  let z = blackboard.LookAtZ();",
+                "//  console.log('posture.bt: '+blackboard.LookAtX+' '+blackboard.LookAtY+' '+blackboard.LookAtZ);",
+                "//  console.log(x,y,z);",
+                "  return { x: x, y: y, z: z};",
+                "}"
+            ],
+            "isContinuous": false,
+            "config": [
+                "(lookAt) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "6b1c84e6-1c02-43d9-b976-0411c10adcd7",
+        "skipped": false,
+        "decorators": [
+            "452cc6e8-d182-4d83-beb9-634a612e3c06"
+        ]
+    },
+    "6b1c84e6-1c02-43d9-b976-0411c10adcd7": {
+        "id": "6b1c84e6-1c02-43d9-b976-0411c10adcd7",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 16,
+        "children": [
+            "afc962fe-3408-4275-a8e5-91f2ef0eeff3"
+        ]
+    },
+    "452cc6e8-d182-4d83-beb9-634a612e3c06": {
+        "id": "452cc6e8-d182-4d83-beb9-634a612e3c06",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return !blackboard.animating;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "9ec2479d-f7ca-431b-b7ec-5b3cebbff51e": {
+        "id": "9ec2479d-f7ca-431b-b7ec-5b3cebbff51e",
+        "class": "Switch",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 19,
+        "children": [
+            20
+        ]
+    },
+    "4869e89a-e47d-40b0-956b-6fd3f9ce9e17": {
+        "id": "4869e89a-e47d-40b0-956b-6fd3f9ce9e17",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "    return !blackboard.animating;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

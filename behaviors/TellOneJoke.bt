@@ -7,7 +7,12 @@
         "children": [
             64,
             5,
-            56
+            "e50a01b8-044d-4994-84b5-0c97525edf84",
+            "56161036-7ca1-4ab8-b490-8452ad4728a2",
+            "7144e298-72a3-4e10-a2f1-decdf64dedee",
+            "1afbaa0a-8913-4daf-aea8-562f6d8c298b",
+            "4311a95a-cb87-40e6-88c7-ef2aca4d9538",
+            "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a"
         ],
         "decorators": [],
         "options": {}
@@ -21,28 +26,52 @@
         "options": {
             "exec": [
                 "() => {",
-                "  if (notepad.jokes == undefined) {",
-                "    notepad.jokes = [",
+                "  if (blackboard.jokes == undefined) {",
+                "    blackboard.jokes = [",
                 "  \t\t\t['canoe','Canoe help me with my homework?'],",
                 "  \t\t\t['orange','Orange you going to let me in?'],",
                 "  \t\t\t['needle','Needle little money for the movies.']",
                 "  \t];  ",
                 "  }  ",
-                "  var joke=Math.round(Math.random()*((notepad.jokes.length)-1));",
+                "  var joke=Math.round(Math.random()*((blackboard.jokes.length)-1));",
                 "",
-                "  notepad.setup=notepad.jokes[joke][0];",
-                "  notepad.punchline=notepad.jokes[joke][1];",
+                "  notepad.setup=blackboard.jokes[joke][0];",
+                "  notepad.punchline=blackboard.jokes[joke][1];",
                 "",
                 "}"
             ]
         }
     },
-    "11": {
-        "id": 11,
+    "64": {
+        "id": 64,
+        "class": "ExecuteScript",
+        "name": "Set up paths",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "exec": [
+                "() => {    ",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  }",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "1afbaa0a-8913-4daf-aea8-562f6d8c298b": {
+        "id": "1afbaa0a-8913-4daf-aea8-562f6d8c298b",
         "class": "TextToSpeechJs",
         "name": "\"punchline\"",
         "asset-pack": "core",
-        "parent": 15,
+        "parent": 1,
         "options": {
             "getWords": [
                 "(callback) => {",
@@ -55,49 +84,14 @@
             ]
         }
     },
-    "12": {
-        "id": 12,
-        "class": "PlayAnimation",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 15,
-        "options": {
-            "animPath": "laugh.keys",
-            "config": [
-                "(animation) => {",
-                "}"
-            ]
-        }
-    },
-    "15": {
-        "id": 15,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 56,
-        "children": [
-            57,
-            62,
-            11,
-            12,
-            53
-        ],
-        "options": {}
-    },
-    "17": {
-        "id": 17,
+    "4311a95a-cb87-40e6-88c7-ef2aca4d9538": {
+        "id": "4311a95a-cb87-40e6-88c7-ef2aca4d9538",
         "class": "Subtree",
-        "name": "Attentive",
-        "asset-pack": "core",
-        "parent": 20,
-        "decorators": [
-            22
-        ],
+        "name": "Laugh",
         "options": {
-            "behaviorPath": "attitudes/attentive.bt",
+            "behaviorPath": "attitudes/laugh.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('tell-one-joke: attentive.bt');",
                 "    return {};",
                 "}"
             ],
@@ -105,146 +99,19 @@
                 "(treeResult) => {",
                 "}"
             ]
-        }
-    },
-    "20": {
-        "id": 20,
-        "class": "Sequence",
-        "name": "Incidental behavior",
+        },
         "asset-pack": "core",
-        "parent": 56,
-        "children": [
-            17,
-            42
-        ],
-        "skipped": false,
-        "decorators": [
-            54,
-            55
-        ],
-        "options": {}
+        "parent": 1
     },
-    "22": {
-        "id": 22,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 0,
-        "options": {
-            "eventName": "KKmovestop",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "42": {
-        "id": 42,
-        "class": "Subtree",
-        "name": "Center",
-        "asset-pack": "core",
-        "parent": 20,
-        "decorators": [
-            43
-        ],
-        "options": {
-            "behaviorPath": "attitudes/center.bt",
-            "getNotepad": [
-                "() => {",
-                "    console.log('tell-one-joke: center.bt');",
-                "    return {};",
-                "}"
-            ],
-            "onResult": [
-                "(treeResult) => {",
-                "}"
-            ]
-        }
-    },
-    "43": {
-        "id": 43,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "parent": null,
-        "options": {
-            "eventName": "KKmovestart",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "53": {
-        "id": 53,
-        "class": "ExecuteScript",
-        "name": "End tree",
-        "asset-pack": "core",
-        "parent": 15,
-        "options": {
-            "exec": [
-                "() => {",
-                "  emitter.emit('KKmovestop');",
-                "  emitter.emit('KKtreedone');",
-                "  console.log('tell-one-joke: Ending tree.');",
-                "",
-                "}"
-            ]
-        }
-    },
-    "54": {
-        "id": 54,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKtreedone",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "55": {
-        "id": 55,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "init": [
-                "() => {",
-                "}"
-            ],
-            "conditional": [
-                "() => {",
-                "    return true;",
-                "}"
-            ]
-        }
-    },
-    "56": {
-        "id": 56,
-        "class": "Parallel",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 1,
-        "children": [
-            20,
-            15
-        ],
-        "options": {
-            "succeedOnOne": false
-        }
-    },
-    "57": {
-        "id": 57,
+    "56161036-7ca1-4ab8-b490-8452ad4728a2": {
+        "id": "56161036-7ca1-4ab8-b490-8452ad4728a2",
         "class": "Mim",
         "name": "\"knock knock\" \"who's there?\"",
         "asset-pack": "project",
-        "parent": 15,
+        "parent": 1,
         "decorators": [
-            69,
-            58
+            "2dc46c7d-3946-4054-897b-0dbc37e25cf1",
+            "ecdb149d-e85b-47b1-aa90-12e270d93d6f"
         ],
         "options": {
             "getConfig": [
@@ -279,8 +146,8 @@
             ]
         }
     },
-    "58": {
-        "id": 58,
+    "ecdb149d-e85b-47b1-aa90-12e270d93d6f": {
+        "id": "ecdb149d-e85b-47b1-aa90-12e270d93d6f",
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
@@ -296,15 +163,15 @@
             ]
         }
     },
-    "62": {
-        "id": 62,
+    "7144e298-72a3-4e10-a2f1-decdf64dedee": {
+        "id": "7144e298-72a3-4e10-a2f1-decdf64dedee",
         "class": "Mim",
         "name": "\"<setup>\" \"<setup> who?\"",
         "asset-pack": "project",
-        "parent": 15,
+        "parent": 1,
         "decorators": [
-            68,
-            65
+            "a60b730f-b283-4312-8945-4b6d56477d47",
+            "8b03076e-14a4-47eb-b56d-9258cb9c55e4"
         ],
         "options": {
             "getConfig": [
@@ -344,29 +211,8 @@
             ]
         }
     },
-    "64": {
-        "id": 64,
-        "class": "ExecuteScript",
-        "name": "Set up paths",
-        "asset-pack": "core",
-        "parent": 1,
-        "options": {
-            "exec": [
-                "() => {    ",
-                "  let path = require ('path');",
-                "",
-                "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
-                "  }",
-                "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
-                "  }",
-                "}"
-            ]
-        }
-    },
-    "65": {
-        "id": 65,
+    "8b03076e-14a4-47eb-b56d-9258cb9c55e4": {
+        "id": "8b03076e-14a4-47eb-b56d-9258cb9c55e4",
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
@@ -382,8 +228,8 @@
             ]
         }
     },
-    "68": {
-        "id": 68,
+    "a60b730f-b283-4312-8945-4b6d56477d47": {
+        "id": "a60b730f-b283-4312-8945-4b6d56477d47",
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
@@ -395,8 +241,8 @@
             ]
         }
     },
-    "69": {
-        "id": 69,
+    "2dc46c7d-3946-4054-897b-0dbc37e25cf1": {
+        "id": "2dc46c7d-3946-4054-897b-0dbc37e25cf1",
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
@@ -408,7 +254,43 @@
             ]
         }
     },
-    "meta": {
-        "version": 1
+    "e50a01b8-044d-4994-84b5-0c97525edf84": {
+        "id": "e50a01b8-044d-4994-84b5-0c97525edf84",
+        "class": "Subtree",
+        "name": "Attentive",
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [],
+        "options": {
+            "behaviorPath": "attitudes/attentive.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a": {
+        "id": "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
     }
 }

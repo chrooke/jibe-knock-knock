@@ -8,8 +8,9 @@
             41,
             45,
             23,
-            49,
-            42,
+            "60bad574-869a-4817-94be-d38d9da7b811",
+            "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
+            "9512ab9d-9e7a-47a9-a116-595709510c42",
             48
         ],
         "options": {}
@@ -19,13 +20,12 @@
         "class": "Subtree",
         "name": "Tell a joke",
         "asset-pack": "core",
-        "parent": 25,
+        "parent": 42,
         "decorators": [],
         "options": {
             "behaviorPath": "TellOneJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('knock-knock: tell-one-joke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -40,7 +40,7 @@
         "class": "Subtree",
         "name": "Hear a joke",
         "asset-pack": "core",
-        "parent": 25,
+        "parent": 42,
         "skipped": false,
         "decorators": [],
         "options": {
@@ -62,7 +62,7 @@
         "class": "TextToSpeech",
         "name": "",
         "asset-pack": "core",
-        "parent": 25,
+        "parent": 42,
         "options": {
             "words": "Now will you please tell me a knock knock joke?",
             "onWord": [
@@ -85,123 +85,6 @@
             ]
         }
     },
-    "24": {
-        "id": 24,
-        "class": "Parallel",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 42,
-        "children": [
-            27,
-            25
-        ],
-        "options": {
-            "succeedOnOne": false
-        }
-    },
-    "25": {
-        "id": 25,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 24,
-        "children": [
-            16,
-            30,
-            22,
-            34,
-            20,
-            35
-        ],
-        "options": {}
-    },
-    "26": {
-        "id": 26,
-        "class": "Subtree",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 27,
-        "decorators": [
-            29
-        ],
-        "options": {
-            "behaviorPath": "attitudes/idle.bt",
-            "getNotepad": [
-                "() => {",
-                "  console.log('knock-knock: idle.bt');",
-                "    return {};",
-                "}"
-            ],
-            "onResult": [
-                "(treeResult) => {",
-                "}"
-            ]
-        }
-    },
-    "27": {
-        "id": 27,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 24,
-        "children": [
-            26,
-            28
-        ],
-        "skipped": false,
-        "options": {}
-    },
-    "28": {
-        "id": 28,
-        "class": "Subtree",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 27,
-        "decorators": [
-            32
-        ],
-        "options": {
-            "behaviorPath": "attitudes/center.bt",
-            "getNotepad": [
-                "() => {",
-                "    console.log('knock-knock: center.bt');",
-                "    return {};",
-                "}"
-            ],
-            "onResult": [
-                "(treeResult) => {",
-                "}"
-            ]
-        }
-    },
-    "29": {
-        "id": 29,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKmovestop",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "30": {
-        "id": 30,
-        "class": "ExecuteScript",
-        "name": "Start movement again",
-        "asset-pack": "core",
-        "parent": 25,
-        "options": {
-            "exec": [
-                "() => {",
-                "  emitter.emit('KKmovestart');",
-                "  console.log('knock-knock: Start moving.');",
-                "}"
-            ]
-        }
-    },
     "31": {
         "id": 31,
         "class": "Subtree",
@@ -212,55 +95,16 @@
             "behaviorPath": "ExplainJokes.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('knock-knock: explain.bt');",
-                "    return {};",
+                "    console.log('KnockKnock.bt: explain.bt');",
+                "    return { ",
+                "      LookAtX: notepad.LookAtX,",
+                "      LookAtY: notepad.LookAtY,",
+                "      LookAtZ: notepad.LookAtZ,",
+                "    };",
                 "}"
             ],
             "onResult": [
                 "(treeResult) => {",
-                "}"
-            ]
-        }
-    },
-    "32": {
-        "id": 32,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKmovestart",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "34": {
-        "id": 34,
-        "class": "ExecuteScript",
-        "name": "Stop movement for subtree",
-        "asset-pack": "core",
-        "parent": 25,
-        "options": {
-            "exec": [
-                "() => {",
-                "  emitter.emit('KKmovestop');",
-                "  console.log('knock-knock: Stop moving.');",
-                "}"
-            ]
-        }
-    },
-    "35": {
-        "id": 35,
-        "class": "ExecuteScript",
-        "name": "Start movement again",
-        "asset-pack": "core",
-        "parent": 25,
-        "options": {
-            "exec": [
-                "() => {",
-                "  emitter.emit('KKmovestart');",
-                "  console.log('knock-knock: Start moving.bt');",
                 "}"
             ]
         }
@@ -278,7 +122,8 @@
                 "    console.log('knock-knock: Stop moving.');",
                 "}"
             ]
-        }
+        },
+        "skipped": true
     },
     "41": {
         "id": 41,
@@ -289,6 +134,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "  console.log('KnockKnock.bt: setting up paths');",
                 "  let path = require('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
@@ -310,15 +156,18 @@
         "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001",
         "children": [
-            24
+            16,
+            22,
+            20
         ],
         "decorators": [
-            43,
-            47
+            "8b0b9b11-f565-4f07-b491-d2e75cd70a0a",
+            43
         ],
-        "options": {}
+        "options": {},
+        "skipped": false
     },
     "43": {
         "id": 43,
@@ -346,7 +195,8 @@
         "options": {
             "exec": [
                 "() => {",
-                "  notepad.jokes = [",
+                "  console.log('KnockKnock.bt: setting up jokes');",
+                "  blackboard.jokes = [",
                 "      ['canoe','Canoe help me with my homework?'],",
                 "      ['orange','Orange you going to let me in?'],",
                 "      ['needle','Needle little money for the movies.']",
@@ -355,26 +205,10 @@
             ]
         }
     },
-    "47": {
-        "id": 47,
-        "class": "SucceedOnEmbedded",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "rule": "hey_jibo",
-            "onResult": [
-                "(listener) => {",
-                "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
-                "",
-                "\t});",
-                "}"
-            ]
-        }
-    },
     "48": {
         "id": 48,
         "class": "TextToSpeech",
-        "name": "",
+        "name": "Thanks for playing",
         "asset-pack": "core",
         "parent": 1,
         "options": {
@@ -390,7 +224,7 @@
         "class": "Sequence",
         "name": "Prompt for explanation",
         "asset-pack": "core",
-        "parent": 1,
+        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001",
         "children": [
             50,
             51
@@ -410,6 +244,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
+                "\tconsole.log('KnockKnock.bt: setting Mim getConfig');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockNeedExplanation',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -516,5 +351,167 @@
     },
     "meta": {
         "version": 1
+    },
+    "60bad574-869a-4817-94be-d38d9da7b811": {
+        "id": "60bad574-869a-4817-94be-d38d9da7b811",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "8b08edd7-bd02-4d99-99b7-f4564e0f858f": {
+        "id": "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
+        "class": "Parallel",
+        "name": "Do the jokes",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "98a99ed9-3e45-4143-b8fb-427aa3ae5d53",
+            "12d190f3-57ef-40b3-bd49-c54cf462f001"
+        ],
+        "decorators": [
+            "c8c15758-e4ea-461b-96c1-ed7673695bc9",
+            "3d58655d-b355-4c67-b8e4-e36089bf6380"
+        ]
+    },
+    "98a99ed9-3e45-4143-b8fb-427aa3ae5d53": {
+        "id": "98a99ed9-3e45-4143-b8fb-427aa3ae5d53",
+        "class": "Sequence",
+        "name": "Posture",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
+        "children": [
+            "b5723c3b-34c9-4532-8a6d-c824603dd138"
+        ],
+        "skipped": false
+    },
+    "12d190f3-57ef-40b3-bd49-c54cf462f001": {
+        "id": "12d190f3-57ef-40b3-bd49-c54cf462f001",
+        "class": "Sequence",
+        "name": "Jokes",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
+        "children": [
+            49,
+            42,
+            "a0b5a79a-d328-49f1-a015-8e355163803b"
+        ],
+        "skipped": false
+    },
+    "c8c15758-e4ea-461b-96c1-ed7673695bc9": {
+        "id": "c8c15758-e4ea-461b-96c1-ed7673695bc9",
+        "class": "SucceedOnEvent",
+        "name": "",
+        "options": {
+            "eventName": "KKCloseSkill",
+            "onEvent": [
+                "() => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "3d58655d-b355-4c67-b8e4-e36089bf6380": {
+        "id": "3d58655d-b355-4c67-b8e4-e36089bf6380",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "a0b5a79a-d328-49f1-a015-8e355163803b": {
+        "id": "a0b5a79a-d328-49f1-a015-8e355163803b",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('KnockKnock.bt: emitting KKCloseSkill');",
+                "  emitter.emit('KKCloseSkill');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001"
+    },
+    "b5723c3b-34c9-4532-8a6d-c824603dd138": {
+        "id": "b5723c3b-34c9-4532-8a6d-c824603dd138",
+        "class": "Subtree",
+        "name": "posture.bt",
+        "options": {
+            "behaviorPath": "attitudes/posture.bt",
+            "getNotepad": [
+                "() => {",
+                "  return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "98a99ed9-3e45-4143-b8fb-427aa3ae5d53"
+    },
+    "9512ab9d-9e7a-47a9-a116-595709510c42": {
+        "id": "9512ab9d-9e7a-47a9-a116-595709510c42",
+        "class": "Subtree",
+        "name": "Center",
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "8b0b9b11-f565-4f07-b491-d2e75cd70a0a": {
+        "id": "8b0b9b11-f565-4f07-b491-d2e75cd70a0a",
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "options": {
+            "rule": "hey_jibo",
+            "onResult": [
+                "(listener) => {",
+                "\tlistener.on('hey-jibo', function(asrResult, speakerIds) {",
+                "",
+                "\t});",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
     }
 }

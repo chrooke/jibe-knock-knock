@@ -5,39 +5,45 @@
         "name": "",
         "children": [
             57,
-            71
+            "c618b6a7-383a-46ec-b69a-03d198a69c68",
+            "0cf35833-5ab0-4fad-8a56-166f0893cb23",
+            "f5119f32-6b4f-483a-a996-0eb3bdf186fa"
         ],
         "decorators": [],
         "options": {}
     },
-    "7": {
-        "id": 7,
-        "class": "PlayAnimation",
+    "57": {
+        "id": 57,
+        "class": "ExecuteScript",
+        "name": "Set up paths",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "exec": [
+                "() => {    ",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  }",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "ceb452f9-9c8a-4cad-bf4d-6a5e24041b5e": {
+        "id": "ceb452f9-9c8a-4cad-bf4d-6a5e24041b5e",
+        "class": "Subtree",
         "name": "Laugh",
-        "asset-pack": "core",
-        "parent": 64,
         "options": {
-            "animPath": "laugh.keys",
-            "config": [
-                "(animation) => {",
-                "}"
-            ]
-        }
-    },
-    "17": {
-        "id": 17,
-        "class": "Subtree",
-        "name": "Attentive",
-        "asset-pack": "core",
-        "parent": 20,
-        "decorators": [
-            22
-        ],
-        "options": {
-            "behaviorPath": "attitudes/attentive.bt",
+            "behaviorPath": "attitudes/laugh.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('hear-a-joke: attentive.bt');",
                 "    return {};",
                 "}"
             ],
@@ -45,146 +51,37 @@
                 "(treeResult) => {",
                 "}"
             ]
-        }
-    },
-    "20": {
-        "id": 20,
-        "class": "Sequence",
-        "name": "Incidental behavior",
+        },
         "asset-pack": "core",
-        "parent": 32,
-        "children": [
-            17,
-            42
-        ],
-        "skipped": false,
-        "decorators": [
-            54,
-            55
-        ],
-        "options": {}
+        "parent": "7f01d253-639e-4cbd-9b6a-e4fbe66caee2"
     },
-    "22": {
-        "id": 22,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "parent": null,
-        "options": {
-            "eventName": "KKmovestop",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "32": {
-        "id": 32,
-        "class": "Parallel",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 71,
-        "children": [
-            20,
-            33
-        ],
-        "options": {
-            "succeedOnOne": false
-        }
-    },
-    "33": {
-        "id": 33,
+    "0cf35833-5ab0-4fad-8a56-166f0893cb23": {
+        "id": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "parent": 32,
+        "parent": 1,
         "children": [
-            56,
-            60,
-            62,
-            63
+            "799943a2-a7a7-45df-8d71-c71fd753f639",
+            "e5869ee7-9abc-43e6-b58a-9f2b47b2486e",
+            "2a65be1e-4da3-41c5-ba26-2e06ca621cc7",
+            "214fb448-4167-4026-94d3-9527636304ac"
         ],
         "decorators": [
-            77,
-            76
+            "2c455579-708d-478f-8132-f0ca3427dda9",
+            "c638b0ee-3841-4612-8892-98a990e2cef0"
         ],
         "options": {}
     },
-    "42": {
-        "id": 42,
-        "class": "Subtree",
-        "name": "Center",
-        "asset-pack": "core",
-        "parent": 20,
-        "decorators": [
-            43
-        ],
-        "options": {
-            "behaviorPath": "attitudes/center.bt",
-            "getNotepad": [
-                "() => {",
-                "    console.log('hear-a-joke: center.bt');",
-                "    return {};",
-                "}"
-            ],
-            "onResult": [
-                "(treeResult) => {",
-                "}"
-            ]
-        }
-    },
-    "43": {
-        "id": 43,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKmovestart",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "54": {
-        "id": 54,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKtreedone",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "55": {
-        "id": 55,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "init": [
-                "() => {",
-                "}"
-            ],
-            "conditional": [
-                "() => {",
-                "    return true;",
-                "}"
-            ]
-        }
-    },
-    "56": {
-        "id": 56,
+    "799943a2-a7a7-45df-8d71-c71fd753f639": {
+        "id": "799943a2-a7a7-45df-8d71-c71fd753f639",
         "class": "Mim",
         "name": "Listen for \"Knock \"Knock\"",
         "asset-pack": "project",
-        "parent": 33,
+        "parent": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "decorators": [
-            78,
-            59
+            "d4544565-32f6-4696-9ff6-6463222afa8d",
+            "dc29547d-240d-4350-a59a-2f45d0ba00c2"
         ],
         "options": {
             "getConfig": [
@@ -219,29 +116,8 @@
             ]
         }
     },
-    "57": {
-        "id": 57,
-        "class": "ExecuteScript",
-        "name": "Set up paths",
-        "asset-pack": "core",
-        "parent": 1,
-        "options": {
-            "exec": [
-                "() => {    ",
-                "  let path = require ('path');",
-                "",
-                "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
-                "  }",
-                "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
-                "  }",
-                "}"
-            ]
-        }
-    },
-    "59": {
-        "id": 59,
+    "dc29547d-240d-4350-a59a-2f45d0ba00c2": {
+        "id": "dc29547d-240d-4350-a59a-2f45d0ba00c2",
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
@@ -257,12 +133,12 @@
             ]
         }
     },
-    "60": {
-        "id": 60,
+    "e5869ee7-9abc-43e6-b58a-9f2b47b2486e": {
+        "id": "e5869ee7-9abc-43e6-b58a-9f2b47b2486e",
         "class": "Mim",
         "name": "\"who's there?\" \"<setup>\"",
         "asset-pack": "project",
-        "parent": 33,
+        "parent": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "options": {
             "getConfig": [
                 "() =>  {",
@@ -296,12 +172,12 @@
             ]
         }
     },
-    "62": {
-        "id": 62,
+    "2a65be1e-4da3-41c5-ba26-2e06ca621cc7": {
+        "id": "2a65be1e-4da3-41c5-ba26-2e06ca621cc7",
         "class": "Mim",
         "name": "\"<setup> who?\" \"punchline\"",
         "asset-pack": "project",
-        "parent": 33,
+        "parent": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "options": {
             "getConfig": [
                 "() =>  {",
@@ -342,46 +218,47 @@
             ]
         }
     },
-    "63": {
-        "id": 63,
+    "214fb448-4167-4026-94d3-9527636304ac": {
+        "id": "214fb448-4167-4026-94d3-9527636304ac",
         "class": "Switch",
         "name": "",
         "asset-pack": "core",
-        "parent": 33,
+        "parent": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "children": [
-            64,
-            65
+            "7f01d253-639e-4cbd-9b6a-e4fbe66caee2",
+            "aa40fffd-c29c-4629-bf7c-170bf35a60ff"
         ],
         "options": {}
     },
-    "64": {
-        "id": 64,
+    "7f01d253-639e-4cbd-9b6a-e4fbe66caee2": {
+        "id": "7f01d253-639e-4cbd-9b6a-e4fbe66caee2",
         "class": "Sequence",
         "name": "Good Joke",
         "asset-pack": "core",
-        "parent": 63,
+        "parent": "214fb448-4167-4026-94d3-9527636304ac",
         "decorators": [
-            66
+            "f9d9ffd7-3553-4654-b19e-c6e6cf458e32"
         ],
         "children": [
-            7,
-            70
+            "ceb452f9-9c8a-4cad-bf4d-6a5e24041b5e",
+            "1af70447-ba79-42e7-a386-a6a792f7c420"
         ],
         "options": {}
     },
-    "65": {
-        "id": 65,
+    "aa40fffd-c29c-4629-bf7c-170bf35a60ff": {
+        "id": "aa40fffd-c29c-4629-bf7c-170bf35a60ff",
         "class": "Sequence",
         "name": "",
         "asset-pack": "core",
-        "parent": 63,
+        "parent": "214fb448-4167-4026-94d3-9527636304ac",
         "children": [
-            67
+            "41479c08-1a43-419a-b36b-bfcef49b74e9",
+            "4a3490c7-d7cc-4ee5-a31a-1f6516c26aef"
         ],
         "options": {}
     },
-    "66": {
-        "id": 66,
+    "f9d9ffd7-3553-4654-b19e-c6e6cf458e32": {
+        "id": "f9d9ffd7-3553-4654-b19e-c6e6cf458e32",
         "class": "Case",
         "name": "",
         "asset-pack": "core",
@@ -393,12 +270,12 @@
             ]
         }
     },
-    "67": {
-        "id": 67,
+    "4a3490c7-d7cc-4ee5-a31a-1f6516c26aef": {
+        "id": "4a3490c7-d7cc-4ee5-a31a-1f6516c26aef",
         "class": "TextToSpeech",
         "name": "\"I don't get it.\"",
         "asset-pack": "core",
-        "parent": 65,
+        "parent": "aa40fffd-c29c-4629-bf7c-170bf35a60ff",
         "options": {
             "words": "I'm sorry, I just don't get it. Perhaps you could tell me another?",
             "onWord": [
@@ -407,38 +284,24 @@
             ]
         }
     },
-    "70": {
-        "id": 70,
+    "1af70447-ba79-42e7-a386-a6a792f7c420": {
+        "id": "1af70447-ba79-42e7-a386-a6a792f7c420",
         "class": "ExecuteScript",
         "name": "Tree done",
         "asset-pack": "core",
-        "parent": 64,
+        "parent": "7f01d253-639e-4cbd-9b6a-e4fbe66caee2",
         "options": {
             "exec": [
                 "() => {",
                 "  emitter.emit('KKgoodjoke');",
-                "  emitter.emit('KKmovestart');",
-                "  emitter.emit('KKtreedone');",
-                "  console.log(\"HearAJoke.bt: KKgoodjoke, KKmovestart, KKtreedone\");",
-                "  console.log('hear-a-joke: Ending tree.');",
+                "  console.log(\"HearAJoke.bt: KKgoodjoke\");",
+                "  console.log('HearAJoke.bt: Ending tree.');",
                 "}"
             ]
         }
     },
-    "71": {
-        "id": 71,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": 1,
-        "children": [
-            32
-        ],
-        "decorators": [],
-        "options": {}
-    },
-    "76": {
-        "id": 76,
+    "c638b0ee-3841-4612-8892-98a990e2cef0": {
+        "id": "c638b0ee-3841-4612-8892-98a990e2cef0",
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
@@ -450,8 +313,8 @@
             ]
         }
     },
-    "77": {
-        "id": 77,
+    "2c455579-708d-478f-8132-f0ca3427dda9": {
+        "id": "2c455579-708d-478f-8132-f0ca3427dda9",
         "class": "WhileCondition",
         "name": "",
         "asset-pack": "core",
@@ -467,8 +330,8 @@
             ]
         }
     },
-    "78": {
-        "id": 78,
+    "d4544565-32f6-4696-9ff6-6463222afa8d": {
+        "id": "d4544565-32f6-4696-9ff6-6463222afa8d",
         "class": "SucceedOnEvent",
         "name": "",
         "asset-pack": "core",
@@ -480,7 +343,63 @@
             ]
         }
     },
-    "meta": {
-        "version": 1
+    "c618b6a7-383a-46ec-b69a-03d198a69c68": {
+        "id": "c618b6a7-383a-46ec-b69a-03d198a69c68",
+        "class": "Subtree",
+        "name": "Attentive",
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [],
+        "options": {
+            "behaviorPath": "attitudes/attentive.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "f5119f32-6b4f-483a-a996-0eb3bdf186fa": {
+        "id": "f5119f32-6b4f-483a-a996-0eb3bdf186fa",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "41479c08-1a43-419a-b36b-bfcef49b74e9": {
+        "id": "41479c08-1a43-419a-b36b-bfcef49b74e9",
+        "class": "Subtree",
+        "name": "Shake head",
+        "options": {
+            "behaviorPath": "attitudes/shakehead.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "aa40fffd-c29c-4629-bf7c-170bf35a60ff",
+        "skipped": false
     }
 }
