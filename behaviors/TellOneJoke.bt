@@ -110,7 +110,6 @@
         "asset-pack": "project",
         "parent": 1,
         "decorators": [
-            "2dc46c7d-3946-4054-897b-0dbc37e25cf1",
             "ecdb149d-e85b-47b1-aa90-12e270d93d6f"
         ],
         "options": {
@@ -139,8 +138,7 @@
                 "  ",
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
-                "    emitter.emit('KKbreak');",
-                "    console.log('TellOneJoke.bt: KKbreak');",
+                "    notepad.KnockKnockWaitForWhosThereBreak=true;",
                 "  }",
                 "}"
             ]
@@ -154,11 +152,12 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.KnockKnockWaitForWhosThereBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "  return true;",
+                "  return !notepad.KnockKnockWaitForWhosThereBreak;",
                 "}"
             ]
         }
@@ -170,7 +169,6 @@
         "asset-pack": "project",
         "parent": 1,
         "decorators": [
-            "a60b730f-b283-4312-8945-4b6d56477d47",
             "8b03076e-14a4-47eb-b56d-9258cb9c55e4"
         ],
         "options": {
@@ -204,8 +202,7 @@
                 "  ",
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
-                "    emitter.emit('KKbreak');",
-                "    console.log('TellOneJoke.bt: KKbreak');",
+                "    notepad.KnockKnockSetupWhoBreak=true;",
                 "  }",
                 "}"
             ]
@@ -219,37 +216,12 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.KnockKnockSetupWhoBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "    return true;",
-                "}"
-            ]
-        }
-    },
-    "a60b730f-b283-4312-8945-4b6d56477d47": {
-        "id": "a60b730f-b283-4312-8945-4b6d56477d47",
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKbreak",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
-    "2dc46c7d-3946-4054-897b-0dbc37e25cf1": {
-        "id": "2dc46c7d-3946-4054-897b-0dbc37e25cf1",
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKbreak",
-            "onEvent": [
-                "() => {",
+                "    return !notepad.KnockKnockSetupWhoBreak;",
                 "}"
             ]
         }

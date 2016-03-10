@@ -58,7 +58,7 @@
     "0cf35833-5ab0-4fad-8a56-166f0893cb23": {
         "id": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "class": "Sequence",
-        "name": "",
+        "name": "Main",
         "asset-pack": "core",
         "parent": 1,
         "children": [
@@ -68,8 +68,7 @@
             "214fb448-4167-4026-94d3-9527636304ac"
         ],
         "decorators": [
-            "2c455579-708d-478f-8132-f0ca3427dda9",
-            "c638b0ee-3841-4612-8892-98a990e2cef0"
+            "2c455579-708d-478f-8132-f0ca3427dda9"
         ],
         "options": {}
     },
@@ -80,7 +79,6 @@
         "asset-pack": "project",
         "parent": "0cf35833-5ab0-4fad-8a56-166f0893cb23",
         "decorators": [
-            "d4544565-32f6-4696-9ff6-6463222afa8d",
             "dc29547d-240d-4350-a59a-2f45d0ba00c2"
         ],
         "options": {
@@ -109,8 +107,7 @@
                 "  ",
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
-                "    emitter.emit('KKbreak');",
-                "    console.log('TellOneJoke.bt: KKbreak');",
+                "    notepad.KnockKnockWaitForKnockKnockBreak=true;",
                 "  }",
                 "}"
             ]
@@ -124,11 +121,12 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.KnockKnockWaitForKnockKnockBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "  return !notepad.readyToContinue;",
+                "  return !notepad.KnockKnockWaitForKnockKnockBreak;",
                 "}"
             ]
         }
@@ -287,28 +285,13 @@
     "1af70447-ba79-42e7-a386-a6a792f7c420": {
         "id": "1af70447-ba79-42e7-a386-a6a792f7c420",
         "class": "ExecuteScript",
-        "name": "Tree done",
+        "name": "Exit Main",
         "asset-pack": "core",
         "parent": "7f01d253-639e-4cbd-9b6a-e4fbe66caee2",
         "options": {
             "exec": [
                 "() => {",
-                "  emitter.emit('KKgoodjoke');",
-                "  console.log(\"HearAJoke.bt: KKgoodjoke\");",
-                "  console.log('HearAJoke.bt: Ending tree.');",
-                "}"
-            ]
-        }
-    },
-    "c638b0ee-3841-4612-8892-98a990e2cef0": {
-        "id": "c638b0ee-3841-4612-8892-98a990e2cef0",
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKgoodjoke",
-            "onEvent": [
-                "() => {",
+                "  notepad.MainBreak=true;",
                 "}"
             ]
         }
@@ -321,24 +304,12 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.MainBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "    return true;",
-                "}"
-            ]
-        }
-    },
-    "d4544565-32f6-4696-9ff6-6463222afa8d": {
-        "id": "d4544565-32f6-4696-9ff6-6463222afa8d",
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKbreak",
-            "onEvent": [
-                "() => {",
+                "  return !notepad.MainBreak;",
                 "}"
             ]
         }

@@ -20,7 +20,7 @@
         "class": "Subtree",
         "name": "Tell a joke",
         "asset-pack": "core",
-        "parent": 42,
+        "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
         "decorators": [],
         "options": {
             "behaviorPath": "TellOneJoke.bt",
@@ -40,7 +40,7 @@
         "class": "Subtree",
         "name": "Hear a joke",
         "asset-pack": "core",
-        "parent": 42,
+        "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
         "skipped": false,
         "decorators": [],
         "options": {
@@ -62,7 +62,7 @@
         "class": "TextToSpeech",
         "name": "",
         "asset-pack": "core",
-        "parent": 42,
+        "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
         "options": {
             "words": "Now will you please tell me a knock knock joke?",
             "onWord": [
@@ -109,22 +109,6 @@
             ]
         }
     },
-    "40": {
-        "id": 40,
-        "class": "ExecuteScript",
-        "name": "Stop movement for subtree",
-        "asset-pack": "core",
-        "parent": 55,
-        "options": {
-            "exec": [
-                "() => {",
-                "  emitter.emit('KKmovestop');",
-                "    console.log('knock-knock: Stop moving.');",
-                "}"
-            ]
-        },
-        "skipped": true
-    },
     "41": {
         "id": 41,
         "class": "ExecuteScript",
@@ -148,41 +132,6 @@
                 "  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
                 "}",
                 ""
-            ]
-        }
-    },
-    "42": {
-        "id": 42,
-        "class": "Sequence",
-        "name": "",
-        "asset-pack": "core",
-        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001",
-        "children": [
-            16,
-            22,
-            20
-        ],
-        "decorators": [
-            "8b0b9b11-f565-4f07-b491-d2e75cd70a0a",
-            43
-        ],
-        "options": {},
-        "skipped": false
-    },
-    "43": {
-        "id": 43,
-        "class": "WhileCondition",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "init": [
-                "() => {",
-                "}"
-            ],
-            "conditional": [
-                "() => {",
-                "    return true;",
-                "}"
             ]
         }
     },
@@ -238,13 +187,11 @@
         "asset-pack": "project",
         "parent": 49,
         "decorators": [
-            53,
             54
         ],
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('KnockKnock.bt: setting Mim getConfig');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockNeedExplanation',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -271,8 +218,7 @@
                 "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.explain=(results.asrResults.nlParse.response==='yes');",
-                "    console.log(\"notepad.explain: \"+notepad.explain);",
-                "    emitter.emit('KKbreak');",
+                "    notepad.KnockKnockNeedExplanationBreak=true;",
                 "  } ",
                 "  ",
                 "}"
@@ -291,19 +237,6 @@
         "decorators": [],
         "options": {}
     },
-    "53": {
-        "id": 53,
-        "class": "SucceedOnEvent",
-        "name": "",
-        "asset-pack": "core",
-        "options": {
-            "eventName": "KKbreak",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        }
-    },
     "54": {
         "id": 54,
         "class": "WhileCondition",
@@ -312,11 +245,12 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.KnockKnockNeedExplanationBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "    return true;",
+                "    return !notepad.KnockKnockNeedExplanationBreak;",
                 "}"
             ]
         }
@@ -328,7 +262,6 @@
         "asset-pack": "core",
         "parent": 51,
         "children": [
-            40,
             31
         ],
         "decorators": [
@@ -381,11 +314,12 @@
         "asset-pack": "core",
         "parent": 1,
         "children": [
+            "0389a080-c084-4ed1-b540-a1ed7fb88f31",
             "98a99ed9-3e45-4143-b8fb-427aa3ae5d53",
             "12d190f3-57ef-40b3-bd49-c54cf462f001"
         ],
         "decorators": [
-            "c8c15758-e4ea-461b-96c1-ed7673695bc9",
+            "f4db2668-4a0f-4e37-9022-40b2aabfef0d",
             "3d58655d-b355-4c67-b8e4-e36089bf6380"
         ]
     },
@@ -410,23 +344,9 @@
         "parent": "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
         "children": [
             49,
-            42,
-            "a0b5a79a-d328-49f1-a015-8e355163803b"
+            "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a"
         ],
         "skipped": false
-    },
-    "c8c15758-e4ea-461b-96c1-ed7673695bc9": {
-        "id": "c8c15758-e4ea-461b-96c1-ed7673695bc9",
-        "class": "SucceedOnEvent",
-        "name": "",
-        "options": {
-            "eventName": "KKCloseSkill",
-            "onEvent": [
-                "() => {",
-                "}"
-            ]
-        },
-        "asset-pack": "core"
     },
     "3d58655d-b355-4c67-b8e4-e36089bf6380": {
         "id": "3d58655d-b355-4c67-b8e4-e36089bf6380",
@@ -435,30 +355,16 @@
         "options": {
             "init": [
                 "() => {",
+                "  notepad.DoTheJokesBreak=false;",
                 "}"
             ],
             "conditional": [
                 "() => {",
-                "    return true;",
+                "    return !notepad.DoTheJokesBreak;",
                 "}"
             ]
         },
         "asset-pack": "core"
-    },
-    "a0b5a79a-d328-49f1-a015-8e355163803b": {
-        "id": "a0b5a79a-d328-49f1-a015-8e355163803b",
-        "class": "ExecuteScript",
-        "name": "",
-        "options": {
-            "exec": [
-                "() => {",
-                "  console.log('KnockKnock.bt: emitting KKCloseSkill');",
-                "  emitter.emit('KKCloseSkill');",
-                "}"
-            ]
-        },
-        "asset-pack": "core",
-        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001"
     },
     "b5723c3b-34c9-4532-8a6d-c824603dd138": {
         "id": "b5723c3b-34c9-4532-8a6d-c824603dd138",
@@ -498,8 +404,93 @@
         "asset-pack": "core",
         "parent": 1
     },
-    "8b0b9b11-f565-4f07-b491-d2e75cd70a0a": {
-        "id": "8b0b9b11-f565-4f07-b491-d2e75cd70a0a",
+    "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a": {
+        "id": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001",
+        "children": [
+            16,
+            22,
+            20
+        ],
+        "decorators": [
+            "8c2974a4-d5c4-4ac9-b5ad-ea051ac5cfae"
+        ]
+    },
+    "8c2974a4-d5c4-4ac9-b5ad-ea051ac5cfae": {
+        "id": "8c2974a4-d5c4-4ac9-b5ad-ea051ac5cfae",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "0389a080-c084-4ed1-b540-a1ed7fb88f31": {
+        "id": "0389a080-c084-4ed1-b540-a1ed7fb88f31",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "KnockKnock/KnockKnockImDone.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "      if (asrResult.NLParse) {",
+                "        notepad.DoTheJokesBreak=true;",
+                "        console.log('should break from the loop!');",
+                "      }",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
+        "decorators": [
+            "35292819-7a6f-4368-b12c-8075715e6702"
+        ],
+        "skipped": true
+    },
+    "35292819-7a6f-4368-b12c-8075715e6702": {
+        "id": "35292819-7a6f-4368-b12c-8075715e6702",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "f4db2668-4a0f-4e37-9022-40b2aabfef0d": {
+        "id": "f4db2668-4a0f-4e37-9022-40b2aabfef0d",
         "class": "SucceedOnEmbedded",
         "name": "",
         "options": {

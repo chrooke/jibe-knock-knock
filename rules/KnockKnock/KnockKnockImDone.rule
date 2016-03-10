@@ -1,0 +1,6 @@
+TopRule = $* $DONE {slotAction = 'match'} $*;
+DONE =
+        (im (done|finished|through)) |
+        (ive had enough) |
+        (thats enough) |
+        (quit);
