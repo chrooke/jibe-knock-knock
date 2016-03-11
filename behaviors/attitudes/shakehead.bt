@@ -6,6 +6,7 @@
         "options": {},
         "children": [
             "f6cb6959-0ae7-4f9d-bf21-2d8e059e2993",
+            "37407724-1748-400e-8762-1ab854fef9a1",
             "1a092339-ca8e-4266-a963-1305aef4703a"
         ]
     },
@@ -34,6 +35,20 @@
             "exec": [
                 "() => {",
                 "  blackboard.animating=true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "37407724-1748-400e-8762-1ab854fef9a1": {
+        "id": "37407724-1748-400e-8762-1ab854fef9a1",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "sorry.keys",
+            "config": [
+                "(animation) => {",
                 "}"
             ]
         },

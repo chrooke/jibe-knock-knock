@@ -1,0 +1,123 @@
+{
+    "version": "0.5.0",
+    "framerate": 30,
+    "duration": 120,
+    "scale": 1,
+    "layers": [
+        {
+            "id": "f941cd4a42fd4da98d7947bc43e3c7b9",
+            "name": "Eye",
+            "type": "Eye",
+            "visible": true,
+            "locked": false,
+            "keyframes": []
+        },
+        {
+            "id": "2859e6a7a3f94a329e578562d09bf59f",
+            "name": "Eye Texture",
+            "type": "Eye Texture",
+            "visible": true,
+            "locked": false,
+            "keyframes": []
+        },
+        {
+            "id": "dd3f718413c34032b7472983b6bfe83d",
+            "name": "Body",
+            "type": "Body",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "Head": 0,
+                        "Torso": 0,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 0
+                },
+                {
+                    "value": {
+                        "Head": -147.99999999999983,
+                        "Torso": 120.50000000000001,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 30
+                },
+                {
+                    "value": {
+                        "Head": -147.99999999999983,
+                        "Torso": 195.49999999999997,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 60
+                },
+                {
+                    "value": {
+                        "Head": -147.99999999999983,
+                        "Torso": 120.50000000000001,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 90
+                },
+                {
+                    "value": {
+                        "Head": 0,
+                        "Torso": 0,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 119
+                }
+            ]
+        },
+        {
+            "id": "cbbbcfe14aa04c9780f04fa3302c66ed",
+            "name": "Audio Event",
+            "type": "Audio Event",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "AudioEvent": {
+                            "file": "FX_Chrooke_thud.mp3"
+                        }
+                    },
+                    "time": 15
+                },
+                {
+                    "value": {
+                        "AudioEvent": {
+                            "file": "FX_ImBroken_01.mp3"
+                        }
+                    },
+                    "time": 45
+                }
+            ]
+        }
+    ]
+}
