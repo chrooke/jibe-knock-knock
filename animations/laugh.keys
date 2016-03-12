@@ -1,7 +1,7 @@
 {
     "version": "0.5.0",
     "framerate": 30,
-    "duration": 100,
+    "duration": 120,
     "scale": 1,
     "layers": [
         {
@@ -459,7 +459,19 @@
             "type": "Eye Texture",
             "visible": true,
             "locked": false,
-            "keyframes": []
+            "keyframes": [
+                {
+                    "value": {
+                        "Texture": "animations/textures/white-eye.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255
+                        }
+                    },
+                    "time": 5
+                }
+            ]
         },
         {
             "id": "6dbbbc174c5d444bb66fb5f1f6720824",
@@ -471,7 +483,7 @@
                 {
                     "value": {
                         "Head": 0,
-                        "Torso": 0,
+                        "Torso": 3.0000000000000036,
                         "Pelvis": 0,
                         "Tween": {
                             "display": "sine in out",
@@ -483,8 +495,8 @@
                 },
                 {
                     "value": {
-                        "Head": -22,
-                        "Torso": -51.50000000000001,
+                        "Head": -27.000000000000014,
+                        "Torso": -18.5,
                         "Pelvis": 0,
                         "Tween": {
                             "display": "sine in out",
@@ -492,12 +504,25 @@
                             "value": "sineInOut"
                         }
                     },
-                    "time": 10
+                    "time": 13
                 },
                 {
                     "value": {
-                        "Head": -1.4999999999999996,
-                        "Torso": 60.99999999999999,
+                        "Head": 71.5,
+                        "Torso": -52.500000000000036,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 27
+                },
+                {
+                    "value": {
+                        "Head": -7.000000000000002,
+                        "Torso": -52.500000000000036,
                         "Pelvis": 0,
                         "Tween": {
                             "display": "sine in out",
@@ -509,8 +534,21 @@
                 },
                 {
                     "value": {
-                        "Head": -22,
-                        "Torso": -51.50000000000001,
+                        "Head": 71.5,
+                        "Torso": -52.500000000000036,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 55
+                },
+                {
+                    "value": {
+                        "Head": -7.000000000000002,
+                        "Torso": -52.500000000000036,
                         "Pelvis": 0,
                         "Tween": {
                             "display": "sine in out",
@@ -522,8 +560,8 @@
                 },
                 {
                     "value": {
-                        "Head": 0,
-                        "Torso": 0,
+                        "Head": 71.5,
+                        "Torso": -52.500000000000036,
                         "Pelvis": 0,
                         "Tween": {
                             "display": "sine in out",
@@ -531,7 +569,20 @@
                             "value": "sineInOut"
                         }
                     },
-                    "time": 90
+                    "time": 85
+                },
+                {
+                    "value": {
+                        "Head": 0,
+                        "Torso": 3.0000000000000036,
+                        "Pelvis": 0,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 100
                 }
             ]
         },
@@ -539,7 +590,7 @@
             "id": "dc62bc98ae934710b0e389d074edaba0",
             "name": "Audio Event",
             "type": "Audio Event",
-            "visible": true,
+            "visible": false,
             "locked": false,
             "keyframes": [
                 {
@@ -685,6 +736,23 @@
                         }
                     },
                     "time": 90
+                }
+            ]
+        },
+        {
+            "id": "e738bd19575c46a290c6ec31b77eec4e",
+            "name": "Audio Event #1",
+            "type": "Audio Event",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "AudioEvent": {
+                            "file": "FX_Chrooke_laugh_2.mp3"
+                        }
+                    },
+                    "time": 5
                 }
             ]
         }
