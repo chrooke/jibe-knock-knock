@@ -6,7 +6,7 @@
         "decorators": [],
         "children": [
             41,
-            45,
+            "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
             23,
             "60bad574-869a-4817-94be-d38d9da7b811",
             "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
@@ -132,25 +132,6 @@
                 "  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
                 "}",
                 ""
-            ]
-        }
-    },
-    "45": {
-        "id": 45,
-        "class": "ExecuteScript",
-        "name": "Set up jokes",
-        "asset-pack": "core",
-        "parent": 1,
-        "options": {
-            "exec": [
-                "() => {",
-                "  console.log('KnockKnock.bt: setting up jokes');",
-                "  blackboard.jokes = [",
-                "      ['canoe','Canoe help me with my homework?'],",
-                "      ['orange','Orange you going to let me in?'],",
-                "      ['needle','Needle little money for the movies.']",
-                "  ]; ",
-                "}"
             ]
         }
     },
@@ -504,5 +485,20 @@
             ]
         },
         "asset-pack": "core"
+    },
+    "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a": {
+        "id": "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  let JokeRepo = require('../src/knock-knock/joke-repo');",
+                "  blackboard.jokes = new JokeRepo;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
     }
 }

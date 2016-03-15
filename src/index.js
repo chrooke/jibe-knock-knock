@@ -9,13 +9,8 @@ let Status = jibo.bt.Status;
 
 let root = null;
 
-let blackboard = {};
-let notepad = {};
-
 function start() {
     let root = jibo.bt.create('../behaviors/KnockKnock', {
-      blackboard: blackboard,
-      notepad: notepad
     });
     root.start();
     let intervalId = setInterval(function() {
