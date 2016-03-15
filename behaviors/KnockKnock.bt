@@ -489,7 +489,7 @@
     "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a": {
         "id": "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Set up jokes",
         "options": {
             "exec": [
                 "() => {",
