@@ -638,14 +638,36 @@
                 },
                 {
                     "value": {
-                        "Texture": "animations/textures/happy-face.png",
+                        "Texture": "animations/textures/white-eye.png",
                         "Color": {
                             "r": 255,
                             "g": 255,
                             "b": 255
                         }
                     },
+                    "time": 35
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/happy-face.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 220,
+                            "b": 82
+                        }
+                    },
                     "time": 40
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/happy-face.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 220,
+                            "b": 82
+                        }
+                    },
+                    "time": 85
                 },
                 {
                     "value": {
@@ -656,7 +678,7 @@
                             "b": 255
                         }
                     },
-                    "time": 91
+                    "time": 90
                 },
                 {
                     "value": {

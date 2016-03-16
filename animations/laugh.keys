@@ -579,7 +579,40 @@
                             "b": 255
                         }
                     },
+                    "time": 0
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/happy-face.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 220,
+                            "b": 82
+                        }
+                    },
                     "time": 5
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/happy-face.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 220,
+                            "b": 82
+                        }
+                    },
+                    "time": 95
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/white-eye.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255
+                        }
+                    },
+                    "time": 100
                 }
             ]
         },
