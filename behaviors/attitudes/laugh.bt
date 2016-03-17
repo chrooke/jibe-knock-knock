@@ -6,7 +6,7 @@
         "options": {},
         "children": [
             "d5b81fa5-3d34-4609-8574-f739dfaeaf36",
-            "b3d6f6bb-55d8-4af4-b65e-8cc2e6d9e65c",
+            "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
             "0b6df9b1-5171-4584-b683-2948916fa8a0"
         ]
     },
@@ -16,7 +16,7 @@
     "d5b81fa5-3d34-4609-8574-f739dfaeaf36": {
         "id": "d5b81fa5-3d34-4609-8574-f739dfaeaf36",
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Flag animation starting",
         "options": {
             "exec": [
                 "() => {",
@@ -27,28 +27,35 @@
         "asset-pack": "core",
         "parent": 1
     },
-    "b3d6f6bb-55d8-4af4-b65e-8cc2e6d9e65c": {
-        "id": "b3d6f6bb-55d8-4af4-b65e-8cc2e6d9e65c",
-        "class": "PlayAnimation",
-        "name": "",
+    "0b6df9b1-5171-4584-b683-2948916fa8a0": {
+        "id": "0b6df9b1-5171-4584-b683-2948916fa8a0",
+        "class": "ExecuteScript",
+        "name": "Remove flag",
         "options": {
-            "animPath": "laugh.keys",
-            "config": [
-                "(animation) => {",
+            "exec": [
+                "() => {",
+                "  blackboard.animating=false;",
                 "}"
             ]
         },
         "asset-pack": "core",
         "parent": 1
     },
-    "0b6df9b1-5171-4584-b683-2948916fa8a0": {
-        "id": "0b6df9b1-5171-4584-b683-2948916fa8a0",
+    "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0": {
+        "id": "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
         "class": "ExecuteScript",
-        "name": "",
+        "name": "Play a random laugh",
         "options": {
             "exec": [
                 "() => {",
-                "  blackboard.animating=false;",
+                "  if (blackboard.reactions==undefined) {",
+                "    let Reactions = require('../../src/knock-knock/reactions');",
+                "    blackboard.reactions = new Reactions;",
+                "  }",
+                "  ",
+                "  //Here's the actual animation",
+                "  blackboard.reactions.playRandomReaction('laugh');",
+                "  ",
                 "}"
             ]
         },

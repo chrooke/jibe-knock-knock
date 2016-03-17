@@ -1,5 +1,4 @@
 "use strict";
-
 let jibo = require('jibo');
 let path = require('path');
 let GuiManager = require('./mim/debug-gui-manager');
