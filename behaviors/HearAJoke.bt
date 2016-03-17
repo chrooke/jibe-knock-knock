@@ -7,7 +7,8 @@
             57,
             "c618b6a7-383a-46ec-b69a-03d198a69c68",
             "0cf35833-5ab0-4fad-8a56-166f0893cb23",
-            "f5119f32-6b4f-483a-a996-0eb3bdf186fa"
+            "f5119f32-6b4f-483a-a996-0eb3bdf186fa",
+            "b1e23070-392e-4e83-84a8-cdfb6a5238c3"
         ],
         "decorators": [],
         "options": {}
@@ -29,6 +30,7 @@
                 "  if (!notepad.mimsPath) {",
                 "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
                 "  }",
+                "//  console.log('notepad.MainBreak:'+notepad.MainBreak);",
                 "}"
             ]
         }
@@ -305,6 +307,7 @@
             "init": [
                 "() => {",
                 "  notepad.MainBreak=false;",
+                "  console.log('HearAJoke initializing main loop.');",
                 "}"
             ],
             "conditional": [
@@ -372,5 +375,19 @@
         "asset-pack": "core",
         "parent": "aa40fffd-c29c-4629-bf7c-170bf35a60ff",
         "skipped": false
+    },
+    "b1e23070-392e-4e83-84a8-cdfb6a5238c3": {
+        "id": "b1e23070-392e-4e83-84a8-cdfb6a5238c3",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('finishing HearAJoke.bt');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
     }
 }

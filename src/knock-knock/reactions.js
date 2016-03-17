@@ -27,8 +27,8 @@ class Reactions {
     if (this[reaction]) {
       let keysFile=this[reaction][Math.round(Math.random()*((this[reaction].length)-1))];
       let animPath = path.join(this.reactionsPath,reaction,keysFile);
-      console.log('animPath: '+animPath);
-      console.log('root: '+this.basePath);
+      //console.log('animPath: '+animPath);
+      //console.log('root: '+this.basePath);
       jibo.animate.createAnimationBuilderFromKeysPath(animPath, this.basePath, function(builder) {
         builder.setDOFs(jibo.animate.dofs.ALL);
         builder.on(jibo.animate.AnimationEventType.STOPPED, function() {

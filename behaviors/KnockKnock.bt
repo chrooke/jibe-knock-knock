@@ -47,7 +47,7 @@
             "behaviorPath": "HearAJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('knock-knock: hear-a-joke.bt');",
+                "    console.log('Entering knock-knock: hear-a-joke.bt');",
                 "    return {};",
                 "}"
             ],
