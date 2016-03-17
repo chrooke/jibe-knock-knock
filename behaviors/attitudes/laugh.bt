@@ -6,6 +6,7 @@
         "options": {},
         "children": [
             "d5b81fa5-3d34-4609-8574-f739dfaeaf36",
+            "985f57dc-e164-4a66-897c-f5c354139162",
             "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
             "0b6df9b1-5171-4584-b683-2948916fa8a0"
         ]
@@ -56,6 +57,25 @@
                 "  //Here's the actual animation",
                 "  blackboard.reactions.playRandomReaction('laugh');",
                 "  ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "985f57dc-e164-4a66-897c-f5c354139162": {
+        "id": "985f57dc-e164-4a66-897c-f5c354139162",
+        "class": "Subtree",
+        "name": "Center",
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
                 "}"
             ]
         },
