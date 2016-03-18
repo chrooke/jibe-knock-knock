@@ -816,19 +816,6 @@
                         }
                     },
                     "time": 90
-                },
-                {
-                    "value": {
-                        "Head": 0,
-                        "Torso": 0,
-                        "Pelvis": 0,
-                        "Tween": {
-                            "display": "sine in out",
-                            "label": "Sine Ease In Out",
-                            "value": "sineInOut"
-                        }
-                    },
-                    "time": 119
                 }
             ]
         },

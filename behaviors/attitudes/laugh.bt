@@ -6,8 +6,9 @@
         "options": {},
         "children": [
             "d5b81fa5-3d34-4609-8574-f739dfaeaf36",
-            "985f57dc-e164-4a66-897c-f5c354139162",
             "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
+            "e44c6c88-9598-47d5-925c-8d4b73caeba9",
+            "985f57dc-e164-4a66-897c-f5c354139162",
             "0b6df9b1-5171-4584-b683-2948916fa8a0"
         ]
     },
@@ -61,7 +62,8 @@
             ]
         },
         "asset-pack": "core",
-        "parent": 1
+        "parent": 1,
+        "decorators": []
     },
     "985f57dc-e164-4a66-897c-f5c354139162": {
         "id": "985f57dc-e164-4a66-897c-f5c354139162",
@@ -76,6 +78,22 @@
             ],
             "onResult": [
                 "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false,
+        "decorators": []
+    },
+    "e44c6c88-9598-47d5-925c-8d4b73caeba9": {
+        "id": "e44c6c88-9598-47d5-925c-8d4b73caeba9",
+        "class": "TimeoutJs",
+        "name": "Wait for animation to finish",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    return 4000;",
                 "}"
             ]
         },

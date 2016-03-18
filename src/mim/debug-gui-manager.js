@@ -6,7 +6,7 @@
 class DebugGuiManager {
 
     static init(ui_div) {
-        console.log(`DebugGuiManager: ui_div: ${ui_div}`);
+        //console.log(`DebugGuiManager: ui_div: ${ui_div}`);
         DebugGuiManager.uiDiv = ui_div;
 
         if (!DebugGuiManager.initialized && DebugGuiManager.uiDiv) {

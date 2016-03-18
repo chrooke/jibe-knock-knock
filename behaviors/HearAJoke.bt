@@ -21,7 +21,9 @@
         "parent": 1,
         "options": {
             "exec": [
-                "() => {    ",
+                "() => {",
+                "  console.log('HearAJoke');  ",
+                "  console.log(' set up paths');  ",
                 "  let path = require ('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
@@ -46,6 +48,7 @@
             "behaviorPath": "attitudes/laugh.bt",
             "getNotepad": [
                 "() => {",
+                "      console.log(' laugh');",
                 "    return {};",
                 "}"
             ],
@@ -86,6 +89,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
+                "\tconsole.log('\t\tlisten for knock knock');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -100,14 +104,14 @@
             ],
             "onResults": [
                 "(results) =>  {",
-                "  console.log(`HearAJoke.bt: KnockKnockWaitForKnockKnock: onResults: `);",
-                "  console.log(results);",
+                "  //console.log(`HearAJoke.bt: KnockKnockWaitForKnockKnock: onResults: `);",
+                "  //console.log(results);",
                 "  ",
                 "  if (results.speakerIds.primarySpeaker) {",
                 "    notepad.userName = results.speakerIds.primarySpeaker;",
                 "  }",
                 "  ",
-                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.KnockKnockWaitForKnockKnockBreak=true;",
                 "  }",
@@ -142,6 +146,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
+                "\tconsole.log('\t\tlisten for setup');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForSetup',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -157,14 +162,14 @@
             ],
             "onResults": [
                 "(results) =>  {",
-                "  console.log(`HearAJoke.bt: KnockKnockWaitForAnything: onResults: `);",
-                "  console.log(results);",
+                "  //console.log(`HearAJoke.bt: KnockKnockWaitForAnything: onResults: `);",
+                "  //console.log(results);",
                 "  ",
                 "  if (results.speakerIds.primarySpeaker) {",
                 "    notepad.userName = results.speakerIds.primarySpeaker;",
                 "  }",
                 "  ",
-                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.setup=results.asrResults.nlParse.setup;",
                 "  }",
@@ -181,6 +186,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
+                "\tconsole.log('\t\tlisten for punchline');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForPunchline',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -200,14 +206,14 @@
             ],
             "onResults": [
                 "(results) =>  {",
-                "  console.log(`HearAJoke.bt: KnockKnockWhosThere: onResults: `);",
-                "  console.log(results);",
+                "  //console.log(`HearAJoke.bt: KnockKnockWhosThere: onResults: `);",
+                "  //console.log(results);",
                 "  ",
                 "  if (results.speakerIds.primarySpeaker) {",
                 "    notepad.userName = results.speakerIds.primarySpeaker;",
                 "  }",
                 "  ",
-                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.goodJoke=true;",
                 "  }",
@@ -293,6 +299,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "  console.log(' set loop exit flag');",
                 "  notepad.MainBreak=true;",
                 "}"
             ]
@@ -306,8 +313,8 @@
         "options": {
             "init": [
                 "() => {",
+                "  console.log(' main loop');",
                 "  notepad.MainBreak=false;",
-                "  console.log('HearAJoke initializing main loop.');",
                 "}"
             ],
             "conditional": [
@@ -328,6 +335,7 @@
             "behaviorPath": "attitudes/attentive.bt",
             "getNotepad": [
                 "() => {",
+                "    console.log(' attentive');",
                 "    return {};",
                 "}"
             ],
@@ -345,6 +353,7 @@
             "behaviorPath": "attitudes/idle.bt",
             "getNotepad": [
                 "() => {",
+                "    console.log(' idle');",
                 "    return {};",
                 "}"
             ],
@@ -364,6 +373,7 @@
             "behaviorPath": "attitudes/shakehead.bt",
             "getNotepad": [
                 "() => {",
+                "  console.log(' sorry');",
                 "    return {};",
                 "}"
             ],

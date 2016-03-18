@@ -47,7 +47,7 @@
             "behaviorPath": "HearAJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('Entering knock-knock: hear-a-joke.bt');",
+                "    //console.log('Entering knock-knock: hear-a-joke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -118,7 +118,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log('KnockKnock.bt: setting up paths');",
+                "  //console.log('KnockKnock.bt: setting up paths');",
                 "  let path = require('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
@@ -128,8 +128,8 @@
                 "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
                 "  }",
                 "  ",
-                "  console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
-                "  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
+                "  //console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
+                "  //console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
                 "}",
                 ""
             ]
@@ -189,14 +189,14 @@
             ],
             "onResults": [
                 "(results) =>  {",
-                "  console.log(`KnockKnock.bt: KnockKnockNeedExplanation: onResults: `);",
-                "  console.log(results);",
+                "  //console.log(`KnockKnock.bt: KnockKnockNeedExplanation: onResults: `);",
+                "  //console.log(results);",
                 "  ",
                 "  if (results.speakerIds.primarySpeaker) {",
                 "    notepad.userName = results.speakerIds.primarySpeaker;",
                 "  }",
                 "  ",
-                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.explain=(results.asrResults.nlParse.response==='yes');",
                 "    notepad.KnockKnockNeedExplanationBreak=true;",

@@ -21,8 +21,8 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log(`\\n\\n**********`);",
-                "  console.log(`MimBt: This is the BT for the MIM behavior: notepad.config:`);",
+                "  //console.log(`\\n\\n**********`);",
+                "  //console.log(`MimBt: This is the BT for the MIM behavior: notepad.config:`);",
                 "  ",
                 "  notepad.mimId = notepad.config.mimId;",
                 "  notepad.mimsPath = notepad.config.mimsPath;",
@@ -75,8 +75,8 @@
                 "    notepad.promptData = {};",
                 "  }",
                 "  ",
-                "  console.log(`MimBt: MimId: ${notepad.mimId}`);",
-                "  console.log(`MimBt: rulesPath: ${notepad.rulesPath}`);",
+                "  //console.log(`MimBt: MimId: ${notepad.mimId}`);",
+                "  //console.log(`MimBt: rulesPath: ${notepad.rulesPath}`);",
                 "}"
             ]
         }
@@ -153,7 +153,7 @@
             "onResult": [
                 "(listener) => {",
                 "\tlistener.on('cloud', function(asrResultsData, speakerIdsData){",
-                "\t\tconsole.log(`MimBt: ListenJS Listen: Results:`, asrResultsData, speakerIdsData);",
+                "\t\t//console.log(`MimBt: ListenJS Listen: Results:`, asrResultsData, speakerIdsData);",
                 "\t\t",
                 "\t\tnotepad.asrResults = new notepad.AsrResults(asrResultsData);",
                 "\t\tnotepad.speakerIds = new notepad.SpeakerIds(speakerIdsData);",
@@ -166,14 +166,14 @@
                 "\t});",
                 "\t",
                 "\tif (notepad.incremental) {",
-                "\t\tconsole.log(\"enabling incremental listener\");",
+                "\t\t//console.log(\"enabling incremental listener\");",
                 "\t\tlistener.on('incremental', (asrResultsData, stopFunction, more) => {",
-                "\t\t\tconsole.log(`MimBt: ListenJS Incremental Results:`, asrResultsData, stopFunction, more);",
+                "\t\t\t//console.log(`MimBt: ListenJS Incremental Results:`, asrResultsData, stopFunction, more);",
                 "\t\t\tnotepad.asrResults = new notepad.AsrResults(asrResultsData);",
                 "\t\t\tnotepad.speakerIds = new notepad.SpeakerIds(); //no speaker id data provided by incremental resuts!",
                 "\t\t\t",
                 "\t\t\tif (notepad.asrResults.state === 'match') {",
-                "\t\t\t\tconsole.log(`\\tIncremental Results Match:`, notepad.asrResults);",
+                "\t\t\t\t//console.log(`\\tIncremental Results Match:`, notepad.asrResults);",
                 "\t\t\t\tstopFunction();",
                 "\t\t\t}",
                 "\t\t});",
@@ -246,7 +246,7 @@
             "exec": [
                 "() => {  ",
                 "  if (!notepad.asrResults) {",
-                "    console.log('No asr result!');",
+                "    //console.log('No asr result!');",
                 "  } else {",
                 "    notepad.mimState.lastResultState = notepad.asrResults.state;",
                 "  }",
@@ -279,11 +279,11 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log(`MimBt: Evaluate Results`);",
+                "  //console.log(`MimBt: Evaluate Results`);",
                 "  if (notepad.mimState.success) {",
-                "    console.log(`SUCCESS`);",
+                "    //console.log(`SUCCESS`);",
                 "  } else if (notepad.mimState.failure) {",
-                "    console.log(`FAILURE`);",
+                "    //console.log(`FAILURE`);",
                 "  }",
                 "  ",
                 "  if (notepad.onResults) {",
@@ -481,7 +481,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log(`MimBt: Announce: Ignoring results:`);",
+                "  //console.log(`MimBt: Announce: Ignoring results:`);",
                 "  notepad.asrResults = null;",
                 "  notepad.speakerIds = null;",
                 "  notepad.mimState.success = true;",

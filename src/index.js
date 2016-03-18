@@ -23,7 +23,7 @@ function start() {
 }
 
 jibo.init().then( function(){
-    console.log('Setup');
+    //console.log('Setup');
     require('./behaviors/debug-behavior');
     require('./behaviors/mim');
     require('./behaviors/mim-gui');

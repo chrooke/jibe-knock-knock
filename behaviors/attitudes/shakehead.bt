@@ -6,8 +6,9 @@
         "options": {},
         "children": [
             "f6cb6959-0ae7-4f9d-bf21-2d8e059e2993",
-            "924eba28-71d1-43f0-b595-7593c354d075",
             "707bd918-ce99-4218-9a74-a952d68f4f8e",
+            "bc1ac6d1-30fc-4379-8bfe-9a49b2b69a8f",
+            "924eba28-71d1-43f0-b595-7593c354d075",
             "1a092339-ca8e-4266-a963-1305aef4703a"
         ]
     },
@@ -21,6 +22,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "  console.log(' clear animation flag');",
                 "  blackboard.animating=false;",
                 "}"
             ]
@@ -35,6 +37,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "  console.log(' set animation flag');",
                 "  blackboard.animating=true;",
                 "}"
             ]
@@ -49,6 +52,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "  console.log(' play animation');",
                 "  if (blackboard.reactions==undefined) {",
                 "    let Reactions = require('../../src/knock-knock/reactions');",
                 "    blackboard.reactions = new Reactions;",
@@ -56,12 +60,13 @@
                 "  ",
                 "  //Here's the actual animation",
                 "  blackboard.reactions.playRandomReaction('sorry');",
-                "  ",
                 "}"
             ]
         },
         "asset-pack": "core",
-        "parent": 1
+        "parent": 1,
+        "skipped": false,
+        "decorators": []
     },
     "924eba28-71d1-43f0-b595-7593c354d075": {
         "id": "924eba28-71d1-43f0-b595-7593c354d075",
@@ -71,11 +76,29 @@
             "behaviorPath": "attitudes/center.bt",
             "getNotepad": [
                 "() => {",
+                "    console.log(' center');",
                 "    return {};",
                 "}"
             ],
             "onResult": [
                 "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false,
+        "decorators": []
+    },
+    "bc1ac6d1-30fc-4379-8bfe-9a49b2b69a8f": {
+        "id": "bc1ac6d1-30fc-4379-8bfe-9a49b2b69a8f",
+        "class": "TimeoutJs",
+        "name": "Wait for animation to finish",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    console.log(' wait');",
+                "    return 4000;",
                 "}"
             ]
         },

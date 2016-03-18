@@ -8,7 +8,7 @@ class MimManager {
     static init () {
         if (!MimManager.initialized) {
             MimManager.initialized = true;
-            console.log(`MimManager: initialized`);
+            //console.log(`MimManager: initialized`);
         }
     }
 

@@ -3,10 +3,10 @@
         "id": 1,
         "class": "Sequence",
         "name": "",
-        "args": [],
         "children": [
             2
-        ]
+        ],
+        "options": {}
     },
     "2": {
         "id": 2,
@@ -14,8 +14,8 @@
         "name": "Globally Center Robot",
         "asset-pack": "core",
         "parent": 1,
-        "args": [
-            [
+        "options": {
+            "exec": [
                 "(succeed, fail) => {",
                 "  let dofs = jibo.animate.dofs;",
                 "  jibo.animate.centerRobot(dofs.ALL, true, () => {",
@@ -24,6 +24,10 @@
                 "  });",
                 "}"
             ]
-        ]
+        },
+        "skipped": false
+    },
+    "meta": {
+        "version": 1
     }
 }
