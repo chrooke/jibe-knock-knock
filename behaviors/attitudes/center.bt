@@ -18,7 +18,7 @@
             "exec": [
                 "(succeed, fail) => {",
                 "  let dofs = jibo.animate.dofs;",
-                "  jibo.animate.centerRobot(dofs.ALL, true, () => {",
+                "  jibo.animate.centerRobot(dofs.ALL, true, function(){",
                 "      jibo.animate.setLEDColor([0, 0, 1]);",
                 "      succeed();    ",
                 "  });",

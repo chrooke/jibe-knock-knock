@@ -95,12 +95,8 @@
             "behaviorPath": "ExplainJokes.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('KnockKnock.bt: explain.bt');",
-                "    return { ",
-                "      LookAtX: notepad.LookAtX,",
-                "      LookAtY: notepad.LookAtY,",
-                "      LookAtZ: notepad.LookAtZ,",
-                "    };",
+                "//    console.log('KnockKnock.bt: explain.bt');",
+                "    return {};",
                 "}"
             ],
             "onResult": [

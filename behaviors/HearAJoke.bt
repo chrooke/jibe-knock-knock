@@ -90,7 +90,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('\t\tlisten for knock knock');",
+                "//\tconsole.log('\t\tlisten for knock knock');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -147,7 +147,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('\t\tlisten for setup');",
+                "//\tconsole.log('\t\tlisten for setup');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForSetup',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -187,7 +187,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('\t\tlisten for punchline');",
+                "//\tconsole.log('\t\tlisten for punchline');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForPunchline',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -300,7 +300,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log(' set loop exit flag');",
+                "//  console.log(' set loop exit flag');",
                 "  notepad.MainBreak=true;",
                 "}"
             ]
@@ -314,7 +314,7 @@
         "options": {
             "init": [
                 "() => {",
-                "  console.log(' main loop');",
+                "//  console.log(' main loop');",
                 "  notepad.MainBreak=false;",
                 "}"
             ],
@@ -336,7 +336,7 @@
             "behaviorPath": "attitudes/attentive.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(' attentive');",
+                "//    console.log(' attentive');",
                 "    return {};",
                 "}"
             ],
@@ -395,7 +395,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log('finishing HearAJoke.bt');",
+                "//  console.log('finishing HearAJoke.bt');",
                 "}"
             ]
         },
