@@ -64,10 +64,12 @@
         "class": "Subtree",
         "name": "Laugh",
         "options": {
-            "behaviorPath": "attitudes/laugh.bt",
+            "behaviorPath": "attitudes/react.bt",
             "getNotepad": [
                 "() => {",
-                "    return {};",
+                "    return {",
+                "      reaction: 'laugh'",
+                "    };",
                 "}"
             ],
             "onResult": [

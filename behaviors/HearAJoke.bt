@@ -45,11 +45,12 @@
         "class": "Subtree",
         "name": "Laugh",
         "options": {
-            "behaviorPath": "attitudes/laugh.bt",
+            "behaviorPath": "attitudes/react.bt",
             "getNotepad": [
                 "() => {",
-                "      console.log(' laugh');",
-                "    return {};",
+                "      return {",
+                "        reaction: 'laugh'",
+                "      };",
                 "}"
             ],
             "onResult": [
@@ -368,13 +369,14 @@
     "41479c08-1a43-419a-b36b-bfcef49b74e9": {
         "id": "41479c08-1a43-419a-b36b-bfcef49b74e9",
         "class": "Subtree",
-        "name": "Shake head",
+        "name": "Sorry",
         "options": {
-            "behaviorPath": "attitudes/shakehead.bt",
+            "behaviorPath": "attitudes/react.bt",
             "getNotepad": [
                 "() => {",
-                "  console.log(' sorry');",
-                "    return {};",
+                "  return {",
+                "    reaction: 'sorry'",
+                "  };",
                 "}"
             ],
             "onResult": [

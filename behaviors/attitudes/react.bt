@@ -56,7 +56,7 @@
                 "  }",
                 "  ",
                 "  //Here's the actual animation",
-                "  blackboard.reactions.playRandomReaction('laugh');",
+                "  blackboard.reactions.playRandomReaction(notepad.reaction);",
                 "  ",
                 "}"
             ]
