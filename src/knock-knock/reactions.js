@@ -24,6 +24,7 @@ class Reactions {
 
   // Play a random key file of the given reaction
   playRandomReaction(reaction) {
+    console.log('in playRandomReaction');
     if (this[reaction]) {
       let keysFile=this[reaction][Math.round(Math.random()*((this[reaction].length)-1))];
       let animPath = path.join(this.reactionsPath,reaction,keysFile);
@@ -31,8 +32,8 @@ class Reactions {
       //console.log('root: '+this.basePath);
       jibo.animate.createAnimationBuilderFromKeysPath(animPath, this.basePath, function(builder) {
         builder.setDOFs(jibo.animate.dofs.ALL);
-        builder.on(jibo.animate.AnimationEventType.STOPPED, function() {
-        });
+    //    builder.on(jibo.animate.AnimationEventType.STOPPED, function() {
+    //    });
         builder.play();
       })
     }

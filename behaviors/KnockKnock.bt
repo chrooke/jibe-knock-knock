@@ -26,6 +26,7 @@
             "behaviorPath": "TellOneJoke.bt",
             "getNotepad": [
                 "() => {",
+                "    console.log('KnockKnock.bt: entering TellOneJoke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -47,7 +48,7 @@
             "behaviorPath": "HearAJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    //console.log('Entering knock-knock: hear-a-joke.bt');",
+                "    console.log('KnockKnock.bt: entering HearAJoke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -83,7 +84,8 @@
                 "    return 5000;",
                 "}"
             ]
-        }
+        },
+        "skipped": true
     },
     "31": {
         "id": 31,
@@ -95,7 +97,8 @@
             "behaviorPath": "ExplainJokes.bt",
             "getNotepad": [
                 "() => {",
-                "//    console.log('KnockKnock.bt: explain.bt');",
+                "  console.log('KnockKnock.bt: entering ExplainJokes.bt');",
+                "",
                 "    return {};",
                 "}"
             ],
@@ -114,7 +117,8 @@
         "options": {
             "exec": [
                 "() => {",
-                "  //console.log('KnockKnock.bt: setting up paths');",
+                "  console.log('KnockKnock.bt');",
+                "  console.log('setting up paths');",
                 "  let path = require('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
@@ -169,6 +173,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
+                "\tconsole.log('need explanation?');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockNeedExplanation',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -270,6 +275,8 @@
             "behaviorPath": "attitudes/idle.bt",
             "getNotepad": [
                 "() => {",
+                "  console.log('idle');",
+                "",
                 "    return {};",
                 "}"
             ],
@@ -351,6 +358,7 @@
             "behaviorPath": "attitudes/posture.bt",
             "getNotepad": [
                 "() => {",
+                "  console.log('KnockKnock.bt: entering posture.bt');",
                 "  return {};",
                 "}"
             ],
@@ -370,6 +378,7 @@
             "behaviorPath": "attitudes/center.bt",
             "getNotepad": [
                 "() => {",
+                "  console.log('KnockKnock.bt: entering center.bt');",
                 "    return {};",
                 "}"
             ],
@@ -391,7 +400,8 @@
         "children": [
             16,
             22,
-            20
+            20,
+            "945daee4-85de-4ce3-95ff-d25362a2d6cf"
         ],
         "decorators": [
             "8c2974a4-d5c4-4ac9-b5ad-ea051ac5cfae"
@@ -489,6 +499,7 @@
         "options": {
             "exec": [
                 "() => {",
+                "    console.log('setting up jokes');",
                 "  let JokeRepo = require('../src/knock-knock/joke-repo');",
                 "  blackboard.jokes = new JokeRepo;",
                 "}"
@@ -496,5 +507,623 @@
         },
         "asset-pack": "core",
         "parent": 1
+    },
+    "e2f983a9-c6e7-4e42-b967-6488aff4eb9d": {
+        "id": "e2f983a9-c6e7-4e42-b967-6488aff4eb9d",
+        "class": "ExecuteScript",
+        "name": "Play a random reaction",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('playing random reaction');",
+                "  if (blackboard.reactions==undefined) {",
+                "    let Reactions = require('../../src/knock-knock/reactions');",
+                "    blackboard.reactions = new Reactions;",
+                "  }",
+                "  ",
+                "  //Here's the actual animation",
+                "  blackboard.reactions.playRandomReaction('sorry');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c",
+        "decorators": []
+    },
+    "fd0c1e19-67c2-4492-a885-6f8c52f962a4": {
+        "id": "fd0c1e19-67c2-4492-a885-6f8c52f962a4",
+        "class": "Subtree",
+        "name": "Sorry",
+        "options": {
+            "behaviorPath": "attitudes/react.bt",
+            "getNotepad": [
+                "() => {",
+                "  console.log(\"entering reaction.bt with sorry\");",
+                "  return {",
+                "    reaction: 'sorry'",
+                "  };",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
+        "skipped": false
+    },
+    "e1c8b3c1-1154-49e0-845c-316ad2c36a14": {
+        "id": "e1c8b3c1-1154-49e0-845c-316ad2c36a14",
+        "class": "Subtree",
+        "name": "Attentive",
+        "asset-pack": "core",
+        "parent": "945daee4-85de-4ce3-95ff-d25362a2d6cf",
+        "decorators": [],
+        "options": {
+            "behaviorPath": "attitudes/attentive.bt",
+            "getNotepad": [
+                "() => {",
+                "    console.log(' attentive');",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "5af699de-1df6-4ca0-8f5e-519bd75d9733": {
+        "id": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": "0c9e79c0-ec2b-439e-b1e3-6157037256fc",
+        "children": [
+            "fd0c1e19-67c2-4492-a885-6f8c52f962a4",
+            "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c",
+            "50cac170-e2e9-4b0f-a5b4-122584272ee1"
+        ],
+        "options": {},
+        "decorators": []
+    },
+    "a6f8ab39-52f9-4885-bad4-b66c15fc1a59": {
+        "id": "a6f8ab39-52f9-4885-bad4-b66c15fc1a59",
+        "class": "Mim",
+        "name": "Listen for \"Knock \"Knock\"",
+        "asset-pack": "project",
+        "parent": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+        "decorators": [
+            "c9fde04a-2f9f-4948-bf3f-fc5d0617bae6"
+        ],
+        "options": {
+            "getConfig": [
+                "() =>  {",
+                "\tconsole.log('\t\tlisten for knock knock');",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* knock knock {slotAction='continue'} $*;\",",
+                "\t}",
+                "}"
+            ],
+            "onStatus": [
+                "(status) =>  {",
+                "}"
+            ],
+            "onResults": [
+                "(results) =>  {",
+                "  //console.log(`HearAJoke.bt: KnockKnockWaitForKnockKnock: onResults: `);",
+                "  //console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.KnockKnockWaitForKnockKnockBreak=true;",
+                "  }",
+                "}"
+            ]
+        }
+    },
+    "945daee4-85de-4ce3-95ff-d25362a2d6cf": {
+        "id": "945daee4-85de-4ce3-95ff-d25362a2d6cf",
+        "class": "Sequence",
+        "name": "Hear a joke not as Subtree",
+        "children": [
+            "c09fccf0-4904-4fb3-bd8e-e72b02ac5e4a",
+            "e1c8b3c1-1154-49e0-845c-316ad2c36a14",
+            "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+            "4104e078-a4ba-4132-8968-96c172764775",
+            "715f2cd9-df67-405a-96a4-24b236284308"
+        ],
+        "decorators": [],
+        "options": {},
+        "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
+        "skipped": true
+    },
+    "9cf35cbc-feda-47a3-a26e-7417c348656c": {
+        "id": "9cf35cbc-feda-47a3-a26e-7417c348656c",
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "  console.log(' main loop');",
+                "  notepad.MainBreak=false;",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return !notepad.MainBreak;",
+                "}"
+            ]
+        }
+    },
+    "715f2cd9-df67-405a-96a4-24b236284308": {
+        "id": "715f2cd9-df67-405a-96a4-24b236284308",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('finishing HearAJoke.bt');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "945daee4-85de-4ce3-95ff-d25362a2d6cf"
+    },
+    "c09fccf0-4904-4fb3-bd8e-e72b02ac5e4a": {
+        "id": "c09fccf0-4904-4fb3-bd8e-e72b02ac5e4a",
+        "class": "ExecuteScript",
+        "name": "Set up paths",
+        "asset-pack": "core",
+        "parent": "945daee4-85de-4ce3-95ff-d25362a2d6cf",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('HearAJoke');  ",
+                "  console.log(' set up paths');  ",
+                "  let path = require ('path');",
+                "",
+                "  if (!notepad.rulesPath) {",
+                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  }",
+                "  if (!notepad.mimsPath) {",
+                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  }",
+                "  console.log('notepad.MainBreak:'+notepad.MainBreak);",
+                "}"
+            ]
+        }
+    },
+    "b3f8319f-1a5b-4abc-b470-61015239cc0e": {
+        "id": "b3f8319f-1a5b-4abc-b470-61015239cc0e",
+        "class": "ExecuteScript",
+        "name": "Exit Main",
+        "asset-pack": "core",
+        "parent": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log(' set loop exit flag');",
+                "  notepad.MainBreak=true;",
+                "}"
+            ]
+        }
+    },
+    "ef9b9f82-e627-4083-883f-0e0f23071430": {
+        "id": "ef9b9f82-e627-4083-883f-0e0f23071430",
+        "class": "ExecuteScript",
+        "name": "Remove flag",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log(\"remove flag\");",
+                "  blackboard.animating=false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c"
+    },
+    "ba6516bb-9d68-455b-9bb3-3e782a6f386b": {
+        "id": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
+        "class": "Sequence",
+        "name": "Good Joke",
+        "asset-pack": "core",
+        "parent": "0c9e79c0-ec2b-439e-b1e3-6157037256fc",
+        "decorators": [
+            "21075b1f-a26b-44b8-82ed-379b0fc21de3"
+        ],
+        "children": [
+            "b4d7f9d6-c0e1-4caf-9c99-af68e1245da0",
+            "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a",
+            "b3f8319f-1a5b-4abc-b470-61015239cc0e"
+        ],
+        "options": {}
+    },
+    "0c9e79c0-ec2b-439e-b1e3-6157037256fc": {
+        "id": "0c9e79c0-ec2b-439e-b1e3-6157037256fc",
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+        "children": [
+            "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
+            "5af699de-1df6-4ca0-8f5e-519bd75d9733"
+        ],
+        "options": {}
+    },
+    "50cac170-e2e9-4b0f-a5b4-122584272ee1": {
+        "id": "50cac170-e2e9-4b0f-a5b4-122584272ee1",
+        "class": "TextToSpeech",
+        "name": "\"I don't get it.\"",
+        "asset-pack": "core",
+        "parent": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
+        "options": {
+            "words": "I'm sorry, I just don't get it. Perhaps you could tell me another?",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c": {
+        "id": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c",
+        "class": "Sequence",
+        "name": "Sorry not as Subtree",
+        "options": {},
+        "children": [
+            "5a089d41-2e7a-4ebd-8689-fc681046088a",
+            "e2f983a9-c6e7-4e42-b967-6488aff4eb9d",
+            "0f35d134-1831-43fd-b35f-370ac2944eaf",
+            "fec4af65-7114-4fb8-a28a-3d35bac1e80c",
+            "ef9b9f82-e627-4083-883f-0e0f23071430"
+        ],
+        "parent": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
+        "skipped": true
+    },
+    "b4d7f9d6-c0e1-4caf-9c99-af68e1245da0": {
+        "id": "b4d7f9d6-c0e1-4caf-9c99-af68e1245da0",
+        "class": "Subtree",
+        "name": "Laugh",
+        "options": {
+            "behaviorPath": "attitudes/react.bt",
+            "getNotepad": [
+                "() => {",
+                "  console.log(\"entering reaction.bt with laugh\");",
+                "  return {",
+                "    reaction: 'laugh'",
+                "  };",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
+        "skipped": false
+    },
+    "b8dd4efd-adfe-4f75-a97f-e5f8c9613962": {
+        "id": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+        "class": "Sequence",
+        "name": "Main",
+        "asset-pack": "core",
+        "parent": "945daee4-85de-4ce3-95ff-d25362a2d6cf",
+        "children": [
+            "a6f8ab39-52f9-4885-bad4-b66c15fc1a59",
+            "e147f5aa-66d6-4002-a048-bfed2b19459d",
+            "f6a27ad6-454e-406e-885d-892df5145828",
+            "0c9e79c0-ec2b-439e-b1e3-6157037256fc"
+        ],
+        "decorators": [
+            "9cf35cbc-feda-47a3-a26e-7417c348656c"
+        ],
+        "options": {}
+    },
+    "0f35d134-1831-43fd-b35f-370ac2944eaf": {
+        "id": "0f35d134-1831-43fd-b35f-370ac2944eaf",
+        "class": "TimeoutJs",
+        "name": "Wait for animation to finish",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    console.log(\"waiting for animation\");",
+                "    return 4000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c"
+    },
+    "fec4af65-7114-4fb8-a28a-3d35bac1e80c": {
+        "id": "fec4af65-7114-4fb8-a28a-3d35bac1e80c",
+        "class": "Subtree",
+        "name": "Center",
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
+                "() => {",
+                "    console.log(\"centering\");",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c",
+        "skipped": false,
+        "decorators": []
+    },
+    "4104e078-a4ba-4132-8968-96c172764775": {
+        "id": "4104e078-a4ba-4132-8968-96c172764775",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    console.log(' idle');",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "945daee4-85de-4ce3-95ff-d25362a2d6cf"
+    },
+    "21075b1f-a26b-44b8-82ed-379b0fc21de3": {
+        "id": "21075b1f-a26b-44b8-82ed-379b0fc21de3",
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.goodJoke;",
+                "}"
+            ]
+        }
+    },
+    "c9fde04a-2f9f-4948-bf3f-fc5d0617bae6": {
+        "id": "c9fde04a-2f9f-4948-bf3f-fc5d0617bae6",
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "  notepad.KnockKnockWaitForKnockKnockBreak=false;",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return !notepad.KnockKnockWaitForKnockKnockBreak;",
+                "}"
+            ]
+        }
+    },
+    "5a089d41-2e7a-4ebd-8689-fc681046088a": {
+        "id": "5a089d41-2e7a-4ebd-8689-fc681046088a",
+        "class": "ExecuteScript",
+        "name": "Flag animation starting",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log(\"flag animation starting\");",
+                "  blackboard.animating=true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "2c04b26e-a8a5-4a18-8ea5-bd2d5f91943c"
+    },
+    "f6a27ad6-454e-406e-885d-892df5145828": {
+        "id": "f6a27ad6-454e-406e-885d-892df5145828",
+        "class": "Mim",
+        "name": "\"<setup> who?\" \"punchline\"",
+        "asset-pack": "project",
+        "parent": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+        "options": {
+            "getConfig": [
+                "() =>  {",
+                "\tconsole.log('\t\tlisten for punchline');",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForPunchline',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\trule: \"TopRule = $* \"+notepad.setup+\" {slotAction='continue'} $*;\",",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true,",
+                "\t\tpromptData: {",
+                "\t\t\tsetup: notepad.setup",
+                "\t\t}",
+                "\t}",
+                "}"
+            ],
+            "onStatus": [
+                "(status) =>  {",
+                "}"
+            ],
+            "onResults": [
+                "(results) =>  {",
+                "  //console.log(`HearAJoke.bt: KnockKnockWhosThere: onResults: `);",
+                "  //console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.goodJoke=true;",
+                "  }",
+                "  if (results.asrResults.state === 'noMatch') {",
+                "    notepad.goodJoke=false;",
+                "  }",
+                "  ",
+                "  console.log(\"goodJoke: \"+notepad.goodJoke);",
+                "}"
+            ]
+        }
+    },
+    "e147f5aa-66d6-4002-a048-bfed2b19459d": {
+        "id": "e147f5aa-66d6-4002-a048-bfed2b19459d",
+        "class": "Mim",
+        "name": "\"who's there?\" \"<setup>\"",
+        "asset-pack": "project",
+        "parent": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
+        "options": {
+            "getConfig": [
+                "() =>  {",
+                "\tconsole.log('\t\tlisten for setup');",
+                "\treturn {",
+                "\t\tmimId: 'KnockKnockWaitForSetup',",
+                "\t\trulesPath: notepad.rulesPath,",
+                "\t\tmimsPath: notepad.mimsPath,",
+                "\t\tincremental: false,",
+                "\t\tdetectEnd: true",
+                "\t}",
+                "}"
+            ],
+            "onStatus": [
+                "(status) =>  {",
+                "}"
+            ],
+            "onResults": [
+                "(results) =>  {",
+                "  //console.log(`HearAJoke.bt: KnockKnockWaitForAnything: onResults: `);",
+                "  //console.log(results);",
+                "  ",
+                "  if (results.speakerIds.primarySpeaker) {",
+                "    notepad.userName = results.speakerIds.primarySpeaker;",
+                "  }",
+                "  ",
+                "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "  if (results.asrResults.state === 'match') {",
+                "    notepad.setup=results.asrResults.nlParse.setup;",
+                "  }",
+                "}"
+            ]
+        }
+    },
+    "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a": {
+        "id": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a",
+        "class": "Sequence",
+        "name": "Laugh not as subtree",
+        "options": {},
+        "children": [
+            "3b05e09e-c4d0-43fc-a02a-3c9fc4a34ddb",
+            "37b215bc-69d3-461a-9d0c-6c8225bc1004",
+            "d910dff1-2518-40b7-9f62-cfbdae581f79",
+            "20c3e60e-3bc1-426e-aab5-3aac68fbac34",
+            "acfd814d-e38c-4932-9a2b-32987430eb64"
+        ],
+        "parent": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
+        "skipped": true
+    },
+    "acfd814d-e38c-4932-9a2b-32987430eb64": {
+        "id": "acfd814d-e38c-4932-9a2b-32987430eb64",
+        "class": "ExecuteScript",
+        "name": "Remove flag",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log(\"remove flag\");",
+                "  blackboard.animating=false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a"
+    },
+    "20c3e60e-3bc1-426e-aab5-3aac68fbac34": {
+        "id": "20c3e60e-3bc1-426e-aab5-3aac68fbac34",
+        "class": "Subtree",
+        "name": "Center",
+        "options": {
+            "behaviorPath": "attitudes/center.bt",
+            "getNotepad": [
+                "() => {",
+                "    console.log(\"centering\");",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a",
+        "skipped": false,
+        "decorators": []
+    },
+    "d910dff1-2518-40b7-9f62-cfbdae581f79": {
+        "id": "d910dff1-2518-40b7-9f62-cfbdae581f79",
+        "class": "TimeoutJs",
+        "name": "Wait for animation to finish",
+        "options": {
+            "getTime": [
+                "() => {",
+                "    console.log(\"waiting for animation\");",
+                "    return 4000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a"
+    },
+    "37b215bc-69d3-461a-9d0c-6c8225bc1004": {
+        "id": "37b215bc-69d3-461a-9d0c-6c8225bc1004",
+        "class": "ExecuteScript",
+        "name": "Play a random reaction",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('playing random reaction');",
+                "  if (blackboard.reactions==undefined) {",
+                "    let Reactions = require('../../src/knock-knock/reactions');",
+                "    blackboard.reactions = new Reactions;",
+                "  }",
+                "  ",
+                "  //Here's the actual animation",
+                "  blackboard.reactions.playRandomReaction('laugh');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a",
+        "decorators": []
+    },
+    "3b05e09e-c4d0-43fc-a02a-3c9fc4a34ddb": {
+        "id": "3b05e09e-c4d0-43fc-a02a-3c9fc4a34ddb",
+        "class": "ExecuteScript",
+        "name": "Flag animation starting",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log(\"flag animation starting\");",
+                "  blackboard.animating=true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a"
     }
 }
