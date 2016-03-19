@@ -42,7 +42,7 @@
         "name": "Hear a joke",
         "asset-pack": "core",
         "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
-        "skipped": false,
+        "skipped": true,
         "decorators": [],
         "options": {
             "behaviorPath": "HearAJoke.bt",
@@ -551,7 +551,7 @@
         },
         "asset-pack": "core",
         "parent": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
-        "skipped": false
+        "skipped": true
     },
     "e1c8b3c1-1154-49e0-845c-316ad2c36a14": {
         "id": "e1c8b3c1-1154-49e0-845c-316ad2c36a14",
@@ -644,7 +644,7 @@
         "decorators": [],
         "options": {},
         "parent": "d8f2f57c-0e64-4a1a-b3d2-c3d9687a437a",
-        "skipped": true
+        "skipped": false
     },
     "9cf35cbc-feda-47a3-a26e-7417c348656c": {
         "id": "9cf35cbc-feda-47a3-a26e-7417c348656c",
@@ -788,7 +788,7 @@
             "ef9b9f82-e627-4083-883f-0e0f23071430"
         ],
         "parent": "5af699de-1df6-4ca0-8f5e-519bd75d9733",
-        "skipped": true
+        "skipped": false
     },
     "b4d7f9d6-c0e1-4caf-9c99-af68e1245da0": {
         "id": "b4d7f9d6-c0e1-4caf-9c99-af68e1245da0",
@@ -811,7 +811,7 @@
         },
         "asset-pack": "core",
         "parent": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
-        "skipped": false
+        "skipped": true
     },
     "b8dd4efd-adfe-4f75-a97f-e5f8c9613962": {
         "id": "b8dd4efd-adfe-4f75-a97f-e5f8c9613962",
@@ -1035,7 +1035,7 @@
             "acfd814d-e38c-4932-9a2b-32987430eb64"
         ],
         "parent": "ba6516bb-9d68-455b-9bb3-3e782a6f386b",
-        "skipped": true
+        "skipped": false
     },
     "acfd814d-e38c-4932-9a2b-32987430eb64": {
         "id": "acfd814d-e38c-4932-9a2b-32987430eb64",
