@@ -215,7 +215,7 @@
                 "    notepad.userName = results.speakerIds.primarySpeaker;",
                 "  }",
                 "  ",
-                "  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
+                "//  console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
                 "  if (results.asrResults.state === 'match') {",
                 "    notepad.goodJoke=true;",
                 "  }",
@@ -223,7 +223,7 @@
                 "    notepad.goodJoke=false;",
                 "  }",
                 "  ",
-                "  console.log(\"goodJoke: \"+notepad.goodJoke);",
+                "//  console.log(\"goodJoke: \"+notepad.goodJoke);",
                 "}"
             ]
         }

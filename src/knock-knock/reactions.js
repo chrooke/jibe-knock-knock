@@ -69,7 +69,7 @@ class Reactions {
   }
 
   // Play a random key file of the given reaction
-  playRandomReaction(reaction,callback) {
+  playRandomReaction(reaction) {
 //    console.log('in playRandomReaction');
 //    console.log(this);
     if (this[reaction]) {
@@ -77,7 +77,6 @@ class Reactions {
       let builder_tag='builder_'+reaction+'_'+keysFile;
 //      console.log('playRandomReaction: ',builder_tag);
       this[builder_tag].play();
-//      callback(this[builder_tag].getConfiguredAnimationDuration());
     }
   }
 }

@@ -110,8 +110,8 @@
         "options": {
             "getTime": [
                 "() => {",
-                "//    console.log(\"waiting for animation\");",
-                "    return 4000;",
+                "//  console.log(\"waiting for animation\");",
+                "  return 4000;",
                 "}"
             ]
         },
