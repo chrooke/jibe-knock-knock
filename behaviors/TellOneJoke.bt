@@ -265,9 +265,15 @@
                 "    blackboard.jokes = new JokeRepo;",
                 "  }",
                 "  ",
-                "  let joke=blackboard.jokes.randomJoke();",
-                "  notepad.setup=joke.setup;",
-                "  notepad.punchline=joke.punchline;",
+                "  blackboard.jokes.randomJoke(function(err,joke){",
+                "    //console.log('in TellOneJoke err:',err);",
+                "    //console.log('in TellOneJoke joke:',joke);",
+                "    notepad.setup=joke.setup;",
+                "    notepad.punchline=joke.punchline;",
+                "    //console.log('in TellOneJoke notepad:',notepad.setup,notepad.punchline);",
+                "  });",
+                "",
+                "",
                 "}"
             ]
         },

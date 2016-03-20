@@ -1,18 +1,23 @@
 "use strict";
 
+let Datastore = require('nedb');
+let async = require('async');
+
 class JokeRepo {
   constructor() {
-    this.jokes = [
-        ['canoe','Canoe help me with my homework?'],
-        ['orange','Orange you going to let me in?'],
-        ['needle','Needle little money for the movies.']
-    ];
+    this.jokes = new Datastore({
+      filename : "schemas/jokes.json",
+      autoload : true
+    });
+    this.jokes.ensureIndex({ rnd: 1 });
+
   }
 
-  randomJoke() {
-    let joke = this.jokes[Math.round(Math.random()*((this.jokes.length)-1))];
-
-    return { setup: joke[0], punchline: joke[1]}
+  randomJoke(callback) {
+    this.jokes.find({}).limit(1).skip(Math.floor(Math.random() * this.jokes.count({}))).exec(function (err, doc) {
+              console.log('in find: doc:',doc);
+              callback(err,{ setup: doc[0].setup, punchline: doc[0].punchline });
+    });
   }
 
 }
