@@ -1,7 +1,6 @@
 "use strict";
 
 let Datastore = require('nedb');
-let async = require('async');
 
 class JokeRepo {
   constructor() {

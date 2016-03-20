@@ -26,8 +26,8 @@
         "options": {
             "exec": [
                 "() => {  ",
-                "  console.log('TellOneJoke.bt');",
-                "  console.log('set up paths');",
+                "//  console.log('TellOneJoke.bt');",
+                "//  console.log('set up paths');",
                 "    ",
                 "  let path = require ('path');",
                 "",
@@ -53,7 +53,7 @@
         "options": {
             "getWords": [
                 "(callback) => {",
-                "    console.log(' punchline');",
+                "//    console.log(' punchline');",
                 "    callback(notepad.punchline);",
                 "}"
             ],
@@ -71,7 +71,7 @@
             "behaviorPath": "attitudes/react.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(\"entering reaction.bt with laugh\");",
+                "//    console.log(\"entering reaction.bt with laugh\");",
                 "    return {",
                 "      reaction: 'laugh'",
                 "    };",
@@ -97,7 +97,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log(' listen for whos there');",
+                "//\tconsole.log(' listen for whos there');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForWhosThere',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -157,7 +157,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('\tlisten for setup who');",
+                "//\tconsole.log('\tlisten for setup who');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockSetupWho',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -221,7 +221,7 @@
             "behaviorPath": "attitudes/attentive.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('attentive');",
+                "//    console.log('attentive');",
                 "    return {};",
                 "}"
             ],
@@ -239,7 +239,7 @@
             "behaviorPath": "attitudes/idle.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(\"idle\");",
+                "//    console.log(\"idle\");",
                 "    return {};",
                 "}"
             ],
@@ -258,7 +258,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log('pick a joke');",
+                "//  console.log('pick a joke');",
                 "  ",
                 "  if (blackboard.jokes==undefined) {",
                 "    let JokeRepo = require('../src/knock-knock/joke-repo');",

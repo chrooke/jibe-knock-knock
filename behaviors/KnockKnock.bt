@@ -7,6 +7,7 @@
         "children": [
             41,
             "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
+            "6c3265de-4a80-430b-b2e9-5e5023f545b6",
             23,
             "60bad574-869a-4817-94be-d38d9da7b811",
             "8b08edd7-bd02-4d99-99b7-f4564e0f858f",
@@ -26,7 +27,7 @@
             "behaviorPath": "TellOneJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('KnockKnock.bt: entering TellOneJoke.bt');",
+                "//    console.log('KnockKnock.bt: entering TellOneJoke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -48,7 +49,7 @@
             "behaviorPath": "HearAJoke.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log('KnockKnock.bt: entering HearAJoke.bt');",
+                "//    console.log('KnockKnock.bt: entering HearAJoke.bt');",
                 "    return {};",
                 "}"
             ],
@@ -97,7 +98,7 @@
             "behaviorPath": "ExplainJokes.bt",
             "getNotepad": [
                 "() => {",
-                "  console.log('KnockKnock.bt: entering ExplainJokes.bt');",
+                "//  console.log('KnockKnock.bt: entering ExplainJokes.bt');",
                 "",
                 "    return {};",
                 "}"
@@ -117,8 +118,8 @@
         "options": {
             "exec": [
                 "() => {",
-                "  console.log('KnockKnock.bt');",
-                "  console.log('setting up paths');",
+                "//  console.log('KnockKnock.bt');",
+                "//  console.log('setting up paths');",
                 "  let path = require('path');",
                 "",
                 "  if (!notepad.rulesPath) {",
@@ -173,7 +174,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "\tconsole.log('need explanation?');",
+                "//\tconsole.log('need explanation?');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockNeedExplanation',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -275,7 +276,7 @@
             "behaviorPath": "attitudes/idle.bt",
             "getNotepad": [
                 "() => {",
-                "  console.log('idle');",
+                "//  console.log('idle');",
                 "",
                 "    return {};",
                 "}"
@@ -358,7 +359,7 @@
             "behaviorPath": "attitudes/posture.bt",
             "getNotepad": [
                 "() => {",
-                "  console.log('KnockKnock.bt: entering posture.bt');",
+                "//  console.log('KnockKnock.bt: entering posture.bt');",
                 "  return {};",
                 "}"
             ],
@@ -378,7 +379,7 @@
             "behaviorPath": "attitudes/center.bt",
             "getNotepad": [
                 "() => {",
-                "  console.log('KnockKnock.bt: entering center.bt');",
+                "//  console.log('KnockKnock.bt: entering center.bt');",
                 "    return {};",
                 "}"
             ],
@@ -499,7 +500,7 @@
         "options": {
             "exec": [
                 "() => {",
-                "    console.log('setting up jokes');",
+                "//  console.log('setting up jokes');",
                 "  let JokeRepo = require('../src/knock-knock/joke-repo');",
                 "  blackboard.jokes = new JokeRepo;",
                 "}"
@@ -837,7 +838,7 @@
         "options": {
             "getTime": [
                 "() => {",
-                "    console.log(\"waiting for animation\");",
+                "//    console.log(\"waiting for animation\");",
                 "    return 4000;",
                 "}"
             ]
@@ -853,7 +854,7 @@
             "behaviorPath": "attitudes/center.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(\"centering\");",
+                "//    console.log(\"centering\");",
                 "    return {};",
                 "}"
             ],
@@ -875,7 +876,7 @@
             "behaviorPath": "attitudes/idle.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(' idle');",
+                "//    console.log(' idle');",
                 "    return {};",
                 "}"
             ],
@@ -1060,7 +1061,7 @@
             "behaviorPath": "attitudes/center.bt",
             "getNotepad": [
                 "() => {",
-                "    console.log(\"centering\");",
+                "//    console.log(\"centering\");",
                 "    return {};",
                 "}"
             ],
@@ -1081,7 +1082,7 @@
         "options": {
             "getTime": [
                 "() => {",
-                "    console.log(\"waiting for animation\");",
+                "//    console.log(\"waiting for animation\");",
                 "    return 4000;",
                 "}"
             ]
@@ -1125,5 +1126,25 @@
         },
         "asset-pack": "core",
         "parent": "c7755f29-68dd-48c1-9c3e-e7d3dd780f5a"
+    },
+    "6c3265de-4a80-430b-b2e9-5e5023f545b6": {
+        "id": "6c3265de-4a80-430b-b2e9-5e5023f545b6",
+        "class": "ExecuteScript",
+        "name": "Set up reactions",
+        "options": {
+            "exec": [
+                "() => {",
+                "  if (blackboard.reactions===undefined) {",
+                "//    console.log('instantiating Reactions');",
+                "    let Reactions = require('../src/knock-knock/reactions');",
+                "    blackboard.reactions = new Reactions;",
+                "//    console.log(blackboard.reactions);",
+                "  }",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false
     }
 }
