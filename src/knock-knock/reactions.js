@@ -70,15 +70,21 @@ class Reactions {
 
   // Play a random key file of the given reaction
   playRandomReaction(reaction) {
-//    console.log('in playRandomReaction');
-//    console.log(this);
+      let builder_tag=this.getRandomReactionBuilderName(reaction);
+      this[builder_tag].play();
+  }
+
+  getRandomReactionBuilderName(reaction) {
     if (this[reaction]) {
       let keysFile=this[reaction][Math.round(Math.random()*((this[reaction].length)-1))];
       let builder_tag='builder_'+reaction+'_'+keysFile;
 //      console.log('playRandomReaction: ',builder_tag);
-      this[builder_tag].play();
+      return builder_tag;
     }
   }
+
 }
+
+
 
 module.exports = Reactions;

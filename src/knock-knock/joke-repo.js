@@ -19,7 +19,7 @@ class JokeRepo {
 //      console.log('count:',count);
 //      console.log('skip:',skip)
       _this.jokes.find({}).limit(1).skip(skip).exec(function (err, doc) {
-                console.log('in find: doc:',doc);
+//                console.log('in find: doc:',doc);
                 callback(err,{ setup: doc[0].setup, punchline: doc[0].punchline });
       });
    });
