@@ -72,14 +72,22 @@
                 "        }",
                 "    ]);",
                 "  } else {",
-                "    blackboard.reactions.playRandomReaction(notepad.reaction);",
+                "//    blackboard.reactions.playRandomReaction(notepad.reaction);",
+                "      let builder_tag=blackboard.reactions.getRandomReactionBuilderName(notepad.reaction);",
+                "      notepad.builder=blackboard.reactions[builder_tag];",
+                "      notepad.delay=notepad.builder.getConfiguredAnimationDuration()*1000;",
+                "      console.log('in ExecuteScript -- notepad.delay',notepad.delay);",
+                "      notepad.builder.play();",
                 "  }",
                 "}"
             ]
         },
         "asset-pack": "core",
         "parent": 1,
-        "decorators": []
+        "decorators": [
+            "a61479eb-5f5d-40ee-b987-6d0c1ef35cb6"
+        ],
+        "skipped": false
     },
     "985f57dc-e164-4a66-897c-f5c354139162": {
         "id": "985f57dc-e164-4a66-897c-f5c354139162",
@@ -110,12 +118,51 @@
         "options": {
             "getTime": [
                 "() => {",
-                "//  console.log(\"waiting for animation\");",
-                "  return 4000;",
+                "  console.log('in TimeoutJS -- notepad.delay',notepad.delay);",
+                "  notepad.delay2=notepad.builder.getConfiguredAnimationDuration()*1000;",
+                "  console.log('in TimeoutJS -- notepad.delay2',notepad.delay2);",
+                "  return notepad.delay2 || 4000;",
                 "}"
             ]
         },
         "asset-pack": "core",
-        "parent": 1
+        "parent": 1,
+        "decorators": [
+            "d21ff7be-1d2b-4426-8174-f7887283a247"
+        ]
+    },
+    "a61479eb-5f5d-40ee-b987-6d0c1ef35cb6": {
+        "id": "a61479eb-5f5d-40ee-b987-6d0c1ef35cb6",
+        "class": "SucceedOnCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return notepad.builder;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "d21ff7be-1d2b-4426-8174-f7887283a247": {
+        "id": "d21ff7be-1d2b-4426-8174-f7887283a247",
+        "class": "StartOnCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "  return notepad.builder;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
     }
 }
