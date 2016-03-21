@@ -22,20 +22,30 @@
         "options": {
             "exec": [
                 "() => {",
-                "//  console.log('HearAJoke');  ",
-                "//  console.log(' set up paths');  ",
-                "  let path = require ('path');",
+                "  console.log('------------');",
+                "  console.log('HearAJoke');  ",
+                "  console.log(' set up paths');  ",
                 "",
-                "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  console.log(notepad.rulesPath);",
+                "  console.log(notepad.mimsPath);",
+                "  ",
+                "  if (!notepad.rulesPath || ! notepad.mimsPath) {",
+                "    let path = require('path');    ",
+                "    if (!notepad.rulesPath) {",
+                "      notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "    }",
+                "    if (!notepad.mimsPath) {",
+                "      notepad.mimsPath = path.resolve(__dirname, '../mims/KnockKnock');",
+                "    }",
                 "  }",
-                "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
-                "  }",
-                "//  console.log('notepad.MainBreak:'+notepad.MainBreak);",
+                "  ",
+                "//  notepad.MainBreak=false;",
+                "  console.log('  setup notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "}"
             ]
-        }
+        },
+        "skipped": false
     },
     "meta": {
         "version": 1
@@ -49,6 +59,8 @@
             "getNotepad": [
                 "() => {",
                 "//  console.log(\"entering reaction.bt with laugh\");",
+                "console.log(' subtree laugh notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "  return {",
                 "    reaction: 'laugh'",
                 "  };",
@@ -91,7 +103,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "//\tconsole.log('\t\tlisten for knock knock');",
+                "\tconsole.log('\t\tlisten for knock knock');",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForKnockKnock',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -130,10 +142,13 @@
             "init": [
                 "() => {",
                 "  notepad.KnockKnockWaitForKnockKnockBreak=false;",
+                "  console.log('knock knock mim loop decorator init notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "}"
             ],
             "conditional": [
                 "() => {",
+                "  console.log('knock knock mim decorator conditional notepad.MainBreak:'+notepad.MainBreak);",
                 "  return !notepad.KnockKnockWaitForKnockKnockBreak;",
                 "}"
             ]
@@ -148,7 +163,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "//\tconsole.log('\t\tlisten for setup');",
+                "\tconsole.log('whos there mim notepad.MainBreak:'+notepad.MainBreak);",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForSetup',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -188,7 +203,7 @@
         "options": {
             "getConfig": [
                 "() =>  {",
-                "//\tconsole.log('\t\tlisten for punchline');",
+                "\tconsole.log('setup who mim notepad.MainBreak:'+notepad.MainBreak);",
                 "\treturn {",
                 "\t\tmimId: 'KnockKnockWaitForPunchline',",
                 "\t\trulesPath: notepad.rulesPath,",
@@ -306,6 +321,8 @@
                 "() => {",
                 "//  console.log(' set loop exit flag');",
                 "  notepad.MainBreak=true;",
+                "  console.log(' good joke exit notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "}"
             ]
         }
@@ -318,12 +335,14 @@
         "options": {
             "init": [
                 "() => {",
-                "//  console.log(' main loop');",
                 "  notepad.MainBreak=false;",
-                "}"
+                "  console.log('main loop decorator init: notepad.MainBreak:'+notepad.MainBreak);",
+                "}",
+                ""
             ],
             "conditional": [
                 "() => {",
+                "  console.log('main loop decorator conditional notepad.MainBreak:'+notepad.MainBreak);",
                 "  return !notepad.MainBreak;",
                 "}"
             ]
@@ -340,7 +359,8 @@
             "behaviorPath": "attitudes/attentive.bt",
             "getNotepad": [
                 "() => {",
-                "//    console.log(' attentive');",
+                "    console.log(' attentive');",
+                "    console.log('  attentive setup notepad.MainBreak:'+notepad.MainBreak);",
                 "    return {};",
                 "}"
             ],
@@ -348,7 +368,8 @@
                 "(treeResult) => {",
                 "}"
             ]
-        }
+        },
+        "skipped": false
     },
     "f5119f32-6b4f-483a-a996-0eb3bdf186fa": {
         "id": "f5119f32-6b4f-483a-a996-0eb3bdf186fa",
@@ -379,6 +400,8 @@
             "getNotepad": [
                 "() => {",
                 "//  console.log(\"entering reaction.bt with sorry\");",
+                "console.log(' subtree sorry: notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "  return {",
                 "    reaction: 'sorry'",
                 "  };",
@@ -401,6 +424,8 @@
             "exec": [
                 "() => {",
                 "//  console.log('finishing HearAJoke.bt');",
+                "console.log('leaving tree notepad.MainBreak:'+notepad.MainBreak);",
+                "",
                 "}"
             ]
         },

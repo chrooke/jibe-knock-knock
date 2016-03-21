@@ -28,7 +28,10 @@
             "getNotepad": [
                 "() => {",
                 "//    console.log('KnockKnock.bt: entering TellOneJoke.bt');",
-                "    return {};",
+                "    return {",
+                "      mimsPath: notepad.mimsPath,",
+                "      rulesPath: notepad.rulesPath",
+                "    };",
                 "}"
             ],
             "onResult": [
@@ -50,7 +53,10 @@
             "getNotepad": [
                 "() => {",
                 "//    console.log('KnockKnock.bt: entering HearAJoke.bt');",
-                "    return {};",
+                "    return {",
+                "        mimsPath: notepad.mimsPath,",
+                "        rulesPath: notepad.rulesPath",
+                "    };",
                 "}"
             ],
             "onResult": [
@@ -120,17 +126,18 @@
                 "() => {",
                 "//  console.log('KnockKnock.bt');",
                 "//  console.log('setting up paths');",
-                "  let path = require('path');",
-                "",
-                "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
-                "  }",
-                "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
+                "  if (!notepad.rulesPath || ! notepad.mimsPath) {",
+                "    let path = require('path');    ",
+                "    if (!notepad.rulesPath) {",
+                "      notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "    }",
+                "    if (!notepad.mimsPath) {",
+                "      notepad.mimsPath = path.resolve(__dirname, '../mims/KnockKnock');",
+                "    }",
                 "  }",
                 "  ",
-                "  //console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
-                "  //console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
+                "//  console.log(\"KnockKnock.bt: notepad.rulesPath=\"+notepad.rulesPath);",
+                "//  console.log(\"KnockKnock.bt: notepad.mimsPath=\"+notepad.mimsPath);",
                 "}",
                 ""
             ]
@@ -157,6 +164,7 @@
         "asset-pack": "core",
         "parent": "12d190f3-57ef-40b3-bd49-c54cf462f001",
         "children": [
+            "c530fb4a-0f03-44e2-be73-62fa713f2824",
             50,
             51
         ],
@@ -228,7 +236,6 @@
         "options": {
             "init": [
                 "() => {",
-                "  notepad.KnockKnockNeedExplanationBreak=false;",
                 "}"
             ],
             "conditional": [
@@ -1146,5 +1153,19 @@
         "asset-pack": "core",
         "parent": 1,
         "skipped": false
+    },
+    "c530fb4a-0f03-44e2-be73-62fa713f2824": {
+        "id": "c530fb4a-0f03-44e2-be73-62fa713f2824",
+        "class": "ExecuteScript",
+        "name": "",
+        "options": {
+            "exec": [
+                "() => {",
+                "  notepad.KnockKnockNeedExplanationBreak=false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 49
     }
 }

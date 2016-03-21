@@ -29,17 +29,23 @@
                 "//  console.log('TellOneJoke.bt');",
                 "//  console.log('set up paths');",
                 "    ",
-                "  let path = require ('path');",
+                "//  console.log('taj rules',notepad.rulesPath);",
+                "//  console.log('taj mims',notepad.mimsPath);",
                 "",
-                "  if (!notepad.rulesPath) {",
-                "  notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "  if (!notepad.rulesPath || ! notepad.mimsPath) {",
+                "    let path = require('path');    ",
+                "    if (!notepad.rulesPath) {",
+                "      notepad.rulesPath = path.resolve(__dirname, '../rules/KnockKnock');",
+                "    }",
+                "    if (!notepad.mimsPath) {",
+                "      notepad.mimsPath = path.resolve(__dirname, '../mims/KnockKnock');",
+                "    }",
                 "  }",
-                "  if (!notepad.mimsPath) {",
-                "  notepad.mimsPath =  path.resolve(__dirname, '../mims/KnockKnock');",
-                "  }",
+                "",
                 "}"
             ]
-        }
+        },
+        "skipped": false
     },
     "meta": {
         "version": 1
