@@ -10,7 +10,8 @@
 		"behaviorify": "^1.0.0",
 		"jibo": "^2.0.0",
 		"nedb": "^1.8.0",
-		"async": "^1.5.2"
+		"async": "^1.5.2",
+		"csv-parse": "^1.0.2"
 	},
 	"devDependencies": {},
 	"author" : "Chris Cooke",
