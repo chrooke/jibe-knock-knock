@@ -10,6 +10,7 @@
             "b280dde6-a460-42d2-a84f-79a8a6bec5b0",
             "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
             "e44c6c88-9598-47d5-925c-8d4b73caeba9",
+            "82433c01-85db-411e-aa68-4f7e99f15f0d",
             "985f57dc-e164-4a66-897c-f5c354139162",
             "0b6df9b1-5171-4584-b683-2948916fa8a0"
         ]
@@ -97,12 +98,13 @@
                 "// There seems to be an SDK bug that's making TimeoutJS run before everything else.",
                 "//  notepad.delay=notepad.builder.getConfiguredAnimationDuration()*1000;",
                 "//  console.log(notepad.delay);",
-                "  return notepad.delay || 4000;",
+                "  return notepad.delay;",
                 "}"
             ]
         },
         "asset-pack": "core",
-        "parent": 1
+        "parent": 1,
+        "skipped": true
     },
     "83f0db3e-868a-4ddc-9642-93a022d0ca0a": {
         "id": "83f0db3e-868a-4ddc-9642-93a022d0ca0a",
@@ -136,6 +138,27 @@
                 "  console.log('grab random builder');",
                 "  let builder_tag=blackboard.reactions.getRandomReactionBuilderName(notepad.reaction);",
                 "  notepad.builder=blackboard.reactions[builder_tag];",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "82433c01-85db-411e-aa68-4f7e99f15f0d": {
+        "id": "82433c01-85db-411e-aa68-4f7e99f15f0d",
+        "class": "Subtree",
+        "name": "Wait for animation to finish",
+        "options": {
+            "behaviorPath": "utility/TimeoutJsSync.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {",
+                "      delay: notepad.builder.getConfiguredAnimationDuration()*1000",
+                "    };",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
                 "}"
             ]
         },
