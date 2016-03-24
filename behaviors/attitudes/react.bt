@@ -5,7 +5,9 @@
         "name": "",
         "options": {},
         "children": [
+            "83f0db3e-868a-4ddc-9642-93a022d0ca0a",
             "d5b81fa5-3d34-4609-8574-f739dfaeaf36",
+            "b280dde6-a460-42d2-a84f-79a8a6bec5b0",
             "774c6bf0-296b-4bc9-85a8-b5b81b1b04e0",
             "e44c6c88-9598-47d5-925c-8d4b73caeba9",
             "985f57dc-e164-4a66-897c-f5c354139162",
@@ -52,28 +54,9 @@
         "options": {
             "exec": [
                 "() => {",
-                "//  console.log('playing random reaction');",
-                "  if (blackboard.reactions===undefined) {",
-                "    //This should have been set up already.",
-                "    //If not, it will be set up here, but won't ",
-                "    // be done in time to play the first animation.",
-                "    let async = require('async');",
-                "    async.series([",
-                "      function(callback){",
-                "//          console.log('instantiating Reactions');",
-                "          let Reactions = require('../../src/knock-knock/reactions');",
-                "          blackboard.reactions = new Reactions();",
-                "          callback()",
-                "        },",
-                "        function(callback){",
-                "//          console.log('Reactions should be instantiated. Playing animation.');",
-                "          blackboard.reactions.playRandomReaction(notepad.reaction);",
-                "          callback();",
-                "        }",
-                "    ]);",
-                "  } else {",
-                "    blackboard.reactions.playRandomReaction(notepad.reaction);",
-                "  }",
+                "  console.log('playing random reaction');",
+                "//  blackboard.reactions.playRandomReaction(notepad.reaction);",
+                "  notepad.builder.play();",
                 "}"
             ]
         },
@@ -110,8 +93,49 @@
         "options": {
             "getTime": [
                 "() => {",
-                "//  console.log(\"waiting for animation\");",
-                "  return 4000;",
+                "  console.log(\"waiting for animation\");",
+                "// There seems to be an SDK bug that's making TimeoutJS run before everything else.",
+                "//  notepad.delay=notepad.builder.getConfiguredAnimationDuration()*1000;",
+                "//  console.log(notepad.delay);",
+                "  return notepad.delay || 4000;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "83f0db3e-868a-4ddc-9642-93a022d0ca0a": {
+        "id": "83f0db3e-868a-4ddc-9642-93a022d0ca0a",
+        "class": "ExecuteScript",
+        "name": "Set up reactions",
+        "options": {
+            "exec": [
+                "() => {",
+                "// This must come before \"Flag animation starting\" to give",
+                "//   Reactions time to construct before playing.",
+                "  if (blackboard.reactions===undefined) {",
+                "//    console.log('instantiating Reactions');",
+                "    let Reactions = require('../../src/knock-knock/reactions');",
+                "    blackboard.reactions = new Reactions;",
+                "//    console.log(blackboard.reactions);",
+                "  }",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false
+    },
+    "b280dde6-a460-42d2-a84f-79a8a6bec5b0": {
+        "id": "b280dde6-a460-42d2-a84f-79a8a6bec5b0",
+        "class": "ExecuteScript",
+        "name": "Grab a random builder",
+        "options": {
+            "exec": [
+                "() => {",
+                "  console.log('grab random builder');",
+                "  let builder_tag=blackboard.reactions.getRandomReactionBuilderName(notepad.reaction);",
+                "  notepad.builder=blackboard.reactions[builder_tag];",
                 "}"
             ]
         },
