@@ -6,7 +6,7 @@
         "decorators": [],
         "children": [
             41,
-            "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
+            "1e9d0b64-7a88-498c-88a0-f7ee381634d6",
             "6c3265de-4a80-430b-b2e9-5e5023f545b6",
             23,
             "60bad574-869a-4817-94be-d38d9da7b811",
@@ -499,22 +499,6 @@
             ]
         },
         "asset-pack": "core"
-    },
-    "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a": {
-        "id": "d7ee6d2f-0d11-47b9-af42-edaf9b7c233a",
-        "class": "ExecuteScript",
-        "name": "Set up jokes",
-        "options": {
-            "exec": [
-                "() => {",
-                "//  console.log('setting up jokes');",
-                "  let JokeRepo = require('../src/knock-knock/joke-repo');",
-                "  blackboard.jokes = new JokeRepo;",
-                "}"
-            ]
-        },
-        "asset-pack": "core",
-        "parent": 1
     },
     "e2f983a9-c6e7-4e42-b967-6488aff4eb9d": {
         "id": "e2f983a9-c6e7-4e42-b967-6488aff4eb9d",
@@ -1167,5 +1151,22 @@
         },
         "asset-pack": "core",
         "parent": 49
+    },
+    "1e9d0b64-7a88-498c-88a0-f7ee381634d6": {
+        "id": "1e9d0b64-7a88-498c-88a0-f7ee381634d6",
+        "class": "ExecuteScriptAsync",
+        "name": "Set up jokes",
+        "options": {
+            "exec": [
+                "(succeed, fail) => {",
+                "  //  console.log('setting up jokes');",
+                "    let JokeRepo = require('../src/knock-knock/joke-repo');",
+                "    blackboard.jokes = new JokeRepo;",
+                "    blackboard.jokes.loadNewJokes(succeed);",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
     }
 }

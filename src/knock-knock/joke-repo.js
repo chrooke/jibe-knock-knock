@@ -1,6 +1,9 @@
 "use strict";
 
 let Datastore = require('nedb');
+let parse = require('csv-parse');
+const fs = require('fs');
+let path = require('path');
 
 class JokeRepo {
   constructor() {
@@ -15,7 +18,9 @@ class JokeRepo {
   randomJoke(callback) {
     let _this=this;
     this.jokes.count({}, function(err,count){
-      let skip = Math.floor(Math.random() * count)
+//      console.log(count," jokes available.")
+      let skip = Math.floor(Math.random() * count);
+      //console.log("Skipping to place ",skip);
 //      console.log('count:',count);
 //      console.log('skip:',skip)
       _this.jokes.find({}).limit(1).skip(skip).exec(function (err, doc) {
@@ -30,6 +35,39 @@ class JokeRepo {
 //      console.log('in find: doc:',doc);
 //      callback(err,{ setup: doc.setup, punchline: doc.punchline });
 //    });;
+  }
+
+  loadNewJokes(callback){
+    //read CSV file, send parse as a callback
+      let _this=this;
+      let csvFile=path.resolve(__dirname, '../../schemas/jokes.csv');
+      fs.readFile(csvFile,'utf8',function(err,data){ //read in CSV file
+        if (err) {
+            console.log('No jokes.csv found. Skipping import.');
+            callback();
+        } else {
+            parse(data,function(err,output){ //parse CSV file
+              if (err) {
+                  console.log('Error parsing CSV:',err);
+                  callback();
+              } else {
+                  output.forEach(function(joke,callback) { //get one joke, look it up to see if it's there
+                    _this.jokes.find({ setup: joke[0],punchline: joke[1] }, function(err,docs){
+                        if (docs.length==0){ //it's not there, add it
+//                          console.log('Adding',joke[0],joke[1]);
+                          _this.jokes.insert({
+                            setup : joke[0],
+                            punchline : joke[1],
+                            rnd : Math.random()
+                          });
+                        }
+                    });
+                  });
+                  callback();
+              }
+          });
+        }
+      });
   }
 
 }
