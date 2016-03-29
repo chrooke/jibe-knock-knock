@@ -30,7 +30,7 @@
       "prompt_sub_category": "NI",
       "index": "1",
       "condition": "",
-      "prompt": "To start the joke, please say knock knock.",
+      "prompt": "To start the joke, just say knock knock.",
       "media": "TTS",
       "extra": "",
       "prompt_id": "KnockKnockWaitForKnockKnock_NI_1"

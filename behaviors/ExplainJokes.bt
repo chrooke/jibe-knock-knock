@@ -20,7 +20,7 @@
         "asset-pack": "core",
         "parent": 1,
         "options": {
-            "words": "Knock knock jokes are a type of interactive pun.\nIt's a semi-scripted play with a pun at the end.\nThe person telling the joke pretends to be knocking on the door of the listener, so he says, \"Knock knock\".\nThe listener plays along and says, \"Who's there\".\nThe teller then gives a short answer that is the setup to a pun.\nThe listener repeats this phrase, adding the question \"who?\" at the end.\nFinally the teller reveals the pun based on his setup, and everyone laughs and laughs.",
+            "words": "Knock knock jokes are punny!\nI pretend to knock on your door. \"Knock knock\"\nYou ask, \"Who's there?\".\nI tell you my first name. For example, \"Toby\".\nYou don't know Toby, so you ask \"Toby who?\".\nFinally I give you the pun based on the name. \"Toby or not Toby, that is the question.\"\nThen we laugh and laugh, and you tell me a joke.",
             "onWord": [
                 "(word) => {",
                 "}"
