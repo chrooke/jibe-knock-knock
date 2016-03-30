@@ -6,13 +6,17 @@
         "asset-pack": "core",
         "children": [
             64,
+            "f83765fd-cd23-4a2d-b802-3a6bbcb7e0c4",
             "7e48c340-ee20-4ea0-8e7a-5e51e7864845",
             "e50a01b8-044d-4994-84b5-0c97525edf84",
+            "0276e123-3438-4c21-9639-c90c82ba698c",
             "56161036-7ca1-4ab8-b490-8452ad4728a2",
+            "cd3f03f4-1d73-4d2b-a3d3-6048e1c378eb",
             "7144e298-72a3-4e10-a2f1-decdf64dedee",
             "1afbaa0a-8913-4daf-aea8-562f6d8c298b",
             "4311a95a-cb87-40e6-88c7-ef2aca4d9538",
-            "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a"
+            "58f7fb64-f2b1-4d99-bed5-596855075bb7",
+            "438a3520-2594-4e15-8e5e-ea81dcb1b47d"
         ],
         "decorators": [],
         "options": {}
@@ -26,6 +30,7 @@
         "options": {
             "exec": [
                 "() => {  ",
+                "  // This is here in case the BT is run standalone.",
                 "//  console.log('TellOneJoke.bt');",
                 "//  console.log('set up paths');",
                 "    ",
@@ -237,26 +242,6 @@
             ]
         }
     },
-    "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a": {
-        "id": "d3b9ec0e-5fe4-4d45-be51-a9a62ad59f5a",
-        "class": "Subtree",
-        "name": "Idle",
-        "options": {
-            "behaviorPath": "attitudes/idle.bt",
-            "getNotepad": [
-                "() => {",
-                "//    console.log(\"idle\");",
-                "    return {};",
-                "}"
-            ],
-            "onResult": [
-                "(treeResult) => {",
-                "}"
-            ]
-        },
-        "asset-pack": "core",
-        "parent": 1
-    },
     "7e48c340-ee20-4ea0-8e7a-5e51e7864845": {
         "id": "7e48c340-ee20-4ea0-8e7a-5e51e7864845",
         "class": "ExecuteScript",
@@ -280,6 +265,101 @@
                 "  });",
                 "",
                 "",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "f83765fd-cd23-4a2d-b802-3a6bbcb7e0c4": {
+        "id": "f83765fd-cd23-4a2d-b802-3a6bbcb7e0c4",
+        "class": "ExecuteScript",
+        "name": "Set up people",
+        "options": {
+            "exec": [
+                "() => {",
+                "  // This is here in case the BT is run standalone.",
+                "  if (notepad.explain===undefined) { notepad.explain=true;}",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0276e123-3438-4c21-9639-c90c82ba698c": {
+        "id": "0276e123-3438-4c21-9639-c90c82ba698c",
+        "class": "TextToSpeechJs",
+        "name": "Explanation part I",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    let explanation='';",
+                "    if (notepad.explain) {",
+                "      explanation=\"Knock knock jokes are punny! I'll pretend to knock on your door, then you'll ask, \\\"Who's there?\\\"\";",
+                "    }",
+                "    ",
+                "    callback(explanation);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "cd3f03f4-1d73-4d2b-a3d3-6048e1c378eb": {
+        "id": "cd3f03f4-1d73-4d2b-a3d3-6048e1c378eb",
+        "class": "TextToSpeechJs",
+        "name": "Explanation part II",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    let explanation='';",
+                "    if (notepad.explain) {",
+                "      explanation=\"I'll tell you my first name. You'll ask, \\\"<so-and-so> who?\\\"\";",
+                "    }",
+                "    ",
+                "    callback(explanation);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "58f7fb64-f2b1-4d99-bed5-596855075bb7": {
+        "id": "58f7fb64-f2b1-4d99-bed5-596855075bb7",
+        "class": "ExecuteScript",
+        "name": "Turn off explanations",
+        "options": {
+            "exec": [
+                "() => {",
+                "  result.explain=false;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "438a3520-2594-4e15-8e5e-ea81dcb1b47d": {
+        "id": "438a3520-2594-4e15-8e5e-ea81dcb1b47d",
+        "class": "Subtree",
+        "name": "Idle",
+        "options": {
+            "behaviorPath": "attitudes/idle.bt",
+            "getNotepad": [
+                "() => {",
+                "//    console.log(' idle');",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
                 "}"
             ]
         },

@@ -19,7 +19,7 @@
       "prompt_sub_category": "Q",
       "index": "1",
       "condition": "",
-      "prompt": "Should I explain knock knock jokes?",
+      "prompt": "Do you know how knock knock jokes work?",
       "media": "TTS",
       "extra": "",
       "prompt_id": "KnockKnockNeedExplanation_Q_1"
@@ -30,7 +30,7 @@
       "prompt_sub_category": "NI",
       "index": "1",
       "condition": "",
-      "prompt": "Do you want me to explain knock knock jokes?",
+      "prompt": "Are you comfortable with knock knock jokes?",
       "media": "TTS",
       "extra": "",
       "prompt_id": "KnockKnockNeedExplanation_NI_1"
@@ -41,7 +41,7 @@
       "prompt_sub_category": "NM",
       "index": "1",
       "condition": "",
-      "prompt": "Come again? Do you want me to explain knock knock jokes?",
+      "prompt": "Come again? Please tell me yes or no. Do you know how knock knock jokes work?",
       "media": "TTS",
       "extra": "",
       "prompt_id": "KnockKnockNeedExplanation_NM_1"
