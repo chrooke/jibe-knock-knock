@@ -22,6 +22,19 @@ This is the much-improved decendent of my original knock-knock joke skill writte
 * On the second pass through the tell/hear cycle, Jibo starts listening to a joke, then skips to telling a joke. This is due to a known SDK bug that is currently being worked by the SDK team. The 'flatten-some-subtrees' branch contains a work-around for this bug.
 * Every other time Jibo doesn't get your joke, he doesn't play a "sorry" animation. This is due to the same SDK bug. The 'flatten-some-subtrees' branch contains a work-around for this bug.
 
+## HOW-TO
+
+### Add more jokes using the CSV file
+* Add your jokes into schemas/jokes.csv. There's no need to keep the old jokes there once they're in the database. It's safe to leave them, Jibo won't readd them, but once they're added, they can be removed from the csv.
+* The CSV should have the setup, then the punchline. The setup should not contain any capital letters or punctuation.
+* The setup and punchline should both be contained in quotes.
+
+### Add laugh and sorry animations
+* laugh animations are used when Jibo laughs at a joke
+* sorry animations are used when Jibo doesn't get a joke he hears
+* Use the Jibo-> New Animation menu to create your animation
+* For the path, store the animation in animation/reactions/laugh (for laugh animations) or animation/reactions/sorry (for sorry animations
+* Restart the skill. The skill takes it from there, adding your new animation into the pool of available animations.
 
 ##Joke sources:
 http://dailyjokes.somelifeblog.com/search/label/Knock-Knock
