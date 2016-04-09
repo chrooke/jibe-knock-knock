@@ -1,0 +1,29 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "1bb21abf-115d-49fd-8385-883c226167c5"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "1bb21abf-115d-49fd-8385-883c226167c5": {
+        "id": "1bb21abf-115d-49fd-8385-883c226167c5",
+        "class": "TimeoutJs",
+        "name": "",
+        "options": {
+            "getTime": [
+                "() => {",
+                "//    console.log('TimeoutJsSync: ',notepad.delay);",
+                "    return notepad.delay;",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    }
+}
