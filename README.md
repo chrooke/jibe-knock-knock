@@ -19,8 +19,9 @@ This is the much-improved decendent of my original knock-knock joke skill writte
 * Assess whether a joke is good or not, rate jokes by quality
 
 ## Known bugs
-* On the second pass through the tell/hear cycle, Jibo starts listening to a joke, then skips to telling a joke. This is due to a known SDK bug that is currently being worked by the SDK team.
-* Every other time Jibo doesn't get your joke, he doesn't play a "sorry" animation. This is due to the same SDK bug.
+* On the second pass through the tell/hear cycle, Jibo starts listening to a joke, then skips to telling a joke. This is due to a known SDK bug that is currently being worked by the SDK team. The 'flatten-some-subtrees' branch contains a work-around for this bug.
+* Every other time Jibo doesn't get your joke, he doesn't play a "sorry" animation. This is due to the same SDK bug. The 'flatten-some-subtrees' branch contains a work-around for this bug.
+
 
 ##Joke sources:
 http://dailyjokes.somelifeblog.com/search/label/Knock-Knock
