@@ -40,3 +40,6 @@ This is the much-improved decendent of my original knock-knock joke skill writte
 http://dailyjokes.somelifeblog.com/search/label/Knock-Knock
 http://www.funology.com/knock-knock-jokes/
 http://www.jokes4us.com/knockknockjokes/
+
+#Acknowledgements
+Uses mim-example code copyright 2016 by Jibo, Inc.

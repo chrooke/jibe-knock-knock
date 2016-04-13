@@ -15,6 +15,10 @@
 	},
 	"devDependencies": {},
 	"author" : "Chris Cooke",
-	"license": "Knock Knock code Copyright 2016 by Chris Cooke. Uses mim-example code copyright 2016 by Jibo, Inc.",
-	"private": true
+	"license": "MIT",
+	"private": true,
+	"repository" :
+  		{ "type" : "git"
+		, "url" : "https://github.com/chrooke/jibo-knock-knock.git"
+ 	 }
 }
