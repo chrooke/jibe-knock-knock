@@ -7,7 +7,7 @@ This is the much-improved decendent of my original knock-knock joke skill writte
 * Jibo "doesn't get it" if the joke you tell doesn't contain the setup somewhere in the punchline
 * Easily expand the laugh and sorry animation pool just by adding new animations - no coding required
 * Knock knock database expandable via csv input
- 
+
 ## Planned features
 * Keep track of which specific users have heard which jokes, avoid repeats
 * Keep track of which users know the joke protocol, and don't ask if they know
@@ -19,8 +19,7 @@ This is the much-improved decendent of my original knock-knock joke skill writte
 * Assess whether a joke is good or not, rate jokes by quality
 
 ## Known bugs
-* On the second pass through the tell/hear cycle, Jibo starts listening to a joke, then skips to telling a joke. This is due to a known SDK bug that is currently being worked by the SDK team. The 'flatten-some-subtrees' branch contains a work-around for this bug.
-* Every other time Jibo doesn't get your joke, he doesn't play a "sorry" animation. This is due to the same SDK bug. The 'flatten-some-subtrees' branch contains a work-around for this bug.
+* Jibo won't prompt on noInput. MIMs are being discontinued, and I lost this functionality adapting the old code to handle the new parsing logic.
 
 ## HOW-TO
 

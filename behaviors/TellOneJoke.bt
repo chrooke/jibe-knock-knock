@@ -131,7 +131,7 @@
                 "  }",
                 "  ",
                 "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
-                "  if (results.asrResults.state === 'match') {",
+                "  if (results.asrResults.nlParse.status === 'GOT-PARSE') {",
                 "    notepad.KnockKnockWaitForWhosThereBreak=true;",
                 "  }",
                 "}"
@@ -196,7 +196,7 @@
                 "  }",
                 "  ",
                 "  //console.log(results.asrResults, `State: ${results.asrResults.state}`, results.asrResults);",
-                "  if (results.asrResults.state === 'match') {",
+                "  if (results.asrResults.nlParse.status === 'GOT-PARSE') {",
                 "    notepad.KnockKnockSetupWhoBreak=true;",
                 "  }",
                 "}"
